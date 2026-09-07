@@ -1,0 +1,191 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "URDF USD Converter v0.1.3"
+    }
+    doc = """Generated from Composed Stage of root layer /tmp/tmpiordw69s/athena_rover.usdc
+
+
+Generated from Composed Stage of root layer /tmp/urdf_import_athena_rover-6_0hoe_zuy/usdex_athena_rover-6/athena_rover.usdc
+
+
+Generated from Composed Stage of root layer /tmp/urdf_import_athena_rover-6_0hoe_zuy/temp_athena_rover-6/athena_rover-6.usd
+
+
+Generated from Composed Stage of root layer /home/aarsh/Downloads/athena_description/athena_description/urdf/athena_rover-6_3/payloads/base.usd
+"""
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Scope "Instances"
+{
+    def Xform "chassis" (
+        prepend references = @./geometries.usd@</Geometries/chassis>
+    )
+    {
+        over "chassis" (
+            apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            custom rel material:binding
+            prepend rel material:binding = </Instances/chassis/VisualMaterials/aluminium>
+        }
+
+        def Scope "VisualMaterials"
+        {
+            def Material "aluminium" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/aluminium>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "chassis_1" (
+        prepend references = @./geometries.usd@</Geometries/chassis>
+    )
+    {
+        over "chassis" (
+            apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI"]
+        )
+        {
+            token physics:approximation = "convexHull"
+            token purpose = "guide"
+        }
+    }
+
+    def Xform "bogey_arm" (
+        prepend references = @./geometries.usd@</Geometries/bogey_arm>
+    )
+    {
+        over "bogey_arm" (
+            apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            custom rel material:binding
+            prepend rel material:binding = </Instances/bogey_arm/VisualMaterials/aluminium>
+        }
+
+        def Scope "VisualMaterials"
+        {
+            def Material "aluminium" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/aluminium>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "bogey_arm_1" (
+        prepend references = @./geometries.usd@</Geometries/bogey_arm>
+    )
+    {
+        over "bogey_arm" (
+            apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI"]
+        )
+        {
+            token physics:approximation = "convexHull"
+            token purpose = "guide"
+        }
+    }
+
+    def Xform "SteeringMotorHousing" (
+        prepend references = @./geometries.usd@</Geometries/SteeringMotorHousing>
+    )
+    {
+        over "SteeringMotorHousing" (
+            apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            custom rel material:binding
+            prepend rel material:binding = </Instances/SteeringMotorHousing/VisualMaterials/motor_grey>
+        }
+
+        def Scope "VisualMaterials"
+        {
+            def Material "motor_grey" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/motor_grey>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "SteeringMotorHousing_1" (
+        prepend references = @./geometries.usd@</Geometries/SteeringMotorHousing>
+    )
+    {
+        over "SteeringMotorHousing" (
+            apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI"]
+        )
+        {
+            token physics:approximation = "convexHull"
+            token purpose = "guide"
+        }
+    }
+
+    def Xform "stearing" (
+        prepend references = @./geometries.usd@</Geometries/stearing>
+    )
+    {
+        over "stearing" (
+            apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            custom rel material:binding
+            prepend rel material:binding = </Instances/stearing/VisualMaterials/motor_grey>
+        }
+
+        def Scope "VisualMaterials"
+        {
+            def Material "motor_grey" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/motor_grey>
+            )
+            {
+            }
+        }
+    }
+
+    def Xform "stearing_1" (
+        prepend references = @./geometries.usd@</Geometries/stearing>
+    )
+    {
+        over "stearing" (
+            apiSchemas = ["PhysicsCollisionAPI", "NewtonCollisionAPI", "PhysicsMeshCollisionAPI", "NewtonMeshCollisionAPI"]
+        )
+        {
+            token physics:approximation = "convexHull"
+            token purpose = "guide"
+        }
+    }
+
+    def Xform "wheel" (
+        prepend references = @./geometries.usd@</Geometries/wheel>
+    )
+    {
+        over "wheel" (
+            apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            custom rel material:binding
+            prepend rel material:binding = </Instances/wheel/VisualMaterials/rubber>
+        }
+
+        def Scope "VisualMaterials"
+        {
+            def Material "rubber" (
+                instanceable = true
+                prepend references = @./materials.usda@</Materials/rubber>
+            )
+            {
+            }
+        }
+    }
+}
+

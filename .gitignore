@@ -1,0 +1,21 @@
+# colcon build output
+build/
+install/
+log/
+
+# third-party ROS packages (cloned separately during setup)
+src/zed-ros2-wrapper/
+src/zed-ros2-interfaces/
+
+# junk / debug artifacts
+__MACOSX/
+*.gv
+frames_*.pdf
+
+# python
+__pycache__/
+*.pyc
+*.pyo
+
+# macOS
+.DS_Store
