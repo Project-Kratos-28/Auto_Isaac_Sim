@@ -3,7 +3,8 @@
 A digital twin of **athena_rover**, a 4-wheel independent steering (4WIS / swerve) rover with
 rocker-bogie suspension, built in **NVIDIA Isaac Sim 6.0.1** and controlled through **ROS 2 Humble**.
 
-The sim streams a **ZED 2i** stereo camera (RGB + depth + registered point cloud) and publishes
+The sim streams a **ZED 2i** stereo camera (RGB + depth + registered point cloud), a
+**Livox Mid-360**-style 3D lidar (approximated with an RTX Lidar), and publishes
 ground-truth **odometry**, so the ROS 2 topic layout matches the real hardware and the same
 control/perception stack runs in sim and on the physical rover.
 
@@ -17,7 +18,7 @@ control/perception stack runs in sim and on the physical rover.
 | ROS 2 | Humble |
 | Camera | ZED 2i (via Stereolabs ZED SDK + zed-ros2-wrapper) |
 | ZED SDK | 5.4.1+ (needs CUDA + cuDNN + TensorRT) |
-| Lidar | Livox Mid-360 (RTX Lidar — **planned, not yet added**) |
+| Lidar | Livox Mid-360 — **approximated** via RTX Lidar (Ouster OS0 base, reconfigured to Mid-360 specs) |
 | OS | Ubuntu 22.04 |
 
 ---
@@ -118,13 +119,14 @@ Open the scene `isaac/demo_1/*.usd` and press **Play**.
 Let the rover settle on the ground **before** pressing Play (a free-fall at t=0 skews odometry and
 puts the rover below the RViz grid — see Known Issues).
 
-The scene contains three Action Graphs:
+The scene contains four Action Graphs:
 
 | Graph | Nodes | Purpose |
 |---|---|---|
 | **Clock** | On Playback Tick → ROS2 Publish Clock; Isaac Read Simulation Time → Time Stamp | publishes `/clock` (sim time) |
 | **rover_drive** | Subscribe Joint State → Articulation Controller (target `/athena_rover`) | applies `/joint_command` to the joints |
 | **Odom** | Compute Odometry → Publish Odometry + Publish Raw Transform Tree; Isaac Read Simulation Time → both timeStamps | publishes `/odom` and the `odom → base_link` TF, stamped with sim time |
+| **Lidar** | On Playback Tick → Isaac Create Render Product (cameraPrim = `OS0/sensor`) → ROS2 RTX Lidar Helper | publishes the lidar cloud on `/livox/points` (frame `livox_frame`) |
 
 > **Important:** every ROS publish node that emits a timestamp must have `Isaac Read Simulation Time`
 > wired into its `timeStamp` input, and every ROS 2 node below must run with `use_sim_time:=true`.
@@ -140,7 +142,11 @@ This starts:
 - the **ZED wrapper** (`sim_mode:=true`, `sim_address:=127.0.0.1`, `sim_port:=30000`, `use_sim_time:=true`)
 - the **swerve controller** (`/cmd_vel` → `/joint_command`)
 - a **static transform** `base_link → zed_camera_link`
+- a **static transform** `base_link → livox_frame` (`--z 0.09`, matches the OS0 mount height)
 - **RViz** (with `use_sim_time:=true`)
+
+The lidar cloud (`/livox/points`) is published by the Isaac **Lidar** Action Graph directly — no
+external driver needed (unlike the ZED, which goes through the wrapper).
 
 Or run the wrapper standalone for debugging:
 
@@ -165,7 +171,43 @@ ros2 topic echo /zed/zed_node/point_cloud/cloud_registered --field header.stamp 
 ```
 
 All stamps should be small matching sim-time values. Then set RViz **Fixed Frame = `odom`** and the
-registered point cloud appears.
+registered point cloud appears. Add a second **PointCloud2** on `/livox/points` to see the lidar.
+
+---
+
+## The Livox Mid-360 (approximated)
+
+There is **no official Isaac Sim support** for the Livox Mid-360 (confirmed on the NVIDIA forums —
+Livox never provided a model). It's a **non-repetitive, solid-state "rosette" scanner**, which Isaac's
+RTX Lidar can only reproduce faithfully via a custom emitter pattern extracted from real recordings.
+
+We use a pragmatic approximation: create an **RTX Lidar → Ouster OS0** (`Create → Isaac → Sensors →
+RTX Lidar → Ouster → OS0`), then **override its config attributes** on the inner `OS0/sensor`
+(`OmniLidar`) prim to Mid-360 specs — this is NVIDIA's recommended approach (a raw custom JSON
+config segfaults). Values applied (via Script Editor, `omni:sensor:Core:*` attributes,
+after [rbelshaw's forum config](https://forums.developer.nvidia.com/t/livox-mid360/283074)):
+
+| Attribute | Value | Note |
+|---|---|---|
+| `numberOfChannels` / `numberOfEmitters` | 40 / 40 | Mid-360-like |
+| `emitterState:s001:elevationDeg` | −7.0° … +50.524° (40 values) | **asymmetric upward dome** (OS0 default is symmetric ±45°) |
+| `emitterState:s001:azimuthDeg` | `[0.0] * 40` | |
+| `emitterState:s001:fireTimeNs` | `[i*1000 for i in range(40)]` | sequential timing → quasi-non-repetitive |
+| `nearRangeM` / `farRangeM` | 0.1 / 40.0 | |
+| `rangeResolutionM` / `rangeAccuracyM` | 0.004 / 0.025 | |
+| `scanRateBaseHz` / `tickRate` | **10 / 10** | see multi-tick note below |
+| `reportRateBaseHz` / `patternFiringRateHz` | 7761 (raise for more density) | |
+
+> **All per-emitter arrays** (`elevationDeg`, `azimuthDeg`, `channelId`, `fireTimeNs`,
+> `distanceCorrectionM`, `focalDistM`, `focalSlope`, `horOffsetM`, `reportRateDiv`, `vertOffsetM`)
+> **must be resized to the same length (40)** together, or the sensor corrupts/crashes.
+
+**Mounting:** the `OS0` prim is a plain Xform parented under `base_link` (no rigid body, no fixed
+joint — it follows via the hierarchy), with local Translate ≈ `(0, 0, 0.09)`. TF: `base_link → livox_frame`.
+
+**Publishing:** the **Lidar** Action Graph (see table above). The `Isaac Create Render Product`
+`cameraPrim` must target the inner **`OS0/sensor`** (`OmniLidar`) prim — not the outer `OS0` Xform —
+or you get `Render product ... not attached to RTX Lidar (OmniLidar prim is required)` and no topic.
 
 ---
 
@@ -226,13 +268,24 @@ Wheel positions relative to `base_link` (from the URDF):
 - **Isaac `.usd` scene uses absolute paths** to meshes and the ZED extension. A teammate on a different
   machine will hit broken references unless their paths match — re-point references or save with
   relative/payload references.
+- **Lidar stripe / sparse cloud (multi-tick without motion BVH):** in Isaac 6.0 the RTX lidar renders
+  multi-tick, which needs motion BVH; the lidar has no user toggle for it, so the fix is to set
+  `scanRateBaseHz = tickRate = 10` (one rotation per frame → no multi-tick). Symptom before the fix:
+  the Console warns `Multi-tick is enabled but motion BVH is not active` and objects show only a single
+  vertical column of points instead of a filled surface.
+- **Lidar near-field blind spot (expected):** with vertical FOV −7°…+52°, the lowest beam only points 7°
+  down, so there's a blind cone below/around the sensor (~3–4 m radius on the ground). Close, low objects
+  aren't seen — this is real Mid-360 behaviour; use the ZED depth for close-in obstacles. In RViz, raise
+  the PointCloud2 **Decay Time** (e.g. 2 s) to accumulate the non-repetitive scan into a dense cloud.
+- **ZED asset gizmo offset:** the `ZED_2i` asset nests its geometry under internal wrapper prims, so the
+  outer prim's gizmo doesn't sit on the camera body — cosmetic. A **fresh drag-in from the Content tab**
+  comes in aligned but **as a rigid body**, so it needs either a fixed joint to `base_link` or removal of
+  its `RigidBodyAPI` to follow the rover. Reparenting the ZED changes its prim path — **re-point the
+  `camera_streamer` graph** to the new path or the stream breaks.
 
 ---
 
 ## Roadmap / TODO
 
-- [ ] Add **Livox Mid-360** as an RTX Lidar sensor + Livox scan config (not a URDF import).
-- [ ] **Joystick teleop** for `/cmd_vel`.
-- [ ] `robot_state_publisher` for the full rover TF tree.
-- [ ] Replace placeholder `wheel_radius` with the measured value.
-- [ ] Steering drive tuning so the 4WIS circle tracks cleanly.
+- [ ] Get the **[GLIM](https://github.com/koide3/glim)** 3D LiDAR SLAM stack working on the simulator
+      (consume `/livox/points` for real-time mapping / localization).
