@@ -7,8 +7,8 @@
                 double radius = 2.7425392150878904
             }
             dictionary Perspective = {
-                double3 position = (-2.83494128350755, -1.5383958565850597, 1.2408611270329586)
-                double3 target = (20.836349753460393, 8.606657109204926, -2.941061709480896)
+                double3 position = (-21.26931705122724, -173.166244802512, 27.059776882498728)
+                double3 target = (-47.04728971954701, 26.721884987789537, -5.322671851492796)
             }
             dictionary Right = {
                 double3 position = (0, -5, 0)
@@ -21,6 +21,9 @@
             string boundCamera = "/OmniverseKit_Persp"
         }
         string creator = "URDF USD Converter v0.1.3"
+        dictionary metricsAssembler = {
+            int version = 1
+        }
         dictionary omni_layer = {
             string authoring_layer = "./athena_rover-6.usda"
         }
@@ -937,6 +940,66 @@ def Xform "athena_rover" (
             uniform float2 ui:nodegraph:node:pos = (48.442017, 445.50876)
         }
     }
+
+    def Xform "Xform"
+    {
+        quatd xformOp:orient = (1, 0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (21.238500134232833, 5.0598334974716295, 14.326130265625121)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def "terrain_01" (
+            displayName = "terrain_01"
+            prepend payload = @../../../../../../../Downloads/terrain_01.usd@
+        )
+        {
+            double xformOp:rotateX:unitsResolve = 90
+            float3 xformOp:rotateXYZ = (0, 0, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:scale:unitsResolve = (0.01, 0.01, 0.01)
+            double3 xformOp:translate = (1039.608514069286, 77.60320750398046, -2335.9381654047233)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale", "xformOp:rotateX:unitsResolve", "xformOp:scale:unitsResolve"]
+
+            over "camera1_group"
+            {
+                over "camera1"
+                {
+                    over "camera1"
+                    {
+                        float2 clippingRange = (0.1, 6000)
+                    }
+                }
+            }
+
+            over "camera2_group"
+            {
+                over "camera2"
+                {
+                    over "camera2"
+                    {
+                        float2 clippingRange = (0.1, 6000)
+                    }
+                }
+            }
+
+            over "terrain_with_river_Mesh_TerrainMesh"
+            {
+                over "terrain_with_river_Mesh_TerrainMesh" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysxTriangleMeshCollisionAPI", "PhysicsMeshCollisionAPI"]
+                )
+                {
+                    uniform token physics:approximation = "none"
+                    bool physics:collisionEnabled = 1
+                }
+            }
+        }
+    }
+
+    over "terrain_01" (
+        active = false
+    )
+    {
+    }
     variantSet "Physics" = {
         "mujoco" (
             prepend payload = @./payloads/Physics/mujoco.usda@
@@ -1151,11 +1214,11 @@ over "OmniverseKit_Persp" (
     float exposure:time = 0.02
     float focalLength = 18.147562
     float focusDistance = 400
-    custom uniform vector3d omni:kit:centerOfInterest = (0, 0, -26.091006068108587)
+    custom uniform vector3d omni:kit:centerOfInterest = (0, 0, -204.12836964019152)
     token visibility = "invisible"
-    float3 xformOp:rotateXYZ = (80.776726, -2.1309716e-13, -66.80097)
+    float3 xformOp:rotateXYZ = (80.87217, -3.1169436e-13, 7.3484197)
     float3 xformOp:scale = (1, 1, 1)
-    double3 xformOp:translate = (-2.83494128350755, -1.5383958565850597, 1.2408611270329586)
+    double3 xformOp:translate = (-21.26931705122724, -173.166244802512, 27.059776882498728)
     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
 }
 
