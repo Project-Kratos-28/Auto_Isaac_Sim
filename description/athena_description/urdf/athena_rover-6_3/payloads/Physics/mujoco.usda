@@ -1,0 +1,416 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "URDF USD Converter v0.1.3"
+    }
+    defaultPrim = "athena_rover"
+    doc = """Generated from Composed Stage of root layer /tmp/tmpiordw69s/athena_rover.usdc
+
+
+Generated from Composed Stage of root layer /tmp/urdf_import_athena_rover-6_0hoe_zuy/usdex_athena_rover-6/athena_rover.usdc
+
+
+Generated from Composed Stage of root layer /tmp/urdf_import_athena_rover-6_0hoe_zuy/temp_athena_rover-6/athena_rover-6.usd
+
+
+Generated from Composed Stage of root layer /home/aarsh/Downloads/athena_description/athena_description/urdf/athena_rover-6_3/payloads/base.usd
+"""
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    subLayers = [
+        @./physics.usda@
+    ]
+    upAxis = "Z"
+)
+
+over "athena_rover"
+{
+    over "Physics"
+    {
+        def MjcActuator "bogey_left_pivot_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, 0, -0.5, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform double mjc:forceRange:max = inf
+            uniform double mjc:forceRange:min = -inf
+            uniform double[] mjc:gainPrm = [0.5, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:gainType = "fixed"
+            custom rel mjc:target
+            prepend rel mjc:target = </athena_rover/Physics/bogey_left_pivot>
+        }
+
+        def MjcActuator "bogey_right_pivot_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, 0, -0.5, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform double mjc:forceRange:max = inf
+            uniform double mjc:forceRange:min = -inf
+            uniform double[] mjc:gainPrm = [0.5, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:gainType = "fixed"
+            custom rel mjc:target
+            prepend rel mjc:target = </athena_rover/Physics/bogey_right_pivot>
+        }
+
+        def MjcActuator "steer_front_left_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, 0, -0.20000000298023224, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform double mjc:forceRange:max = 10
+            uniform double mjc:forceRange:min = -10
+            uniform double[] mjc:gainPrm = [0.20000000298023224, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:gainType = "fixed"
+            custom rel mjc:target
+            prepend rel mjc:target = </athena_rover/Physics/steer_front_left>
+        }
+
+        def MjcActuator "wheel_front_left_spin_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, 0, -0.009999999776482582, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform double mjc:forceRange:max = inf
+            uniform double mjc:forceRange:min = -inf
+            uniform double[] mjc:gainPrm = [0.009999999776482582, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:gainType = "fixed"
+            custom rel mjc:target
+            prepend rel mjc:target = </athena_rover/Physics/wheel_front_left_spin>
+        }
+
+        def MjcActuator "steer_rear_left_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, 0, -0.20000000298023224, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform double mjc:forceRange:max = 10
+            uniform double mjc:forceRange:min = -10
+            uniform double[] mjc:gainPrm = [0.20000000298023224, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:gainType = "fixed"
+            custom rel mjc:target
+            prepend rel mjc:target = </athena_rover/Physics/steer_rear_left>
+        }
+
+        def MjcActuator "wheel_rear_left_spin_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, 0, -0.009999999776482582, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform double mjc:forceRange:max = inf
+            uniform double mjc:forceRange:min = -inf
+            uniform double[] mjc:gainPrm = [0.009999999776482582, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:gainType = "fixed"
+            custom rel mjc:target
+            prepend rel mjc:target = </athena_rover/Physics/wheel_rear_left_spin>
+        }
+
+        def MjcActuator "steer_front_right_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, 0, -0.20000000298023224, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform double mjc:forceRange:max = 10
+            uniform double mjc:forceRange:min = -10
+            uniform double[] mjc:gainPrm = [0.20000000298023224, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:gainType = "fixed"
+            custom rel mjc:target
+            prepend rel mjc:target = </athena_rover/Physics/steer_front_right>
+        }
+
+        def MjcActuator "wheel_front_right_spin_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, 0, -0.009999999776482582, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform double mjc:forceRange:max = inf
+            uniform double mjc:forceRange:min = -inf
+            uniform double[] mjc:gainPrm = [0.009999999776482582, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:gainType = "fixed"
+            custom rel mjc:target
+            prepend rel mjc:target = </athena_rover/Physics/wheel_front_right_spin>
+        }
+
+        def MjcActuator "steer_rear_right_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, 0, -0.20000000298023224, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform double mjc:forceRange:max = 10
+            uniform double mjc:forceRange:min = -10
+            uniform double[] mjc:gainPrm = [0.20000000298023224, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:gainType = "fixed"
+            custom rel mjc:target
+            prepend rel mjc:target = </athena_rover/Physics/steer_rear_right>
+        }
+
+        def MjcActuator "wheel_rear_right_spin_actuator"
+        {
+            uniform double[] mjc:biasPrm = [0, 0, -0.009999999776482582, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:biasType = "affine"
+            uniform double mjc:forceRange:max = inf
+            uniform double mjc:forceRange:min = -inf
+            uniform double[] mjc:gainPrm = [0.009999999776482582, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            uniform token mjc:gainType = "fixed"
+            custom rel mjc:target
+            prepend rel mjc:target = </athena_rover/Physics/wheel_rear_right_spin>
+        }
+
+        over "bogey_left_pivot" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+        )
+        {
+            custom float mjc:frictionloss = 0.1
+        }
+
+        over "bogey_right_pivot" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+        )
+        {
+            custom float mjc:frictionloss = 0.1
+        }
+
+        over "steer_front_left" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+        )
+        {
+            custom float mjc:frictionloss = 0.05
+        }
+
+        over "wheel_front_left_spin" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+        )
+        {
+            custom float mjc:frictionloss = 0.05
+        }
+
+        over "steer_rear_left" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+        )
+        {
+            custom float mjc:frictionloss = 0.05
+        }
+
+        over "wheel_rear_left_spin" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+        )
+        {
+            custom float mjc:frictionloss = 0.05
+        }
+
+        over "steer_front_right" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+        )
+        {
+            custom float mjc:frictionloss = 0.05
+        }
+
+        over "wheel_front_right_spin" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+        )
+        {
+            custom float mjc:frictionloss = 0.05
+        }
+
+        over "steer_rear_right" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+        )
+        {
+            custom float mjc:frictionloss = 0.05
+        }
+
+        over "wheel_rear_right_spin" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+        )
+        {
+            custom float mjc:frictionloss = 0.05
+        }
+
+        over "steer_housing_mount_front_left"
+        {
+        }
+
+        over "steer_housing_mount_rear_left"
+        {
+        }
+
+        over "steer_housing_mount_front_right"
+        {
+        }
+
+        over "steer_housing_mount_rear_right"
+        {
+        }
+    }
+
+    over "Geometry"
+    {
+        over "base_footprint"
+        {
+            over "base_link"
+            {
+                over "bogey_left"
+                {
+                    over "steer_housing_front_left"
+                    {
+                        over "steer_coupler_front_left"
+                        {
+                            over "wheel_front_left"
+                            {
+                                over "wheel"
+                                {
+                                }
+
+                                over "cylinder"
+                                {
+                                }
+                            }
+
+                            over "stearing"
+                            {
+                            }
+
+                            over "stearing_1"
+                            {
+                            }
+                        }
+
+                        over "SteeringMotorHousing"
+                        {
+                        }
+
+                        over "SteeringMotorHousing_1"
+                        {
+                        }
+                    }
+
+                    over "steer_housing_rear_left"
+                    {
+                        over "steer_coupler_rear_left"
+                        {
+                            over "wheel_rear_left"
+                            {
+                                over "wheel"
+                                {
+                                }
+
+                                over "cylinder"
+                                {
+                                }
+                            }
+
+                            over "stearing"
+                            {
+                            }
+
+                            over "stearing_1"
+                            {
+                            }
+                        }
+
+                        over "SteeringMotorHousing"
+                        {
+                        }
+
+                        over "SteeringMotorHousing_1"
+                        {
+                        }
+                    }
+
+                    over "bogey_arm"
+                    {
+                    }
+
+                    over "bogey_arm_1"
+                    {
+                    }
+                }
+
+                over "bogey_right"
+                {
+                    over "steer_housing_front_right"
+                    {
+                        over "steer_coupler_front_right"
+                        {
+                            over "wheel_front_right"
+                            {
+                                over "wheel"
+                                {
+                                }
+
+                                over "cylinder"
+                                {
+                                }
+                            }
+
+                            over "stearing"
+                            {
+                            }
+
+                            over "stearing_1"
+                            {
+                            }
+                        }
+
+                        over "SteeringMotorHousing"
+                        {
+                        }
+
+                        over "SteeringMotorHousing_1"
+                        {
+                        }
+                    }
+
+                    over "steer_housing_rear_right"
+                    {
+                        over "steer_coupler_rear_right"
+                        {
+                            over "wheel_rear_right"
+                            {
+                                over "wheel"
+                                {
+                                }
+
+                                over "cylinder"
+                                {
+                                }
+                            }
+
+                            over "stearing"
+                            {
+                            }
+
+                            over "stearing_1"
+                            {
+                            }
+                        }
+
+                        over "SteeringMotorHousing"
+                        {
+                        }
+
+                        over "SteeringMotorHousing_1"
+                        {
+                        }
+                    }
+
+                    over "bogey_arm"
+                    {
+                    }
+
+                    over "bogey_arm_1"
+                    {
+                    }
+                }
+
+                over "chassis"
+                {
+                }
+
+                over "chassis_1"
+                {
+                }
+            }
+        }
+    }
+
+    over "Materials"
+    {
+    }
+
+    over "VisualMaterials"
+    {
+    }
+}
+

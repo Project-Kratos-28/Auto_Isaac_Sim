@@ -1,0 +1,531 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "URDF USD Converter v0.1.3"
+    }
+    defaultPrim = "athena_rover"
+    doc = """Generated from Composed Stage of root layer /tmp/tmpiordw69s/athena_rover.usdc
+
+
+Generated from Composed Stage of root layer /tmp/urdf_import_athena_rover-6_0hoe_zuy/usdex_athena_rover-6/athena_rover.usdc
+
+
+Generated from Composed Stage of root layer /tmp/urdf_import_athena_rover-6_0hoe_zuy/temp_athena_rover-6/athena_rover-6.usd
+
+
+Generated from Composed Stage of root layer /home/aarsh/Downloads/athena_description/athena_description/urdf/athena_rover-6_3/payloads/base.usd
+"""
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    subLayers = [
+        @./robot.usda@
+    ]
+    upAxis = "Z"
+)
+
+def Xform "athena_rover" (
+    prepend apiSchemas = ["GeomModelAPI"]
+    assetInfo = {
+        string name = "athena_rover"
+    }
+    kind = "component"
+)
+{
+    float3[] extentsHint = [(-0.51090544, -0.45484746, -0.21568608), (0.46257323, 0.45484272, 0.25), (3.4028235e38, 3.4028235e38, 3.4028235e38), (-3.4028235e38, -3.4028235e38, -3.4028235e38), (3.4028235e38, 3.4028235e38, 3.4028235e38), (-3.4028235e38, -3.4028235e38, -3.4028235e38), (-0.50791, -0.45484746, -0.21450016), (0.45958, 0.45484272, 0.25)]
+
+    def Scope "Materials"
+    {
+    }
+
+    def Scope "Geometry"
+    {
+        def Xform "base_footprint"
+        {
+            def Xform "base_link"
+            {
+                quatf xformOp:orient = (1, 0, 0, 0)
+                float3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, 0.155)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                def Xform "chassis" (
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/chassis>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (0.001000000047, 0.001000000047, 0.001000000047)
+                    double3 xformOp:translate = (-0.26, 0.75, -0.085)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+
+                def Xform "bogey_left"
+                {
+                    quatf xformOp:orient = (1, 0, 0, 0)
+                    float3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0.275, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                    def Xform "bogey_arm" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/bogey_arm>
+                    )
+                    {
+                        quatd xformOp:orient = (0, 1, 0.000003673205129, 0.000003673205129)
+                        double3 xformOp:scale = (0.001000000047, 0.001000000047, 0.001000000047)
+                        double3 xformOp:translate = (-0.26, -1.025, 0.0645)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "steer_housing_front_left"
+                    {
+                        quatf xformOp:orient = (1, 0, 0, 0)
+                        float3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (-0.39291, 0.11681, 0.0425)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                        def Xform "SteeringMotorHousing" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/SteeringMotorHousing>
+                        )
+                        {
+                            quatd xformOp:orient = (0.000003673205129, 0, 0, -1)
+                            double3 xformOp:scale = (0.001000000047, 0.001000000047, 0.001000000047)
+                            double3 xformOp:translate = (0.6145, -1.1306, -0.1077)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "steer_coupler_front_left"
+                        {
+                            quatf xformOp:orient = (1, 0, 0, 0)
+                            float3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, -0.111)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                            def Xform "stearing" (
+                                instanceable = true
+                                prepend references = @./instances.usda@</Instances/stearing>
+                            )
+                            {
+                                quatd xformOp:orient = (1, 0, 0, 0)
+                                double3 xformOp:scale = (0.001000000047, 0.001000000047, 0.001000000047)
+                                double3 xformOp:translate = (-0.6145, 1.1307, 0.0063)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+
+                            def Xform "wheel_front_left"
+                            {
+                                quatf xformOp:orient = (1, 0, 0, 0)
+                                float3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0, 0, -0.186)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                                def Xform "wheel" (
+                                    instanceable = true
+                                    prepend references = @./instances.usda@</Instances/wheel>
+                                )
+                                {
+                                    quatd xformOp:orient = (1, 0, 0, 0)
+                                    double3 xformOp:scale = (0.001000000047, 0.001000000047, 0.001000000047)
+                                    double3 xformOp:translate = (0.4497, 0.3642, 0.1895)
+                                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                }
+
+                                def Cylinder "cylinder" (
+                                    prepend apiSchemas = ["PhysicsCollisionAPI"]
+                                )
+                                {
+                                    uniform token axis = "Z"
+                                    float3[] extent = [(-0.115, -0.115, -0.04), (0.115, 0.115, 0.04)]
+                                    double height = 0.08
+                                    uniform token purpose = "guide"
+                                    double radius = 0.115
+                                    quatf xformOp:orient = (0.70710546, 0.7071081, 0, 0)
+                                    float3 xformOp:scale = (1, 1, 1)
+                                    double3 xformOp:translate = (0, 0, 0)
+                                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                }
+                            }
+
+                            def Xform "stearing_1" (
+                                displayName = "stearing"
+                                instanceable = true
+                                prepend references = @./instances.usda@</Instances/stearing_1>
+                            )
+                            {
+                                quatd xformOp:orient = (1, 0, 0, 0)
+                                double3 xformOp:scale = (0.001000000047, 0.001000000047, 0.001000000047)
+                                double3 xformOp:translate = (-0.6145, 1.1307, 0.0063)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+                        }
+
+                        def Xform "SteeringMotorHousing_1" (
+                            displayName = "SteeringMotorHousing"
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/SteeringMotorHousing_1>
+                        )
+                        {
+                            quatd xformOp:orient = (0.000003673205129, 0, 0, -1)
+                            double3 xformOp:scale = (0.001000000047, 0.001000000047, 0.001000000047)
+                            double3 xformOp:translate = (0.6145, -1.1306, -0.1077)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+                    }
+
+                    def Xform "steer_housing_rear_left"
+                    {
+                        quatf xformOp:orient = (1, 0, 0, 0)
+                        float3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0.34458, 0.10398, 0.0425)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                        def Xform "SteeringMotorHousing" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/SteeringMotorHousing>
+                        )
+                        {
+                            quatd xformOp:orient = (0.9648695588, 0, 0, 0.2627294064)
+                            double3 xformOp:scale = (0.001000000047, 0.001000000047, 0.001000000047)
+                            double3 xformOp:translate = (-1.1029, 0.6629, -0.1077)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "steer_coupler_rear_left"
+                        {
+                            quatf xformOp:orient = (1, 0, 0, 0)
+                            float3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, -0.111)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                            def Xform "stearing" (
+                                instanceable = true
+                                prepend references = @./instances.usda@</Instances/stearing>
+                            )
+                            {
+                                quatd xformOp:orient = (1, 0, 0, 0)
+                                double3 xformOp:scale = (0.001000000047, 0.001000000047, 0.001000000047)
+                                double3 xformOp:translate = (-0.6145, 1.1307, 0.0063)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+
+                            def Xform "wheel_rear_left"
+                            {
+                                quatf xformOp:orient = (1, 0, 0, 0)
+                                float3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0, 0, -0.186)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                                def Xform "wheel" (
+                                    instanceable = true
+                                    prepend references = @./instances.usda@</Instances/wheel>
+                                )
+                                {
+                                    quatd xformOp:orient = (1, 0, 0, 0)
+                                    double3 xformOp:scale = (0.001000000047, 0.001000000047, 0.001000000047)
+                                    double3 xformOp:translate = (0.4497, 0.3642, 0.1895)
+                                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                }
+
+                                def Cylinder "cylinder" (
+                                    prepend apiSchemas = ["PhysicsCollisionAPI"]
+                                )
+                                {
+                                    uniform token axis = "Z"
+                                    float3[] extent = [(-0.115, -0.115, -0.04), (0.115, 0.115, 0.04)]
+                                    double height = 0.08
+                                    uniform token purpose = "guide"
+                                    double radius = 0.115
+                                    quatf xformOp:orient = (0.70710546, 0.7071081, 0, 0)
+                                    float3 xformOp:scale = (1, 1, 1)
+                                    double3 xformOp:translate = (0, 0, 0)
+                                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                }
+                            }
+
+                            def Xform "stearing_1" (
+                                displayName = "stearing"
+                                instanceable = true
+                                prepend references = @./instances.usda@</Instances/stearing_1>
+                            )
+                            {
+                                quatd xformOp:orient = (1, 0, 0, 0)
+                                double3 xformOp:scale = (0.001000000047, 0.001000000047, 0.001000000047)
+                                double3 xformOp:translate = (-0.6145, 1.1307, 0.0063)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+                        }
+
+                        def Xform "SteeringMotorHousing_1" (
+                            displayName = "SteeringMotorHousing"
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/SteeringMotorHousing_1>
+                        )
+                        {
+                            quatd xformOp:orient = (0.9648695588, 0, 0, 0.2627294064)
+                            double3 xformOp:scale = (0.001000000047, 0.001000000047, 0.001000000047)
+                            double3 xformOp:translate = (-1.1029, 0.6629, -0.1077)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+                    }
+
+                    def Xform "bogey_arm_1" (
+                        displayName = "bogey_arm"
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/bogey_arm_1>
+                    )
+                    {
+                        quatd xformOp:orient = (0, 1, 0.000003673205129, 0.000003673205129)
+                        double3 xformOp:scale = (0.001000000047, 0.001000000047, 0.001000000047)
+                        double3 xformOp:translate = (-0.26, -1.025, 0.0645)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+                }
+
+                def Xform "bogey_right"
+                {
+                    quatf xformOp:orient = (1, 0, 0, 0)
+                    float3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, -0.275, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                    def Xform "bogey_arm" (
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/bogey_arm>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (0.001000000047, 0.001000000047, 0.001000000047)
+                        double3 xformOp:translate = (-0.26, 1.025, -0.0645)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+
+                    def Xform "steer_housing_front_right"
+                    {
+                        quatf xformOp:orient = (1, 0, 0, 0)
+                        float3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (-0.39291, -0.11681, 0.0425)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                        def Xform "SteeringMotorHousing" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/SteeringMotorHousing>
+                        )
+                        {
+                            quatd xformOp:orient = (0.2607545257, 0, 0, -0.9654051661)
+                            double3 xformOp:scale = (0.001000000047, 0.001000000047, 0.001000000047)
+                            double3 xformOp:translate = (1.1002, -0.6674, -0.1077)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "steer_coupler_front_right"
+                        {
+                            quatf xformOp:orient = (1, 0, 0, 0)
+                            float3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, -0.111)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                            def Xform "stearing" (
+                                instanceable = true
+                                prepend references = @./instances.usda@</Instances/stearing>
+                            )
+                            {
+                                quatd xformOp:orient = (0.000003673205129, 0, 0, -1)
+                                double3 xformOp:scale = (0.001000000047, 0.001000000047, 0.001000000047)
+                                double3 xformOp:translate = (0.6145, -1.1307, 0.0063)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+
+                            def Xform "wheel_front_right"
+                            {
+                                quatf xformOp:orient = (1, 0, 0, 0)
+                                float3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0, 0, -0.186)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                                def Xform "wheel" (
+                                    instanceable = true
+                                    prepend references = @./instances.usda@</Instances/wheel>
+                                )
+                                {
+                                    quatd xformOp:orient = (0.000003673205129, 0, 0, -1)
+                                    double3 xformOp:scale = (0.001000000047, 0.001000000047, 0.001000000047)
+                                    double3 xformOp:translate = (-0.4497, -0.3642, 0.1895)
+                                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                }
+
+                                def Cylinder "cylinder" (
+                                    prepend apiSchemas = ["PhysicsCollisionAPI"]
+                                )
+                                {
+                                    uniform token axis = "Z"
+                                    float3[] extent = [(-0.115, -0.115, -0.04), (0.115, 0.115, 0.04)]
+                                    double height = 0.08
+                                    uniform token purpose = "guide"
+                                    double radius = 0.115
+                                    quatf xformOp:orient = (0.70710546, 0.7071081, 0, 0)
+                                    float3 xformOp:scale = (1, 1, 1)
+                                    double3 xformOp:translate = (0, 0, 0)
+                                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                }
+                            }
+
+                            def Xform "stearing_1" (
+                                displayName = "stearing"
+                                instanceable = true
+                                prepend references = @./instances.usda@</Instances/stearing_1>
+                            )
+                            {
+                                quatd xformOp:orient = (0.000003673205129, 0, 0, -1)
+                                double3 xformOp:scale = (0.001000000047, 0.001000000047, 0.001000000047)
+                                double3 xformOp:translate = (0.6145, -1.1307, 0.0063)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+                        }
+
+                        def Xform "SteeringMotorHousing_1" (
+                            displayName = "SteeringMotorHousing"
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/SteeringMotorHousing_1>
+                        )
+                        {
+                            quatd xformOp:orient = (0.2607545257, 0, 0, -0.9654051661)
+                            double3 xformOp:scale = (0.001000000047, 0.001000000047, 0.001000000047)
+                            double3 xformOp:translate = (1.1002, -0.6674, -0.1077)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+                    }
+
+                    def Xform "steer_housing_rear_right"
+                    {
+                        quatf xformOp:orient = (1, 0, 0, 0)
+                        float3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0.34458, -0.10398, 0.0425)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                        def Xform "SteeringMotorHousing" (
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/SteeringMotorHousing>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (0.001000000047, 0.001000000047, 0.001000000047)
+                            double3 xformOp:translate = (-0.6145, 1.1306, -0.1077)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+
+                        def Xform "steer_coupler_rear_right"
+                        {
+                            quatf xformOp:orient = (1, 0, 0, 0)
+                            float3 xformOp:scale = (1, 1, 1)
+                            double3 xformOp:translate = (0, 0, -0.111)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                            def Xform "stearing" (
+                                instanceable = true
+                                prepend references = @./instances.usda@</Instances/stearing>
+                            )
+                            {
+                                quatd xformOp:orient = (0.000003673205129, 0, 0, -1)
+                                double3 xformOp:scale = (0.001000000047, 0.001000000047, 0.001000000047)
+                                double3 xformOp:translate = (0.6145, -1.1307, 0.0063)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+
+                            def Xform "wheel_rear_right"
+                            {
+                                quatf xformOp:orient = (1, 0, 0, 0)
+                                float3 xformOp:scale = (1, 1, 1)
+                                double3 xformOp:translate = (0, 0, -0.186)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                                def Xform "wheel" (
+                                    instanceable = true
+                                    prepend references = @./instances.usda@</Instances/wheel>
+                                )
+                                {
+                                    quatd xformOp:orient = (0.000003673205129, 0, 0, -1)
+                                    double3 xformOp:scale = (0.001000000047, 0.001000000047, 0.001000000047)
+                                    double3 xformOp:translate = (-0.4497, -0.3642, 0.1895)
+                                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                }
+
+                                def Cylinder "cylinder" (
+                                    prepend apiSchemas = ["PhysicsCollisionAPI"]
+                                )
+                                {
+                                    uniform token axis = "Z"
+                                    float3[] extent = [(-0.115, -0.115, -0.04), (0.115, 0.115, 0.04)]
+                                    double height = 0.08
+                                    uniform token purpose = "guide"
+                                    double radius = 0.115
+                                    quatf xformOp:orient = (0.70710546, 0.7071081, 0, 0)
+                                    float3 xformOp:scale = (1, 1, 1)
+                                    double3 xformOp:translate = (0, 0, 0)
+                                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                                }
+                            }
+
+                            def Xform "stearing_1" (
+                                displayName = "stearing"
+                                instanceable = true
+                                prepend references = @./instances.usda@</Instances/stearing_1>
+                            )
+                            {
+                                quatd xformOp:orient = (0.000003673205129, 0, 0, -1)
+                                double3 xformOp:scale = (0.001000000047, 0.001000000047, 0.001000000047)
+                                double3 xformOp:translate = (0.6145, -1.1307, 0.0063)
+                                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                            }
+                        }
+
+                        def Xform "SteeringMotorHousing_1" (
+                            displayName = "SteeringMotorHousing"
+                            instanceable = true
+                            prepend references = @./instances.usda@</Instances/SteeringMotorHousing_1>
+                        )
+                        {
+                            quatd xformOp:orient = (1, 0, 0, 0)
+                            double3 xformOp:scale = (0.001000000047, 0.001000000047, 0.001000000047)
+                            double3 xformOp:translate = (-0.6145, 1.1306, -0.1077)
+                            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                        }
+                    }
+
+                    def Xform "bogey_arm_1" (
+                        displayName = "bogey_arm"
+                        instanceable = true
+                        prepend references = @./instances.usda@</Instances/bogey_arm_1>
+                    )
+                    {
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:scale = (0.001000000047, 0.001000000047, 0.001000000047)
+                        double3 xformOp:translate = (-0.26, 1.025, -0.0645)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+                }
+
+                def Xform "chassis_1" (
+                    displayName = "chassis"
+                    instanceable = true
+                    prepend references = @./instances.usda@</Instances/chassis_1>
+                )
+                {
+                    quatd xformOp:orient = (1, 0, 0, 0)
+                    double3 xformOp:scale = (0.001000000047, 0.001000000047, 0.001000000047)
+                    double3 xformOp:translate = (-0.26, 0.75, -0.085)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+            }
+        }
+    }
+
+    def Scope "Physics"
+    {
+    }
+
+    def Scope "VisualMaterials"
+    {
+    }
+}
+
