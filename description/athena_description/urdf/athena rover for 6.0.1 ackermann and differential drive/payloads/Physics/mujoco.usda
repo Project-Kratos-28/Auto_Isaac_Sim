@@ -1,0 +1,172 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "URDF USD Converter v0.3.2"
+    }
+    defaultPrim = "athena_rover"
+    endTimeCode = 1000000
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    startTimeCode = 0
+    subLayers = [
+        @./physics.usda@
+    ]
+    upAxis = "Z"
+)
+
+over "athena_rover"
+{
+    over "Physics"
+    {
+        over "bogey_left_pivot" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+        }
+
+        over "bogey_right_pivot" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+        }
+
+        over "steer_front_left" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+        }
+
+        over "wheel_front_left_spin" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+        }
+
+        over "steer_rear_left" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+        }
+
+        over "wheel_rear_left_spin" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+        }
+
+        over "steer_front_right" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+        }
+
+        over "wheel_front_right_spin" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+        }
+
+        over "steer_rear_right" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+        }
+
+        over "wheel_rear_right_spin" (
+            delete apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["MjcJointAPI"]
+        )
+        {
+        }
+
+        def MjcActuator "bogey_left_pivot_actuator"
+        {
+            uniform double mjc:forceRange:max = inf
+            uniform double mjc:forceRange:min = -inf
+            custom rel mjc:target
+            append rel mjc:target = </athena_rover/Physics/bogey_left_pivot>
+        }
+
+        def MjcActuator "bogey_right_pivot_actuator"
+        {
+            uniform double mjc:forceRange:max = inf
+            uniform double mjc:forceRange:min = -inf
+            custom rel mjc:target
+            append rel mjc:target = </athena_rover/Physics/bogey_right_pivot>
+        }
+
+        def MjcActuator "steer_front_left_actuator"
+        {
+            uniform double mjc:forceRange:max = 10
+            uniform double mjc:forceRange:min = -10
+            custom rel mjc:target
+            append rel mjc:target = </athena_rover/Physics/steer_front_left>
+        }
+
+        def MjcActuator "wheel_front_left_spin_actuator"
+        {
+            uniform double mjc:forceRange:max = inf
+            uniform double mjc:forceRange:min = -inf
+            custom rel mjc:target
+            append rel mjc:target = </athena_rover/Physics/wheel_front_left_spin>
+        }
+
+        def MjcActuator "steer_rear_left_actuator"
+        {
+            uniform double mjc:forceRange:max = 10
+            uniform double mjc:forceRange:min = -10
+            custom rel mjc:target
+            append rel mjc:target = </athena_rover/Physics/steer_rear_left>
+        }
+
+        def MjcActuator "wheel_rear_left_spin_actuator"
+        {
+            uniform double mjc:forceRange:max = inf
+            uniform double mjc:forceRange:min = -inf
+            custom rel mjc:target
+            append rel mjc:target = </athena_rover/Physics/wheel_rear_left_spin>
+        }
+
+        def MjcActuator "steer_front_right_actuator"
+        {
+            uniform double mjc:forceRange:max = 10
+            uniform double mjc:forceRange:min = -10
+            custom rel mjc:target
+            append rel mjc:target = </athena_rover/Physics/steer_front_right>
+        }
+
+        def MjcActuator "wheel_front_right_spin_actuator"
+        {
+            uniform double mjc:forceRange:max = inf
+            uniform double mjc:forceRange:min = -inf
+            custom rel mjc:target
+            append rel mjc:target = </athena_rover/Physics/wheel_front_right_spin>
+        }
+
+        def MjcActuator "steer_rear_right_actuator"
+        {
+            uniform double mjc:forceRange:max = 10
+            uniform double mjc:forceRange:min = -10
+            custom rel mjc:target
+            append rel mjc:target = </athena_rover/Physics/steer_rear_right>
+        }
+
+        def MjcActuator "wheel_rear_right_spin_actuator"
+        {
+            uniform double mjc:forceRange:max = inf
+            uniform double mjc:forceRange:min = -inf
+            custom rel mjc:target
+            append rel mjc:target = </athena_rover/Physics/wheel_rear_right_spin>
+        }
+    }
+}
+

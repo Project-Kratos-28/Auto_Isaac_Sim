@@ -1,0 +1,987 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary cameraSettings = {
+            dictionary Front = {
+                double3 position = (5, 0, 0)
+                double radius = 5
+            }
+            dictionary Perspective = {
+                double3 position = (-0.66657644968442, -5.510922388979665, 0.9685973779634853)
+                double3 target = (0.08860543976938595, 0.8336700354867812, 1.0514245681811494)
+            }
+            dictionary Right = {
+                double3 position = (0, -5, 0)
+                double radius = 5
+            }
+            dictionary Top = {
+                double3 position = (0, 0, 5)
+                double radius = 5
+            }
+            string boundCamera = "/OmniverseKit_Persp"
+        }
+        string creator = "URDF USD Converter v0.3.2"
+        dictionary omni_layer = {
+            string authoring_layer = "./athena_rover-6.usda"
+        }
+        dictionary renderSettings = {
+            double "rtx:directLighting:sampledLighting:maxRayUnexposedIntensity" = 6399.9990234375
+            double "rtx:indirectDiffuse:maxRayUnexposedIntensity" = 6399.9990234375
+            double "rtx:pathtracing:fireflyFilter:maxPerEmissiveUnexposedIntensity" = 3199.99951171875
+            double "rtx:pathtracing:fireflyFilter:maxUnexposedIntensityPerSample" = 3199.99951171875
+            double "rtx:pathtracing:fireflyFilter:maxUnexposedIntensityPerSampleDiffuse" = 3199.99951171875
+            double "rtx:raytracing:inscattering:maxRTSampleUnexposedIntensity" = 204799.96875
+            token "rtx:rendermode" = "MinimalRendering"
+            double "rtx:rtpt:fireflyFilter:maxPerEmissiveUnexposedIntensity" = 3199.99951171875
+            double "rtx:rtpt:fireflyFilter:maxUnexposedIntensityPerSample" = 3199.99951171875
+            double "rtx:rtpt:fireflyFilter:maxUnexposedIntensityPerSampleDiffuse" = 3199.99951171875
+            double "rtx:translucency:maxRayUnexposedIntensity" = 19199.998046875
+        }
+    }
+    defaultPrim = "/World/athena_rover"
+    endTimeCode = 1000000
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    startTimeCode = 0
+    upAxis = "Z"
+)
+
+def "Render" (
+    hide_in_stage_window = true
+    no_delete = true
+)
+{
+    def "OmniverseKit"
+    {
+        def "HydraTextures" (
+            hide_in_stage_window = true
+            no_delete = true
+        )
+        {
+            def RenderProduct "omni_kit_widget_viewport_ViewportTexture_0" (
+                prepend apiSchemas = ["OmniRtxSettingsCommonAdvancedAPI_1", "OmniRtxSettingsRtAdvancedAPI_1", "OmniRtxSettingsPtAdvancedAPI_1", "OmniRtxSettingsParticleFieldAPI_1", "OmniRtxPostColorGradingAPI_1", "OmniRtxPostChromaticAberrationAPI_1", "OmniRtxPostBloomPhysicalAPI_1", "OmniRtxPostMatteObjectAPI_1", "OmniRtxPostCompositingAPI_1", "OmniRtxPostDofAPI_1", "OmniRtxPostMotionBlurAPI_1", "OmniRtxPostTvNoiseAPI_1", "OmniRtxPostTonemapIrayReinhardAPI_1", "OmniRtxPostDebugSettingsAPI_1", "OmniRtxDebugSettingsAPI_1"]
+                hide_in_stage_window = true
+                no_delete = true
+            )
+            {
+                rel camera = </OmniverseKit_Persp>
+                token omni:rtx:ambientOcclusion:denoiserMode = "none"
+                token omni:rtx:background:source:texture:textureMode = "repeatMirrored"
+                token omni:rtx:background:source:type = "domeLight"
+                bool omni:rtx:debug:view:pixelDebug:enableFixedTextPos = 1
+                token omni:rtx:directLighting:sampledLighting:denoisingTechnique = "None"
+                bool omni:rtx:dlss:frameGeneration = 0
+                float3 omni:rtx:domeLight:rotationAxis = (0, 0, 1)
+                bool omni:rtx:indirectDiffuse:denoiser:enabled = 0
+                bool omni:rtx:material:db:syncLoads = 1
+                token omni:rtx:post:dlss:execMode = "performance"
+                bool omni:rtx:post:registeredCompositing:invertColorCorrection = 1
+                bool omni:rtx:post:registeredCompositing:invertToneMap = 1
+                bool omni:rtx:pt:adaptiveSampling:filterError = 0
+                uint omni:rtx:pt:adaptiveSampling:fixedSppIterations = 2
+                float omni:rtx:pt:fireflyFilter:maxPerEmissiveUnexposedIntensity = 3199.9995
+                float omni:rtx:pt:fireflyFilter:maxUnexposedIntensityPerSample = 3199.9995
+                float omni:rtx:pt:fireflyFilter:maxUnexposedIntensityPerSampleDiffuse = 3199.9995
+                uint omni:rtx:pt:maxSamplesPerLaunch = 2073600
+                uint omni:rtx:pt:mgpu:maxPixelsPerRegionExponent = 12
+                bool omni:rtx:reflections:denoiser:enabled = 0
+                token omni:rtx:rendermode = "MinimalRendering"
+                color3f omni:rtx:rt:ambientLight:color = (0.1, 0.1, 0.1)
+                bool omni:rtx:rt:demoire = 0
+                float omni:rtx:rt:directLighting:maxRayUnexposedIntensity = 6399.999
+                bool omni:rtx:rt:ecoMode:enabled
+                float omni:rtx:rt:indirectdiffuse:maxRayUnexposedIntensity = 6399.999
+                float omni:rtx:rt:inscattering:maxRTSampleUnexposedIntensity = 204799.97
+                bool omni:rtx:rt:lightcache:spatialCache:dontResolveConflicts = 1
+                float omni:rtx:rt:refractions:maxRayUnexposedIntensity = 19199.998
+                int omni:rtx:rt:sss:samples = 1
+                float omni:rtx:rtpt:fireflyFilter:maxPerEmissiveUnexposedIntensity = 3199.9995
+                float omni:rtx:rtpt:fireflyFilter:maxUnexposedIntensityPerSample = 3199.9995
+                float omni:rtx:rtpt:fireflyFilter:maxUnexposedIntensityPerSampleDiffuse = 3199.9995
+                uint omni:rtx:rtpt:maxVolumeBounces = 15
+                float omni:rtx:rtpt:modulatingRoughnessThreshold = 0.08
+                bool omni:rtx:scene:hydra:materialSyncLoads = 1
+                bool omni:rtx:scene:hydra:mdlMaterialWarmup = 1
+                rel orderedVars = </Render/Vars/LdrColor>
+                custom bool overrideClipRange = 0
+                uniform int2 resolution = (1280, 720)
+            }
+        }
+    }
+
+    def RenderSettings "OmniverseGlobalRenderSettings" (
+        prepend apiSchemas = ["OmniRtxSettingsGlobalRtAdvancedAPI_1", "OmniRtxSettingsGlobalPtAdvancedAPI_1"]
+        no_delete = true
+    )
+    {
+        rel products = </Render/OmniverseKit/HydraTextures/omni_kit_widget_viewport_ViewportTexture_0>
+    }
+
+    def "Vars" (
+        hide_in_stage_window = true
+        no_delete = true
+    )
+    {
+        def RenderVar "LdrColor" (
+            hide_in_stage_window = true
+            no_delete = true
+        )
+        {
+            uniform string sourceName = "LdrColor"
+            uniform token sourceType = "raw"
+        }
+    }
+}
+
+over "OmniverseKit_Persp" (
+    prepend apiSchemas = ["OmniRtxCameraAutoExposureAPI_1", "OmniRtxCameraExposureAPI_1"]
+    customData = {
+        dictionary omni = {
+            dictionary kit = {
+                bool hide_in_stage_window = 1
+                bool no_delete = 1
+            }
+        }
+    }
+    hide_in_stage_window = true
+    kind = "component"
+    no_delete = true
+)
+{
+    float2 clippingRange = (0.01, 10000000)
+    float exposure:fStop = 5
+    float exposure:responsivity = 1.1026709
+    float exposure:time = 0.02
+    float focalLength = 18.147562
+    float focusDistance = 400
+    custom uniform vector3d omni:kit:centerOfInterest = (0, 0, -6.389914949527529)
+    float3 xformOp:rotateXYZ = (90.7427, -9.144095e-15, -6.787846)
+    float3 xformOp:scale = (1, 1, 1)
+    double3 xformOp:translate = (-0.66657644968442, -5.510922388979665, 0.9685973779634853)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+}
+
+over "OmniverseKit_Front" (
+    customData = {
+        dictionary omni = {
+            dictionary kit = {
+                bool hide_in_stage_window = 1
+                bool no_delete = 1
+            }
+        }
+    }
+    hide_in_stage_window = true
+    kind = "component"
+    no_delete = true
+)
+{
+    float2 clippingRange = (1, 10000000)
+    float horizontalAperture = 50
+    custom uniform vector3d omni:kit:centerOfInterest = (0, 0, -5)
+    token projection = "orthographic"
+    float verticalAperture = 50
+    float3 xformOp:rotateXYZ = (90, -1.2722219e-14, 90)
+    float3 xformOp:scale = (1, 1, 1)
+    double3 xformOp:translate = (5, 0, 0)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+}
+
+over "OmniverseKit_Right" (
+    customData = {
+        dictionary omni = {
+            dictionary kit = {
+                bool hide_in_stage_window = 1
+                bool no_delete = 1
+            }
+        }
+    }
+    hide_in_stage_window = true
+    kind = "component"
+    no_delete = true
+)
+{
+    float2 clippingRange = (1, 10000000)
+    float horizontalAperture = 50
+    custom uniform vector3d omni:kit:centerOfInterest = (0, 0, -5)
+    token projection = "orthographic"
+    float verticalAperture = 50
+    float3 xformOp:rotateXYZ = (90, -1.41245e-30, 1.2722219e-14)
+    float3 xformOp:scale = (1, 1, 1)
+    double3 xformOp:translate = (0, -5, 0)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+}
+
+over "OmniverseKit_Top" (
+    customData = {
+        dictionary omni = {
+            dictionary kit = {
+                bool hide_in_stage_window = 1
+                bool no_delete = 1
+            }
+        }
+    }
+    hide_in_stage_window = true
+    kind = "component"
+    no_delete = true
+)
+{
+    float2 clippingRange = (1, 10000000)
+    float horizontalAperture = 50
+    custom uniform vector3d omni:kit:centerOfInterest = (0, 0, -5)
+    token projection = "orthographic"
+    float verticalAperture = 50
+    float3 xformOp:rotateXYZ = (-1.2722219e-14, -7.016709e-15, -90)
+    float3 xformOp:scale = (1, 1, 1)
+    double3 xformOp:translate = (0, 0, 5)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+}
+
+def PhysicsScene "PhysicsScene" (
+    prepend apiSchemas = ["NewtonSceneAPI", "PhysxSceneAPI"]
+)
+{
+}
+
+def Xform "World"
+{
+    def Xform "athena_rover" (
+        prepend apiSchemas = ["PhysxArticulationAPI"]
+        prepend references = @./payloads/base.usda@
+        append variantSets = "Physics"
+    )
+    {
+        bool physxArticulation:enabledSelfCollisions = 0
+        int physxArticulation:solverPositionIterationCount = 64
+        int physxArticulation:solverVelocityIterationCount = 32
+        double3 xformOp:rotateZYX
+        double3 xformOp:scale
+        double3 xformOp:translate = (0, 0, 0.5)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateZYX", "xformOp:scale"]
+
+        def "ACKERMAN_DRIVE_GRAPH" (
+            prepend references = @../../../../../Downloads/ACKERMAN_DRIVE_GRAPH.usd@
+        )
+        {
+            over "ACKERMAN_DRIVE_GRAPH"
+            {
+                over "steer_joint_Array"
+                {
+                    custom token inputs:input0
+                    delete token inputs:input0.connect = </World/athena_rover/ACKERMAN_DRIVE_GRAPH/ACKERMAN_DRIVE_GRAPH/constant_token.inputs:value>
+                    prepend token inputs:input0.connect = </World/athena_rover/ACKERMAN_DRIVE_GRAPH/ACKERMAN_DRIVE_GRAPH/constant_token.inputs:value>
+                    custom token inputs:input1
+                    delete token inputs:input1.connect = </World/athena_rover/ACKERMAN_DRIVE_GRAPH/ACKERMAN_DRIVE_GRAPH/constant_token_01.inputs:value>
+                    prepend token inputs:input1.connect = </World/athena_rover/ACKERMAN_DRIVE_GRAPH/ACKERMAN_DRIVE_GRAPH/constant_token_01.inputs:value>
+                    uniform float2 ui:nodegraph:node:pos = (1325.0098, 269.8405)
+                }
+
+                over "make_array_01"
+                {
+                    custom token inputs:input0
+                    delete token inputs:input0.connect = </World/athena_rover/ACKERMAN_DRIVE_GRAPH/ACKERMAN_DRIVE_GRAPH/constant_token_02.inputs:value>
+                    prepend token inputs:input0.connect = </World/athena_rover/ACKERMAN_DRIVE_GRAPH/ACKERMAN_DRIVE_GRAPH/constant_token_02.inputs:value>
+                    custom token inputs:input1
+                    delete token inputs:input1.connect = </World/athena_rover/ACKERMAN_DRIVE_GRAPH/ACKERMAN_DRIVE_GRAPH/constant_token_03.inputs:value>
+                    prepend token inputs:input1.connect = </World/athena_rover/ACKERMAN_DRIVE_GRAPH/ACKERMAN_DRIVE_GRAPH/constant_token_03.inputs:value>
+                    custom token inputs:input2
+                    delete token inputs:input2.connect = </World/athena_rover/ACKERMAN_DRIVE_GRAPH/ACKERMAN_DRIVE_GRAPH/constant_token_04.inputs:value>
+                    prepend token inputs:input2.connect = </World/athena_rover/ACKERMAN_DRIVE_GRAPH/ACKERMAN_DRIVE_GRAPH/constant_token_04.inputs:value>
+                    custom token inputs:input3
+                    delete token inputs:input3.connect = </World/athena_rover/ACKERMAN_DRIVE_GRAPH/ACKERMAN_DRIVE_GRAPH/constant_token_05.inputs:value>
+                    prepend token inputs:input3.connect = </World/athena_rover/ACKERMAN_DRIVE_GRAPH/ACKERMAN_DRIVE_GRAPH/constant_token_05.inputs:value>
+                    uniform float2 ui:nodegraph:node:pos = (1402.2119, 647.0013)
+                }
+
+                over "articulation_controller_01"
+                {
+                    custom rel inputs:targetPrim = </World/athena_rover>
+                    uniform float2 ui:nodegraph:node:pos = (1799.1986, 165.94244)
+                }
+
+                over "articulation_controller"
+                {
+                    custom rel inputs:targetPrim = </World/athena_rover>
+                    uniform float2 ui:nodegraph:node:pos = (1809.7025, 430.36212)
+                }
+
+                over "constant_token_03"
+                {
+                    uniform float2 ui:nodegraph:node:pos = (1026.1136, 646.7242)
+                }
+
+                over "ackermann_controller"
+                {
+                    custom double inputs:frontWheelRadius = 0.115
+                    uniform float2 ui:nodegraph:node:pos = (698.9464, 299.40283)
+                }
+
+                over "constant_token_02"
+                {
+                    uniform float2 ui:nodegraph:node:pos = (1025.0629, 523.6607)
+                }
+
+                over "constant_token" (
+                    active = true
+                )
+                {
+                    uniform float2 ui:nodegraph:node:pos = (1015.6453, 179.96341)
+                }
+
+                over "constant_token_01"
+                {
+                    uniform float2 ui:nodegraph:node:pos = (994.0661, 334.10898)
+                }
+            }
+        }
+
+        over "VisualMaterials"
+        {
+        }
+
+        over "Geometry"
+        {
+            over "base_footprint"
+            {
+                over "base_link"
+                {
+                    string isaac:nameOverride (
+                        displayName = "Name Override"
+                    )
+
+                    over "bogey_left"
+                    {
+                        over "steer_housing_front_left"
+                        {
+                            over "steer_coupler_front_left"
+                            {
+                                over "wheel_front_left"
+                                {
+                                    def Capsule "cylinder" (
+                                        prepend apiSchemas = ["PhysicsCollisionAPI"]
+                                    )
+                                    {
+                                        uniform token axis = "Z"
+                                        double height = 0.08
+                                        double radius = 0.115
+                                    }
+                                }
+                            }
+                        }
+
+                        over "steer_housing_rear_left"
+                        {
+                            over "steer_coupler_rear_left"
+                            {
+                                over "wheel_rear_left"
+                                {
+                                    def Capsule "cylinder" (
+                                        prepend apiSchemas = ["PhysicsCollisionAPI"]
+                                    )
+                                    {
+                                        uniform token axis = "Z"
+                                        double height = 0.08
+                                        double radius = 0.115
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    over "bogey_right"
+                    {
+                        over "steer_housing_front_right"
+                        {
+                            over "steer_coupler_front_right"
+                            {
+                                over "wheel_front_right"
+                                {
+                                    def Capsule "cylinder" (
+                                        prepend apiSchemas = ["PhysicsCollisionAPI"]
+                                    )
+                                    {
+                                        uniform token axis = "Z"
+                                        double height = 0.08
+                                        double radius = 0.115
+                                    }
+                                }
+                            }
+                        }
+
+                        over "steer_housing_rear_right"
+                        {
+                            over "steer_coupler_rear_right"
+                            {
+                                over "wheel_rear_right"
+                                {
+                                    def Capsule "cylinder" (
+                                        prepend apiSchemas = ["PhysicsCollisionAPI"]
+                                    )
+                                    {
+                                        uniform token axis = "Z"
+                                        double height = 0.08
+                                        double radius = 0.115
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        over "Physics"
+        {
+            over "bogey_left_pivot" (
+                prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 10000
+                float drive:angular:physics:stiffness = 100000
+                float state:angular:physics:position = 0
+                float state:angular:physics:velocity = 0
+            }
+
+            over "bogey_right_pivot" (
+                prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 10000
+                float drive:angular:physics:stiffness = 100000
+                float state:angular:physics:position = 0
+                float state:angular:physics:velocity = 0
+            }
+
+            over "steer_front_left" (
+                prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 10000
+                float drive:angular:physics:stiffness = 100000
+                float state:angular:physics:position = 0
+                float state:angular:physics:velocity = 0
+            }
+
+            over "steer_rear_left" (
+                prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 10000
+                float drive:angular:physics:stiffness = 100000
+                float state:angular:physics:position = 0
+                float state:angular:physics:velocity = 0
+            }
+
+            over "steer_front_right" (
+                prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 10000
+                float drive:angular:physics:stiffness = 100000
+                float state:angular:physics:position = 0
+                float state:angular:physics:velocity = 0
+            }
+
+            over "steer_rear_right" (
+                prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 10000
+                float drive:angular:physics:stiffness = 100000
+                float state:angular:physics:position = 0
+                float state:angular:physics:velocity = 0
+            }
+
+            over "wheel_front_left_spin" (
+                prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 1000
+                float drive:angular:physics:maxForce = 10000
+                float drive:angular:physics:stiffness = 0
+                bool[] isaac:actuator (
+                    displayName = "Actuator"
+                )
+                string isaac:NameOverride (
+                    displayName = "Joint Name Override"
+                )
+                token[] isaac:physics:DofOffsetOpOrder (
+                    displayName = "Dof Offset Op Order"
+                )
+                float state:angular:physics:position = 0
+                float state:angular:physics:velocity = 0
+            }
+
+            over "wheel_rear_left_spin" (
+                prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 1000
+                float drive:angular:physics:maxForce = 10000
+                float drive:angular:physics:stiffness = 0
+                bool[] isaac:actuator (
+                    displayName = "Actuator"
+                )
+                string isaac:NameOverride (
+                    displayName = "Joint Name Override"
+                )
+                token[] isaac:physics:DofOffsetOpOrder (
+                    displayName = "Dof Offset Op Order"
+                )
+                float state:angular:physics:position = 0
+                float state:angular:physics:velocity = 0
+            }
+
+            over "wheel_front_right_spin" (
+                prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 1000
+                float drive:angular:physics:maxForce = 10000
+                float drive:angular:physics:stiffness = 0
+                bool[] isaac:actuator (
+                    displayName = "Actuator"
+                )
+                string isaac:NameOverride (
+                    displayName = "Joint Name Override"
+                )
+                token[] isaac:physics:DofOffsetOpOrder (
+                    displayName = "Dof Offset Op Order"
+                )
+                float state:angular:physics:position = 0
+                float state:angular:physics:velocity = 0
+            }
+
+            over "wheel_rear_right_spin" (
+                prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 1000
+                float drive:angular:physics:maxForce = 10000
+                float drive:angular:physics:stiffness = 0
+                bool[] isaac:actuator (
+                    displayName = "Actuator"
+                )
+                string isaac:NameOverride (
+                    displayName = "Joint Name Override"
+                )
+                token[] isaac:physics:DofOffsetOpOrder (
+                    displayName = "Dof Offset Op Order"
+                )
+                float state:angular:physics:position = 0
+                float state:angular:physics:velocity = 0
+            }
+
+            over "steer_housing_mount_front_left" (
+                prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 10000
+                float drive:angular:physics:stiffness = 100000
+                bool[] isaac:actuator (
+                    displayName = "Actuator"
+                )
+                string isaac:NameOverride (
+                    displayName = "Joint Name Override"
+                )
+                token[] isaac:physics:DofOffsetOpOrder (
+                    displayName = "Dof Offset Op Order"
+                )
+            }
+
+            over "steer_housing_mount_rear_left" (
+                prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 10000
+                float drive:angular:physics:stiffness = 100000
+            }
+
+            over "steer_housing_mount_front_right" (
+                prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 10000
+                float drive:angular:physics:stiffness = 100000
+            }
+
+            over "steer_housing_mount_rear_right" (
+                prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+            )
+            {
+                float drive:angular:physics:damping = 10000
+                float drive:angular:physics:stiffness = 100000
+            }
+        }
+
+        def OmniGraph "Differential_Drive"
+        {
+            token evaluationMode = "Automatic"
+            token evaluator:type = "execution"
+            token fabricCacheBacking = "Shared"
+            int2 fileFormatVersion = (1, 9)
+            token pipelineStage = "pipelineStageSimulation"
+
+            def OmniGraphNode "on_playback_tick" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                token node:type = "omni.graph.action.OnPlaybackTick"
+                int node:typeVersion = 2
+                custom double outputs:deltaSeconds
+                custom double outputs:frame
+                custom uint outputs:tick (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                custom double outputs:time
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-31.315935, 486.2334)
+            }
+
+            def OmniGraphNode "ros2_context" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom uchar inputs:domain_id
+                custom bool inputs:useDomainIDEnvVar
+                token node:type = "isaacsim.ros2.bridge.ROS2Context"
+                int node:typeVersion = 2
+                custom uint64 outputs:context
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-41.378193, 213.6974)
+            }
+
+            def OmniGraphNode "ros2_subscribe_twist" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom uint64 inputs:context
+                prepend uint64 inputs:context.connect = </World/athena_rover/Differential_Drive/ros2_context.outputs:context>
+                custom uint inputs:execIn (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                prepend uint inputs:execIn.connect = </World/athena_rover/Differential_Drive/on_playback_tick.outputs:tick>
+                custom string inputs:nodeNamespace
+                custom string inputs:qosProfile
+                custom uint64 inputs:queueSize
+                custom string inputs:topicName
+                token node:type = "isaacsim.ros2.bridge.ROS2SubscribeTwist"
+                int node:typeVersion = 1
+                custom vector3d outputs:angularVelocity
+                custom uint outputs:execOut (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                custom vector3d outputs:linearVelocity
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (308.1427, 170.35489)
+            }
+
+            def OmniGraphNode "differential_controller" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom double inputs:angularVelocity
+                prepend double inputs:angularVelocity.connect = </World/athena_rover/Differential_Drive/break_3_vector.outputs:z>
+                custom double inputs:dt
+                prepend double inputs:dt.connect = </World/athena_rover/Differential_Drive/on_playback_tick.outputs:time>
+                custom uint inputs:execIn (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                prepend uint inputs:execIn.connect = </World/athena_rover/Differential_Drive/ros2_subscribe_twist.outputs:execOut>
+                custom double inputs:linearVelocity
+                prepend double inputs:linearVelocity.connect = </World/athena_rover/Differential_Drive/break_3_vector_01.outputs:x>
+                custom double inputs:maxAcceleration
+                custom double inputs:maxAngularAcceleration
+                custom double inputs:maxAngularSpeed
+                custom double inputs:maxDeceleration
+                custom double inputs:maxLinearSpeed = 20
+                custom double inputs:maxWheelSpeed = 0
+                custom double inputs:wheelDistance = 0.78362
+                custom double inputs:wheelRadius = 0.115
+                token node:type = "isaacsim.robot.wheeled_robots.DifferentialController"
+                int node:typeVersion = 1
+                custom double[] outputs:velocityCommand
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (1310.4269, 347.9554)
+            }
+
+            def OmniGraphNode "articulation_controller" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom double[] inputs:effortCommand
+                custom uint inputs:execIn (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                prepend uint inputs:execIn.connect = </World/athena_rover/Differential_Drive/on_playback_tick.outputs:tick>
+                custom int[] inputs:jointIndices
+                custom token[] inputs:jointNames
+                prepend token[] inputs:jointNames.connect = </World/athena_rover/Differential_Drive/make_array.outputs:array>
+                custom double[] inputs:positionCommand
+                custom string inputs:robotPath
+                custom rel inputs:targetPrim = </World/athena_rover> (
+                    customData = {
+                        dictionary omni = {
+                            dictionary graph = {
+                                string relType = "target"
+                            }
+                        }
+                    }
+                )
+                custom double[] inputs:velocityCommand
+                prepend double[] inputs:velocityCommand.connect = </World/athena_rover/Differential_Drive/differential_controller.outputs:velocityCommand>
+                token node:type = "isaacsim.core.nodes.IsaacArticulationController"
+                int node:typeVersion = 1
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (1731.3866, 101.72013)
+            }
+
+            def OmniGraphNode "break_3_vector" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom token inputs:tuple
+                prepend token inputs:tuple.connect = </World/athena_rover/Differential_Drive/ros2_subscribe_twist.outputs:angularVelocity>
+                token node:type = "omni.graph.nodes.BreakVector3"
+                int node:typeVersion = 1
+                custom token outputs:x
+                custom token outputs:y
+                custom token outputs:z
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (648.6749, 480.36826)
+            }
+
+            def OmniGraphNode "break_3_vector_01" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom token inputs:tuple
+                prepend token inputs:tuple.connect = </World/athena_rover/Differential_Drive/scale_to_from_stage_units.outputs:result>
+                token node:type = "omni.graph.nodes.BreakVector3"
+                int node:typeVersion = 1
+                custom token outputs:x
+                custom token outputs:y
+                custom token outputs:z
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (711.0447, 731.6833)
+            }
+
+            def OmniGraphNode "scale_to_from_stage_units" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom token inputs:conversion (
+                    allowedTokens = ["Convert to stage units", "Convert to meters"]
+                )
+                custom token inputs:value
+                prepend token inputs:value.connect = </World/athena_rover/Differential_Drive/ros2_subscribe_twist.outputs:linearVelocity>
+                token node:type = "isaacsim.core.nodes.OgnIsaacScaleToFromStageUnit"
+                int node:typeVersion = 1
+                custom token outputs:result
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (393.6911, 751.86194)
+            }
+
+            def OmniGraphNode "make_array" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom int inputs:arraySize = 2
+                custom token inputs:arrayType (
+                    allowedTokens = ["auto", "bool[]", "double[]", "float[]", "half[]", "int[]", "int64[]", "token[]", "uchar[]", "uint[]", "uint64[]", "double[2][]", "double[3][]", "double[4][]", "matrixd[2][]", "matrixd[3][]", "matrixd[4][]", "float[2][]", "float[3][]", "float[4][]", "half[2][]", "half[3][]", "half[4][]", "int[2][]", "int[3][]", "int[4][]", "timecode[]", "frame[4][]", "colord[3][]", "colorf[3][]", "colorh[3][]", "colord[4][]", "colorf[4][]", "colorh[4][]", "normald[3][]", "normalf[3][]", "normalh[3][]", "pointd[3][]", "pointf[3][]", "pointh[3][]", "quatd[4][]", "quatf[4][]", "quath[4][]", "texcoordd[2][]", "texcoordf[2][]", "texcoordh[2][]", "texcoordd[3][]", "texcoordf[3][]", "texcoordh[3][]", "vectord[3][]", "vectorf[3][]", "vectorh[3][]"]
+                )
+                custom token inputs:input0
+                delete token inputs:input0.connect = </World/athena_rover/Differential_Drive/constant_token.inputs:value>
+                prepend token inputs:input0.connect = </World/athena_rover/Differential_Drive/constant_token.inputs:value>
+                custom token inputs:input1 (
+                    customData = {
+                        string ExtendedAttributeType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
+                        dictionary omni = {
+                            dictionary graph = {
+                                string attrType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
+                            }
+                        }
+                    }
+                )
+                delete token inputs:input1.connect = </World/athena_rover/Differential_Drive/constant_token_01.inputs:value>
+                prepend token inputs:input1.connect = </World/athena_rover/Differential_Drive/constant_token_01.inputs:value>
+                token node:type = "omni.graph.nodes.ConstructArray"
+                int node:typeVersion = 1
+                custom token outputs:array
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (1166.1969, -75.16401)
+            }
+
+            def OmniGraphNode "constant_token" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom token inputs:value = "wheel_front_left_spin"
+                token node:type = "omni.graph.nodes.ConstantToken"
+                int node:typeVersion = 1
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (840.80444, -71.55656)
+            }
+
+            def OmniGraphNode "constant_token_01" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom token inputs:value = "wheel_front_right_spin"
+                token node:type = "omni.graph.nodes.ConstantToken"
+                int node:typeVersion = 1
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (852.5833, 15.98832)
+            }
+
+            def OmniGraphNode "constant_token_02" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom token inputs:value = "wheel_rear_left_spin"
+                token node:type = "omni.graph.nodes.ConstantToken"
+                int node:typeVersion = 1
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (2156.8533, 32.94575)
+            }
+
+            def OmniGraphNode "constant_token_03" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom token inputs:value = "wheel_rear_right_spin"
+                token node:type = "omni.graph.nodes.ConstantToken"
+                int node:typeVersion = 1
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (2182.0442, 145.03001)
+            }
+
+            def OmniGraphNode "make_array_01" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom int inputs:arraySize = 2
+                custom token inputs:arrayType (
+                    allowedTokens = ["auto", "bool[]", "double[]", "float[]", "half[]", "int[]", "int64[]", "token[]", "uchar[]", "uint[]", "uint64[]", "double[2][]", "double[3][]", "double[4][]", "matrixd[2][]", "matrixd[3][]", "matrixd[4][]", "float[2][]", "float[3][]", "float[4][]", "half[2][]", "half[3][]", "half[4][]", "int[2][]", "int[3][]", "int[4][]", "timecode[]", "frame[4][]", "colord[3][]", "colorf[3][]", "colorh[3][]", "colord[4][]", "colorf[4][]", "colorh[4][]", "normald[3][]", "normalf[3][]", "normalh[3][]", "pointd[3][]", "pointf[3][]", "pointh[3][]", "quatd[4][]", "quatf[4][]", "quath[4][]", "texcoordd[2][]", "texcoordf[2][]", "texcoordh[2][]", "texcoordd[3][]", "texcoordf[3][]", "texcoordh[3][]", "vectord[3][]", "vectorf[3][]", "vectorh[3][]"]
+                )
+                custom token inputs:input0
+                delete token inputs:input0.connect = </World/athena_rover/Differential_Drive/constant_token_02.inputs:value>
+                prepend token inputs:input0.connect = </World/athena_rover/Differential_Drive/constant_token_02.inputs:value>
+                custom token inputs:input1 (
+                    customData = {
+                        string ExtendedAttributeType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
+                        dictionary omni = {
+                            dictionary graph = {
+                                string attrType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
+                            }
+                        }
+                    }
+                )
+                delete token inputs:input1.connect = </World/athena_rover/Differential_Drive/constant_token_03.inputs:value>
+                prepend token inputs:input1.connect = </World/athena_rover/Differential_Drive/constant_token_03.inputs:value>
+                token node:type = "omni.graph.nodes.ConstructArray"
+                int node:typeVersion = 1
+                custom token outputs:array
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (2537.8525, -3.677229)
+            }
+
+            def OmniGraphNode "articulation_controller_01" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom double[] inputs:effortCommand
+                custom uint inputs:execIn (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                prepend uint inputs:execIn.connect = </World/athena_rover/Differential_Drive/on_playback_tick.outputs:tick>
+                custom int[] inputs:jointIndices
+                custom token[] inputs:jointNames
+                prepend token[] inputs:jointNames.connect = </World/athena_rover/Differential_Drive/make_array_01.outputs:array>
+                custom double[] inputs:positionCommand
+                custom string inputs:robotPath
+                custom rel inputs:targetPrim = </World/athena_rover> (
+                    customData = {
+                        dictionary omni = {
+                            dictionary graph = {
+                                string relType = "target"
+                            }
+                        }
+                    }
+                )
+                custom double[] inputs:velocityCommand
+                prepend double[] inputs:velocityCommand.connect = </World/athena_rover/Differential_Drive/differential_controller.outputs:velocityCommand>
+                token node:type = "isaacsim.core.nodes.IsaacArticulationController"
+                int node:typeVersion = 1
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (2852.3623, -4.461958)
+            }
+        }
+        variantSet "Physics" = {
+            "mujoco" (
+                prepend payload = @./payloads/Physics/mujoco.usda@
+            ) {
+
+            }
+            "none" {
+
+            }
+            "physics" (
+                prepend payload = @./payloads/Physics/physics.usda@
+            ) {
+
+            }
+            "physx" (
+                prepend payload = @./payloads/Physics/physx.usda@
+            ) {
+
+            }
+        }
+    }
+}
+
+def Xform "GroundPlane"
+{
+    quatf xformOp:orient = (1, 0, 0, 0)
+    float3 xformOp:scale = (1, 1, 1)
+    double3 xformOp:translate = (0, 0, 0.5)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+    def Mesh "CollisionMesh"
+    {
+        uniform bool doubleSided = 0
+        int[] faceVertexCounts = [4]
+        int[] faceVertexIndices = [0, 1, 2, 3]
+        normal3f[] normals = [(0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1)]
+        point3f[] points = [(-25, -25, 0), (25, -25, 0), (25, 25, 0), (-25, 25, 0)]
+        color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)]
+        texCoord2f[] primvars:st = [(0, 0), (1, 0), (1, 1), (0, 1)] (
+            interpolation = "varying"
+        )
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def Plane "CollisionPlane" (
+        prepend apiSchemas = ["PhysicsCollisionAPI"]
+    )
+    {
+        uniform token axis = "Z"
+        uniform token purpose = "guide"
+        token visibility = "inherited"
+    }
+}
+

@@ -1,22 +1,13 @@
 #usda 1.0
 (
     customLayerData = {
-        string creator = "URDF USD Converter v0.1.3"
+        string creator = "URDF USD Converter v0.3.2"
     }
     defaultPrim = "athena_rover"
-    doc = """Generated from Composed Stage of root layer /tmp/tmpiordw69s/athena_rover.usdc
-
-
-Generated from Composed Stage of root layer /tmp/urdf_import_athena_rover-6_0hoe_zuy/usdex_athena_rover-6/athena_rover.usdc
-
-
-Generated from Composed Stage of root layer /tmp/urdf_import_athena_rover-6_0hoe_zuy/temp_athena_rover-6/athena_rover-6.usd
-
-
-Generated from Composed Stage of root layer /home/aarsh/Downloads/athena_description/athena_description/urdf/athena_rover-6_3/payloads/base.usd
-"""
+    endTimeCode = 1000000
     kilogramsPerUnit = 1
     metersPerUnit = 1
+    startTimeCode = 0
     upAxis = "Z"
 )
 
@@ -27,9 +18,10 @@ over "athena_rover"
         over "base_footprint"
         {
             over "base_link" (
-                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsArticulationRootAPI", "NewtonArticulationRootAPI", "PhysicsMassAPI"]
+                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsArticulationRootAPI", "NewtonArticulationRootAPI", "PhysicsMassAPI", "NewtonMassAPI"]
             )
             {
+                double[] newton:inertia = [0.4, 0.18, 0.5, 0, 0, 0]
                 bool newton:selfCollisionEnabled = 0
                 point3f physics:centerOfMass = (0, 0, 0)
                 float3 physics:diagonalInertia = (0.18, 0.4, 0.5)
@@ -37,37 +29,41 @@ over "athena_rover"
                 quatf physics:principalAxes = (6.123234e-17, 0.70710677, 0.70710677, 0)
 
                 over "bogey_left" (
-                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "NewtonMassAPI"]
                 )
                 {
+                    double[] newton:inertia = [0.03, 0.002, 0.03, 0, 0, 0]
                     point3f physics:centerOfMass = (0, 0.275, 0)
                     float3 physics:diagonalInertia = (0.002, 0.03, 0.03)
                     float physics:mass = 1.2
                     quatf physics:principalAxes = (6.123234e-17, 0.70710677, 0.70710677, 0)
 
                     over "steer_housing_front_left" (
-                        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "NewtonMassAPI"]
                     )
                     {
+                        double[] newton:inertia = [0.0001, 0.0001, 0.00005, 0, 0, 0]
                         float3 physics:diagonalInertia = (0.00005, 0.0001, 0.0001)
                         float physics:mass = 0.2
-                        quatf physics:principalAxes = (0.5, 0.5, 0.5, 0.5)
+                        quatf physics:principalAxes = (-0.5, 0.5, 0.5, 0.5)
 
                         over "steer_coupler_front_left" (
-                            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "NewtonMassAPI"]
                         )
                         {
+                            double[] newton:inertia = [0.0001, 0.0001, 0.00005, 0, 0, 0]
                             float3 physics:diagonalInertia = (0.00005, 0.0001, 0.0001)
                             float physics:mass = 0.15
-                            quatf physics:principalAxes = (0.5, 0.5, 0.5, 0.5)
+                            quatf physics:principalAxes = (-0.5, 0.5, 0.5, 0.5)
 
                             over "wheel_front_left" (
-                                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "NewtonMassAPI"]
                             )
                             {
+                                double[] newton:inertia = [0.006, 0.01, 0.006, 0, 0, 0]
                                 float3 physics:diagonalInertia = (0.006, 0.006, 0.01)
                                 float physics:mass = 0.8
-                                quatf physics:principalAxes = (0.70710677, 0.70710677, 0, 0)
+                                quatf physics:principalAxes = (-0.70710677, 0.70710677, 0, 0)
 
                                 over "cylinder" (
                                     prepend apiSchemas = ["NewtonCollisionAPI"]
@@ -79,28 +75,31 @@ over "athena_rover"
                     }
 
                     over "steer_housing_rear_left" (
-                        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "NewtonMassAPI"]
                     )
                     {
+                        double[] newton:inertia = [0.0001, 0.0001, 0.00005, 0, 0, 0]
                         float3 physics:diagonalInertia = (0.00005, 0.0001, 0.0001)
                         float physics:mass = 0.2
-                        quatf physics:principalAxes = (0.5, 0.5, 0.5, 0.5)
+                        quatf physics:principalAxes = (-0.5, 0.5, 0.5, 0.5)
 
                         over "steer_coupler_rear_left" (
-                            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "NewtonMassAPI"]
                         )
                         {
+                            double[] newton:inertia = [0.0001, 0.0001, 0.00005, 0, 0, 0]
                             float3 physics:diagonalInertia = (0.00005, 0.0001, 0.0001)
                             float physics:mass = 0.15
-                            quatf physics:principalAxes = (0.5, 0.5, 0.5, 0.5)
+                            quatf physics:principalAxes = (-0.5, 0.5, 0.5, 0.5)
 
                             over "wheel_rear_left" (
-                                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "NewtonMassAPI"]
                             )
                             {
+                                double[] newton:inertia = [0.006, 0.01, 0.006, 0, 0, 0]
                                 float3 physics:diagonalInertia = (0.006, 0.006, 0.01)
                                 float physics:mass = 0.8
-                                quatf physics:principalAxes = (0.70710677, 0.70710677, 0, 0)
+                                quatf physics:principalAxes = (-0.70710677, 0.70710677, 0, 0)
 
                                 over "cylinder" (
                                     prepend apiSchemas = ["NewtonCollisionAPI"]
@@ -113,37 +112,41 @@ over "athena_rover"
                 }
 
                 over "bogey_right" (
-                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "NewtonMassAPI"]
                 )
                 {
+                    double[] newton:inertia = [0.03, 0.002, 0.03, 0, 0, 0]
                     point3f physics:centerOfMass = (0, -0.275, 0)
                     float3 physics:diagonalInertia = (0.002, 0.03, 0.03)
                     float physics:mass = 1.2
                     quatf physics:principalAxes = (6.123234e-17, 0.70710677, 0.70710677, 0)
 
                     over "steer_housing_front_right" (
-                        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "NewtonMassAPI"]
                     )
                     {
+                        double[] newton:inertia = [0.0001, 0.0001, 0.00005, 0, 0, 0]
                         float3 physics:diagonalInertia = (0.00005, 0.0001, 0.0001)
                         float physics:mass = 0.2
-                        quatf physics:principalAxes = (0.5, 0.5, 0.5, 0.5)
+                        quatf physics:principalAxes = (-0.5, 0.5, 0.5, 0.5)
 
                         over "steer_coupler_front_right" (
-                            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "NewtonMassAPI"]
                         )
                         {
+                            double[] newton:inertia = [0.0001, 0.0001, 0.00005, 0, 0, 0]
                             float3 physics:diagonalInertia = (0.00005, 0.0001, 0.0001)
                             float physics:mass = 0.15
-                            quatf physics:principalAxes = (0.5, 0.5, 0.5, 0.5)
+                            quatf physics:principalAxes = (-0.5, 0.5, 0.5, 0.5)
 
                             over "wheel_front_right" (
-                                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "NewtonMassAPI"]
                             )
                             {
+                                double[] newton:inertia = [0.006, 0.01, 0.006, 0, 0, 0]
                                 float3 physics:diagonalInertia = (0.006, 0.006, 0.01)
                                 float physics:mass = 0.8
-                                quatf physics:principalAxes = (0.70710677, 0.70710677, 0, 0)
+                                quatf physics:principalAxes = (-0.70710677, 0.70710677, 0, 0)
 
                                 over "cylinder" (
                                     prepend apiSchemas = ["NewtonCollisionAPI"]
@@ -155,28 +158,31 @@ over "athena_rover"
                     }
 
                     over "steer_housing_rear_right" (
-                        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                        prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "NewtonMassAPI"]
                     )
                     {
+                        double[] newton:inertia = [0.0001, 0.0001, 0.00005, 0, 0, 0]
                         float3 physics:diagonalInertia = (0.00005, 0.0001, 0.0001)
                         float physics:mass = 0.2
-                        quatf physics:principalAxes = (0.5, 0.5, 0.5, 0.5)
+                        quatf physics:principalAxes = (-0.5, 0.5, 0.5, 0.5)
 
                         over "steer_coupler_rear_right" (
-                            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "NewtonMassAPI"]
                         )
                         {
+                            double[] newton:inertia = [0.0001, 0.0001, 0.00005, 0, 0, 0]
                             float3 physics:diagonalInertia = (0.00005, 0.0001, 0.0001)
                             float physics:mass = 0.15
-                            quatf physics:principalAxes = (0.5, 0.5, 0.5, 0.5)
+                            quatf physics:principalAxes = (-0.5, 0.5, 0.5, 0.5)
 
                             over "wheel_rear_right" (
-                                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+                                prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "NewtonMassAPI"]
                             )
                             {
+                                double[] newton:inertia = [0.006, 0.01, 0.006, 0, 0, 0]
                                 float3 physics:diagonalInertia = (0.006, 0.006, 0.01)
                                 float physics:mass = 0.8
-                                quatf physics:principalAxes = (0.70710677, 0.70710677, 0, 0)
+                                quatf physics:principalAxes = (-0.70710677, 0.70710677, 0, 0)
 
                                 over "cylinder" (
                                     prepend apiSchemas = ["NewtonCollisionAPI"]
@@ -194,221 +200,211 @@ over "athena_rover"
     over "Physics"
     {
         def PhysicsRevoluteJoint "bogey_left_pivot" (
-            prepend apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["NewtonJointAPI", "PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
         )
         {
-            float drive:angular:physics:damping = 0.5
+            float newton:damping = 0.008726646
+            float newton:friction = 0.1
+            float newton:velocityLimit = 57.29578
             uniform token physics:axis = "Y"
             custom rel physics:body0
-            prepend rel physics:body0 = </athena_rover/Geometry/base_footprint/base_link>
+            append rel physics:body0 = </athena_rover/Geometry/base_footprint/base_link>
             custom rel physics:body1
-            prepend rel physics:body1 = </athena_rover/Geometry/base_footprint/base_link/bogey_left>
+            append rel physics:body1 = </athena_rover/Geometry/base_footprint/base_link/bogey_left>
             point3f physics:localPos0 = (0, 0.275, 0)
             point3f physics:localPos1 = (0, 0, 0)
             quatf physics:localRot0 = (1, 0, 0, 0)
             quatf physics:localRot1 = (1, 0, 0, 0)
             float physics:lowerLimit = -30.00007
             float physics:upperLimit = 30.00007
-            custom float urdf:dynamics:damping = 0.5
-            custom float urdf:dynamics:friction = 0.1
             custom float urdf:limit:effort = 0
-            custom float urdf:limit:velocity = 1
         }
 
         def PhysicsRevoluteJoint "bogey_right_pivot" (
-            prepend apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["NewtonJointAPI", "PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
         )
         {
-            float drive:angular:physics:damping = 0.5
+            float newton:damping = 0.008726646
+            float newton:friction = 0.1
+            float newton:velocityLimit = 57.29578
             uniform token physics:axis = "Y"
             custom rel physics:body0
-            prepend rel physics:body0 = </athena_rover/Geometry/base_footprint/base_link>
+            append rel physics:body0 = </athena_rover/Geometry/base_footprint/base_link>
             custom rel physics:body1
-            prepend rel physics:body1 = </athena_rover/Geometry/base_footprint/base_link/bogey_right>
+            append rel physics:body1 = </athena_rover/Geometry/base_footprint/base_link/bogey_right>
             point3f physics:localPos0 = (0, -0.275, 0)
             point3f physics:localPos1 = (0, 0, 0)
             quatf physics:localRot0 = (1, 0, 0, 0)
             quatf physics:localRot1 = (1, 0, 0, 0)
             float physics:lowerLimit = -30.00007
             float physics:upperLimit = 30.00007
-            custom float urdf:dynamics:damping = 0.5
-            custom float urdf:dynamics:friction = 0.1
             custom float urdf:limit:effort = 0
-            custom float urdf:limit:velocity = 1
         }
 
         def PhysicsRevoluteJoint "steer_front_left" (
-            prepend apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["NewtonJointAPI", "PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
         )
         {
-            float drive:angular:physics:damping = 0.2
             float drive:angular:physics:maxForce = 10
+            float newton:damping = 0.0034906585
+            float newton:friction = 0.05
+            float newton:velocityLimit = 57.29578
             uniform token physics:axis = "Z"
             custom rel physics:body0
-            prepend rel physics:body0 = </athena_rover/Geometry/base_footprint/base_link/bogey_left/steer_housing_front_left>
+            append rel physics:body0 = </athena_rover/Geometry/base_footprint/base_link/bogey_left/steer_housing_front_left>
             custom rel physics:body1
-            prepend rel physics:body1 = </athena_rover/Geometry/base_footprint/base_link/bogey_left/steer_housing_front_left/steer_coupler_front_left>
+            append rel physics:body1 = </athena_rover/Geometry/base_footprint/base_link/bogey_left/steer_housing_front_left/steer_coupler_front_left>
             point3f physics:localPos0 = (0, 0, -0.111)
             point3f physics:localPos1 = (0, 0, 0)
             quatf physics:localRot0 = (1, 0, 0, 0)
             quatf physics:localRot1 = (1, 0, 0, 0)
             float physics:lowerLimit = -45.263664
             float physics:upperLimit = 45.263664
-            custom float urdf:dynamics:damping = 0.2
-            custom float urdf:dynamics:friction = 0.05
             custom float urdf:limit:effort = 10
-            custom float urdf:limit:velocity = 1
         }
 
         def PhysicsRevoluteJoint "wheel_front_left_spin" (
-            prepend apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["NewtonJointAPI", "PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
         )
         {
-            float drive:angular:physics:damping = 0.01
+            float newton:damping = 0.00017453292
+            float newton:friction = 0.05
+            float newton:velocityLimit = 0
             uniform token physics:axis = "Y"
             custom rel physics:body0
-            prepend rel physics:body0 = </athena_rover/Geometry/base_footprint/base_link/bogey_left/steer_housing_front_left/steer_coupler_front_left>
+            append rel physics:body0 = </athena_rover/Geometry/base_footprint/base_link/bogey_left/steer_housing_front_left/steer_coupler_front_left>
             custom rel physics:body1
-            prepend rel physics:body1 = </athena_rover/Geometry/base_footprint/base_link/bogey_left/steer_housing_front_left/steer_coupler_front_left/wheel_front_left>
+            append rel physics:body1 = </athena_rover/Geometry/base_footprint/base_link/bogey_left/steer_housing_front_left/steer_coupler_front_left/wheel_front_left>
             point3f physics:localPos0 = (0, 0, -0.186)
             point3f physics:localPos1 = (0, 0, 0)
             quatf physics:localRot0 = (1, 0, 0, 0)
             quatf physics:localRot1 = (1, 0, 0, 0)
-            custom float urdf:dynamics:damping = 0.01
-            custom float urdf:dynamics:friction = 0.05
             custom float urdf:limit:effort = 0
-            custom float urdf:limit:velocity = 0
         }
 
         def PhysicsRevoluteJoint "steer_rear_left" (
-            prepend apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["NewtonJointAPI", "PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
         )
         {
-            float drive:angular:physics:damping = 0.2
             float drive:angular:physics:maxForce = 10
+            float newton:damping = 0.0034906585
+            float newton:friction = 0.05
+            float newton:velocityLimit = 57.29578
             uniform token physics:axis = "Z"
             custom rel physics:body0
-            prepend rel physics:body0 = </athena_rover/Geometry/base_footprint/base_link/bogey_left/steer_housing_rear_left>
+            append rel physics:body0 = </athena_rover/Geometry/base_footprint/base_link/bogey_left/steer_housing_rear_left>
             custom rel physics:body1
-            prepend rel physics:body1 = </athena_rover/Geometry/base_footprint/base_link/bogey_left/steer_housing_rear_left/steer_coupler_rear_left>
+            append rel physics:body1 = </athena_rover/Geometry/base_footprint/base_link/bogey_left/steer_housing_rear_left/steer_coupler_rear_left>
             point3f physics:localPos0 = (0, 0, -0.111)
             point3f physics:localPos1 = (0, 0, 0)
             quatf physics:localRot0 = (1, 0, 0, 0)
             quatf physics:localRot1 = (1, 0, 0, 0)
             float physics:lowerLimit = -45.000107
             float physics:upperLimit = 45.000107
-            custom float urdf:dynamics:damping = 0.2
-            custom float urdf:dynamics:friction = 0.05
             custom float urdf:limit:effort = 10
-            custom float urdf:limit:velocity = 1
         }
 
         def PhysicsRevoluteJoint "wheel_rear_left_spin" (
-            prepend apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["NewtonJointAPI", "PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
         )
         {
-            float drive:angular:physics:damping = 0.01
+            float newton:damping = 0.00017453292
+            float newton:friction = 0.05
             uniform token physics:axis = "Y"
             custom rel physics:body0
-            prepend rel physics:body0 = </athena_rover/Geometry/base_footprint/base_link/bogey_left/steer_housing_rear_left/steer_coupler_rear_left>
+            append rel physics:body0 = </athena_rover/Geometry/base_footprint/base_link/bogey_left/steer_housing_rear_left/steer_coupler_rear_left>
             custom rel physics:body1
-            prepend rel physics:body1 = </athena_rover/Geometry/base_footprint/base_link/bogey_left/steer_housing_rear_left/steer_coupler_rear_left/wheel_rear_left>
+            append rel physics:body1 = </athena_rover/Geometry/base_footprint/base_link/bogey_left/steer_housing_rear_left/steer_coupler_rear_left/wheel_rear_left>
             point3f physics:localPos0 = (0, 0, -0.186)
             point3f physics:localPos1 = (0, 0, 0)
             quatf physics:localRot0 = (1, 0, 0, 0)
             quatf physics:localRot1 = (1, 0, 0, 0)
-            custom float urdf:dynamics:damping = 0.01
-            custom float urdf:dynamics:friction = 0.05
         }
 
         def PhysicsRevoluteJoint "steer_front_right" (
-            prepend apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["NewtonJointAPI", "PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
         )
         {
-            float drive:angular:physics:damping = 0.2
             float drive:angular:physics:maxForce = 10
+            float newton:damping = 0.0034906585
+            float newton:friction = 0.05
+            float newton:velocityLimit = 57.29578
             uniform token physics:axis = "Z"
             custom rel physics:body0
-            prepend rel physics:body0 = </athena_rover/Geometry/base_footprint/base_link/bogey_right/steer_housing_front_right>
+            append rel physics:body0 = </athena_rover/Geometry/base_footprint/base_link/bogey_right/steer_housing_front_right>
             custom rel physics:body1
-            prepend rel physics:body1 = </athena_rover/Geometry/base_footprint/base_link/bogey_right/steer_housing_front_right/steer_coupler_front_right>
+            append rel physics:body1 = </athena_rover/Geometry/base_footprint/base_link/bogey_right/steer_housing_front_right/steer_coupler_front_right>
             point3f physics:localPos0 = (0, 0, -0.111)
             point3f physics:localPos1 = (0, 0, 0)
             quatf physics:localRot0 = (1, 0, 0, 0)
             quatf physics:localRot1 = (1, 0, 0, 0)
             float physics:lowerLimit = -45.000107
             float physics:upperLimit = 45.000107
-            custom float urdf:dynamics:damping = 0.2
-            custom float urdf:dynamics:friction = 0.05
             custom float urdf:limit:effort = 10
-            custom float urdf:limit:velocity = 1
         }
 
         def PhysicsRevoluteJoint "wheel_front_right_spin" (
-            prepend apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["NewtonJointAPI", "PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
         )
         {
-            float drive:angular:physics:damping = 0.01
+            float newton:damping = 0.00017453292
+            float newton:friction = 0.05
             uniform token physics:axis = "Y"
             custom rel physics:body0
-            prepend rel physics:body0 = </athena_rover/Geometry/base_footprint/base_link/bogey_right/steer_housing_front_right/steer_coupler_front_right>
+            append rel physics:body0 = </athena_rover/Geometry/base_footprint/base_link/bogey_right/steer_housing_front_right/steer_coupler_front_right>
             custom rel physics:body1
-            prepend rel physics:body1 = </athena_rover/Geometry/base_footprint/base_link/bogey_right/steer_housing_front_right/steer_coupler_front_right/wheel_front_right>
+            append rel physics:body1 = </athena_rover/Geometry/base_footprint/base_link/bogey_right/steer_housing_front_right/steer_coupler_front_right/wheel_front_right>
             point3f physics:localPos0 = (0, 0, -0.186)
             point3f physics:localPos1 = (0, 0, 0)
             quatf physics:localRot0 = (1, 0, 0, 0)
             quatf physics:localRot1 = (1, 0, 0, 0)
-            custom float urdf:dynamics:damping = 0.01
-            custom float urdf:dynamics:friction = 0.05
         }
 
         def PhysicsRevoluteJoint "steer_rear_right" (
-            prepend apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["NewtonJointAPI", "PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
         )
         {
-            float drive:angular:physics:damping = 0.2
             float drive:angular:physics:maxForce = 10
+            float newton:damping = 0.0034906585
+            float newton:friction = 0.05
+            float newton:velocityLimit = 57.29578
             uniform token physics:axis = "Z"
             custom rel physics:body0
-            prepend rel physics:body0 = </athena_rover/Geometry/base_footprint/base_link/bogey_right/steer_housing_rear_right>
+            append rel physics:body0 = </athena_rover/Geometry/base_footprint/base_link/bogey_right/steer_housing_rear_right>
             custom rel physics:body1
-            prepend rel physics:body1 = </athena_rover/Geometry/base_footprint/base_link/bogey_right/steer_housing_rear_right/steer_coupler_rear_right>
+            append rel physics:body1 = </athena_rover/Geometry/base_footprint/base_link/bogey_right/steer_housing_rear_right/steer_coupler_rear_right>
             point3f physics:localPos0 = (0, 0, -0.111)
             point3f physics:localPos1 = (0, 0, 0)
             quatf physics:localRot0 = (1, 0, 0, 0)
             quatf physics:localRot1 = (1, 0, 0, 0)
             float physics:lowerLimit = -45.000107
             float physics:upperLimit = 45.000107
-            custom float urdf:dynamics:damping = 0.2
-            custom float urdf:dynamics:friction = 0.05
             custom float urdf:limit:effort = 10
-            custom float urdf:limit:velocity = 1
         }
 
         def PhysicsRevoluteJoint "wheel_rear_right_spin" (
-            prepend apiSchemas = ["PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
+            prepend apiSchemas = ["NewtonJointAPI", "PhysicsDriveAPI:angular", "PhysicsJointStateAPI:angular"]
         )
         {
-            float drive:angular:physics:damping = 0.01
+            float newton:damping = 0.00017453292
+            float newton:friction = 0.05
             uniform token physics:axis = "Y"
             custom rel physics:body0
-            prepend rel physics:body0 = </athena_rover/Geometry/base_footprint/base_link/bogey_right/steer_housing_rear_right/steer_coupler_rear_right>
+            append rel physics:body0 = </athena_rover/Geometry/base_footprint/base_link/bogey_right/steer_housing_rear_right/steer_coupler_rear_right>
             custom rel physics:body1
-            prepend rel physics:body1 = </athena_rover/Geometry/base_footprint/base_link/bogey_right/steer_housing_rear_right/steer_coupler_rear_right/wheel_rear_right>
+            append rel physics:body1 = </athena_rover/Geometry/base_footprint/base_link/bogey_right/steer_housing_rear_right/steer_coupler_rear_right/wheel_rear_right>
             point3f physics:localPos0 = (0, 0, -0.186)
             point3f physics:localPos1 = (0, 0, 0)
             quatf physics:localRot0 = (1, 0, 0, 0)
             quatf physics:localRot1 = (1, 0, 0, 0)
-            custom float urdf:dynamics:damping = 0.01
-            custom float urdf:dynamics:friction = 0.05
         }
 
         def PhysicsFixedJoint "steer_housing_mount_front_left"
         {
             custom rel physics:body0
-            prepend rel physics:body0 = </athena_rover/Geometry/base_footprint/base_link/bogey_left>
+            append rel physics:body0 = </athena_rover/Geometry/base_footprint/base_link/bogey_left>
             custom rel physics:body1
-            prepend rel physics:body1 = </athena_rover/Geometry/base_footprint/base_link/bogey_left/steer_housing_front_left>
+            append rel physics:body1 = </athena_rover/Geometry/base_footprint/base_link/bogey_left/steer_housing_front_left>
             point3f physics:localPos0 = (-0.39291, 0.11681, 0.0425)
             point3f physics:localPos1 = (0, 0, 0)
             quatf physics:localRot0 = (1, 0, 0, 0)
@@ -418,9 +414,9 @@ over "athena_rover"
         def PhysicsFixedJoint "steer_housing_mount_rear_left"
         {
             custom rel physics:body0
-            prepend rel physics:body0 = </athena_rover/Geometry/base_footprint/base_link/bogey_left>
+            append rel physics:body0 = </athena_rover/Geometry/base_footprint/base_link/bogey_left>
             custom rel physics:body1
-            prepend rel physics:body1 = </athena_rover/Geometry/base_footprint/base_link/bogey_left/steer_housing_rear_left>
+            append rel physics:body1 = </athena_rover/Geometry/base_footprint/base_link/bogey_left/steer_housing_rear_left>
             point3f physics:localPos0 = (0.34458, 0.10398, 0.0425)
             point3f physics:localPos1 = (0, 0, 0)
             quatf physics:localRot0 = (1, 0, 0, 0)
@@ -430,9 +426,9 @@ over "athena_rover"
         def PhysicsFixedJoint "steer_housing_mount_front_right"
         {
             custom rel physics:body0
-            prepend rel physics:body0 = </athena_rover/Geometry/base_footprint/base_link/bogey_right>
+            append rel physics:body0 = </athena_rover/Geometry/base_footprint/base_link/bogey_right>
             custom rel physics:body1
-            prepend rel physics:body1 = </athena_rover/Geometry/base_footprint/base_link/bogey_right/steer_housing_front_right>
+            append rel physics:body1 = </athena_rover/Geometry/base_footprint/base_link/bogey_right/steer_housing_front_right>
             point3f physics:localPos0 = (-0.39291, -0.11681, 0.0425)
             point3f physics:localPos1 = (0, 0, 0)
             quatf physics:localRot0 = (1, 0, 0, 0)
@@ -442,9 +438,9 @@ over "athena_rover"
         def PhysicsFixedJoint "steer_housing_mount_rear_right"
         {
             custom rel physics:body0
-            prepend rel physics:body0 = </athena_rover/Geometry/base_footprint/base_link/bogey_right>
+            append rel physics:body0 = </athena_rover/Geometry/base_footprint/base_link/bogey_right>
             custom rel physics:body1
-            prepend rel physics:body1 = </athena_rover/Geometry/base_footprint/base_link/bogey_right/steer_housing_rear_right>
+            append rel physics:body1 = </athena_rover/Geometry/base_footprint/base_link/bogey_right/steer_housing_rear_right>
             point3f physics:localPos0 = (0.34458, -0.10398, 0.0425)
             point3f physics:localPos1 = (0, 0, 0)
             quatf physics:localRot0 = (1, 0, 0, 0)
