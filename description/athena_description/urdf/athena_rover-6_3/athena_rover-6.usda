@@ -7,8 +7,8 @@
                 double radius = 2.7425392150878904
             }
             dictionary Perspective = {
-                double3 position = (-2.83494128350755, -1.5383958565850597, 1.2408611270329586)
-                double3 target = (20.836349753460393, 8.606657109204926, -2.941061709480896)
+                double3 position = (-0.42976662258664117, -2.0258006013565493, 1.1116775865203472)
+                double3 target = (-0.018351889818932487, 3.9986844471797363, -1.4021225584718184)
             }
             dictionary Right = {
                 double3 position = (0, -5, 0)
@@ -26,6 +26,14 @@
         }
         int refinementOverrideImplVersion = 0
         dictionary renderSettings = {
+            double "rtx:directLighting:sampledLighting:maxRayUnexposedIntensity" = 6399.9990234375
+            double "rtx:indirectDiffuse:maxRayUnexposedIntensity" = 6399.9990234375
+            double "rtx:pathtracing:fireflyFilter:maxPerEmissiveUnexposedIntensity" = 3199.99951171875
+            double "rtx:pathtracing:fireflyFilter:maxUnexposedIntensityPerSample" = 3199.99951171875
+            double "rtx:pathtracing:fireflyFilter:maxUnexposedIntensityPerSampleDiffuse" = 3199.99951171875
+            double "rtx:raytracing:inscattering:maxRTSampleUnexposedIntensity" = 204799.96875
+            token "rtx:rendermode" = "MinimalRendering"
+            double "rtx:translucency:maxRayUnexposedIntensity" = 19199.998046875
         }
     }
     defaultPrim = "athena_rover"
@@ -173,7 +181,7 @@ def Xform "athena_rover" (
                     prepend payload = @../../../../../Desktop/zed-isaac-sim/exts/sl.sensor.camera/data/usd/ZED_2i.usdc@
                 )
                 {
-                    quatf xformOp:orient = (1, 0, 0, -0)
+                    quatf xformOp:orient = (1, -0, -0, -0)
                     float3 xformOp:scale = (1, 1, 1)
                     double3 xformOp:translate = (0.2849137967842749, 0.022110555307859908, 0.07330135704826515)
                     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
@@ -196,11 +204,11 @@ def Xform "athena_rover" (
                                 float exposure:fStop = 5
                                 float exposure:responsivity = 1.1026709
                                 float exposure:time = 0.02
-                                float focalLength = 1.0596
+                                float focalLength = 2.1192
                                 float fStop = 0
-                                float horizontalAperture = 2.56
+                                float horizontalAperture = 4.416
                                 float omni:sensor:tickRate = 30
-                                float verticalAperture = 1.44
+                                float verticalAperture = 2.484
                             }
 
                             over "CameraRight" (
@@ -210,11 +218,11 @@ def Xform "athena_rover" (
                                 float exposure:fStop = 5
                                 float exposure:responsivity = 1.1026709
                                 float exposure:time = 0.02
-                                float focalLength = 1.0596
+                                float focalLength = 2.1192
                                 float fStop = 0
-                                float horizontalAperture = 2.56
+                                float horizontalAperture = 4.416
                                 float omni:sensor:tickRate = 30
-                                float verticalAperture = 1.44
+                                float verticalAperture = 2.484
                             }
                         }
                     }
@@ -456,7 +464,9 @@ def Xform "athena_rover" (
         }
     }
 
-    def OmniGraph "camera_streamer"
+    def OmniGraph "camera_streamer" (
+        active = true
+    )
     {
         token evaluationMode = "Automatic"
         token evaluator:type = "execution"
@@ -524,7 +534,7 @@ def Xform "athena_rover" (
             token node:type = "sl.sensor.camera.ZED_Camera"
             int node:typeVersion = 4
             uniform token ui:nodegraph:node:expansionState = "open"
-            uniform float2 ui:nodegraph:node:pos = (546.5626, -175.38786)
+            uniform float2 ui:nodegraph:node:pos = (544.0283, -175.38786)
         }
     }
 
@@ -937,6 +947,119 @@ def Xform "athena_rover" (
             uniform float2 ui:nodegraph:node:pos = (48.442017, 445.50876)
         }
     }
+
+    def OmniGraph "IMU_Publisher"
+    {
+        token evaluationMode = "Automatic"
+        token evaluator:type = "execution"
+        token fabricCacheBacking = "Shared"
+        int2 fileFormatVersion = (1, 9)
+        token pipelineStage = "pipelineStageSimulation"
+
+        def OmniGraphNode "isaac_read_imu_node" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom uint inputs:execIn (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            prepend uint inputs:execIn.connect = [
+                </athena_rover/IMU_Publisher/on_physics_step.outputs:step>,
+                </athena_rover/IMU_Publisher/on_playback_tick.outputs:tick>,
+            ]
+            custom rel inputs:imuPrim = </athena_rover/Geometry/base_footprint/base_link/ZED_2i/base_link/ZED_2i/Imu_Sensor> (
+                customData = {
+                    dictionary omni = {
+                        dictionary graph = {
+                            string relType = "target"
+                        }
+                    }
+                }
+            )
+            custom bool inputs:readGravity
+            custom bool inputs:useLatestData
+            token node:type = "isaacsim.sensors.physics.IsaacReadIMU"
+            int node:typeVersion = 1
+            custom vector3d outputs:angVel
+            custom uint outputs:execOut (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            custom vector3d outputs:linAcc
+            custom quatd outputs:orientation
+            custom float outputs:sensorTime
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (102.41888, 36.882698)
+        }
+
+        def OmniGraphNode "isaac_read_simulation_time" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom uint64 inputs:referenceTimeDenominator
+            custom int64 inputs:referenceTimeNumerator
+            custom bool inputs:resetOnStop
+            token node:type = "isaacsim.core.nodes.IsaacReadSimulationTime"
+            int node:typeVersion = 1
+            custom double outputs:simulationTime
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (-150.25996, 320.02646)
+        }
+
+        def OmniGraphNode "ros2_publish_imu" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom vector3d inputs:angularVelocity
+            prepend vector3d inputs:angularVelocity.connect = </athena_rover/IMU_Publisher/isaac_read_imu_node.outputs:angVel>
+            custom uint64 inputs:context
+            custom uint inputs:execIn (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            prepend uint inputs:execIn.connect = </athena_rover/IMU_Publisher/isaac_read_imu_node.outputs:execOut>
+            custom string inputs:frameId = "imu_link"
+            custom vector3d inputs:linearAcceleration
+            prepend vector3d inputs:linearAcceleration.connect = </athena_rover/IMU_Publisher/isaac_read_imu_node.outputs:linAcc>
+            custom string inputs:nodeNamespace
+            custom quatd inputs:orientation
+            prepend quatd inputs:orientation.connect = </athena_rover/IMU_Publisher/isaac_read_imu_node.outputs:orientation>
+            custom bool inputs:publishAngularVelocity
+            custom bool inputs:publishLinearAcceleration
+            custom bool inputs:publishOrientation
+            custom string inputs:qosProfile
+            custom uint64 inputs:queueSize
+            custom double inputs:timeStamp
+            prepend double inputs:timeStamp.connect = </athena_rover/IMU_Publisher/isaac_read_simulation_time.outputs:simulationTime>
+            custom string inputs:topicName = "/livox/imu"
+            token node:type = "isaacsim.ros2.bridge.ROS2PublishImu"
+            int node:typeVersion = 1
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (407.96332, -14.190688)
+        }
+
+        def OmniGraphNode "on_playback_tick" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            token node:type = "omni.graph.action.OnPlaybackTick"
+            int node:typeVersion = 2
+            custom double outputs:deltaSeconds
+            custom double outputs:frame
+            custom uint outputs:tick (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            custom double outputs:time
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (-270.53354, 120.43885)
+        }
+    }
     variantSet "Physics" = {
         "mujoco" (
             prepend payload = @./payloads/Physics/mujoco.usda@
@@ -992,14 +1115,21 @@ def "Render" (
                 bool omni:rtx:post:registeredCompositing:invertToneMap = 1
                 bool omni:rtx:pt:adaptiveSampling:filterError = 0
                 uint omni:rtx:pt:adaptiveSampling:fixedSppIterations = 2
+                float omni:rtx:pt:fireflyFilter:maxPerEmissiveUnexposedIntensity = 3199.9995
+                float omni:rtx:pt:fireflyFilter:maxUnexposedIntensityPerSample = 3199.9995
+                float omni:rtx:pt:fireflyFilter:maxUnexposedIntensityPerSampleDiffuse = 3199.9995
                 uint omni:rtx:pt:maxSamplesPerLaunch = 2073600
                 uint omni:rtx:pt:mgpu:maxPixelsPerRegionExponent = 12
                 bool omni:rtx:reflections:denoiser:enabled = 0
-                token omni:rtx:rendermode = "RealTimePathTracing"
+                token omni:rtx:rendermode = "MinimalRendering"
                 color3f omni:rtx:rt:ambientLight:color = (0.1, 0.1, 0.1)
                 bool omni:rtx:rt:demoire = 0
+                float omni:rtx:rt:directLighting:maxRayUnexposedIntensity = 6399.999
                 bool omni:rtx:rt:ecoMode:enabled
+                float omni:rtx:rt:indirectdiffuse:maxRayUnexposedIntensity = 6399.999
+                float omni:rtx:rt:inscattering:maxRTSampleUnexposedIntensity = 204799.97
                 bool omni:rtx:rt:lightcache:spatialCache:dontResolveConflicts = 1
+                float omni:rtx:rt:refractions:maxRayUnexposedIntensity = 19199.998
                 int omni:rtx:rt:sss:samples = 1
                 uint omni:rtx:rtpt:maxVolumeBounces = 15
                 float omni:rtx:rtpt:modulatingRoughnessThreshold = 0.08
@@ -1032,6 +1162,7 @@ def "Render" (
             {
                 rel camera = </athena_rover/Geometry/base_footprint/base_link/OS0/sensor>
                 bool omni:rtx:material:db:syncLoads = 1
+                token omni:rtx:rendermode = "MinimalRendering"
                 bool omni:rtx:rt:ecoMode:enabled
                 bool omni:rtx:scene:hydra:materialSyncLoads = 1
                 rel orderedVars = </Render/Vars/LdrColor>
@@ -1151,11 +1282,11 @@ over "OmniverseKit_Persp" (
     float exposure:time = 0.02
     float focalLength = 18.147562
     float focusDistance = 400
-    custom uniform vector3d omni:kit:centerOfInterest = (0, 0, -26.091006068108587)
+    custom uniform vector3d omni:kit:centerOfInterest = (0, 0, -6.540861820229672)
     token visibility = "invisible"
-    float3 xformOp:rotateXYZ = (80.776726, -2.1309716e-13, -66.80097)
+    float3 xformOp:rotateXYZ = (67.398315, -2.556371e-13, -3.9066885)
     float3 xformOp:scale = (1, 1, 1)
-    double3 xformOp:translate = (-2.83494128350755, -1.5383958565850597, 1.2408611270329586)
+    double3 xformOp:translate = (-0.42976662258664117, -2.0258006013565493, 1.1116775865203472)
     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
 }
 
@@ -1258,7 +1389,9 @@ def Xform "GroundPlane"
     double3 xformOp:translate = (0, 0, -0.14482199243544303)
     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
-    def Mesh "CollisionMesh"
+    def Mesh "CollisionMesh" (
+        active = true
+    )
     {
         uniform bool doubleSided = 0
         int[] faceVertexCounts = [4]
@@ -1302,5 +1435,81 @@ def Xform "GroundPlane"
         double3 xformOp:translate = (0, 2.899819078122611, 0.22088488641277487)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
+
+    def Mesh "Cube_01"
+    {
+        float3[] extent = [(-0.5, -0.5, -0.5), (0.5, 0.5, 0.5)]
+        int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+        int[] faceVertexIndices = [0, 1, 3, 2, 4, 6, 7, 5, 6, 2, 3, 7, 4, 5, 1, 0, 4, 0, 2, 6, 5, 7, 3, 1]
+        normal3f[] normals = [(0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0)] (
+            interpolation = "faceVarying"
+        )
+        point3f[] points = [(-0.5, -0.5, 0.5), (0.5, -0.5, 0.5), (-0.5, 0.5, 0.5), (0.5, 0.5, 0.5), (-0.5, -0.5, -0.5), (0.5, -0.5, -0.5), (-0.5, 0.5, -0.5), (0.5, 0.5, -0.5)]
+        texCoord2f[] primvars:st = [(0, 0), (1, 0), (1, 1), (0, 1), (1, 0), (1, 1), (0, 1), (0, 0), (0, 1), (0, 0), (1, 0), (1, 1), (0, 0), (1, 0), (1, 1), (0, 1), (0, 0), (1, 0), (1, 1), (0, 1), (1, 0), (1, 1), (0, 1), (0, 0)] (
+            interpolation = "faceVarying"
+        )
+        uniform token subdivisionScheme = "none"
+        quatd xformOp:orient = (1, 0, 0, 0)
+        double3 xformOp:scale = (8, 0.20000000298023224, 3)
+        double3 xformOp:translate = (0, -2.701009075294889, 0.7208848864127748)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+}
+
+def Mesh "Cube"
+{
+    float3[] extent = [(-0.5, -0.5, -0.5), (0.5, 0.5, 0.5)]
+    int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+    int[] faceVertexIndices = [0, 1, 3, 2, 4, 6, 7, 5, 6, 2, 3, 7, 4, 5, 1, 0, 4, 0, 2, 6, 5, 7, 3, 1]
+    normal3f[] normals = [(0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0)] (
+        interpolation = "faceVarying"
+    )
+    point3f[] points = [(-0.5, -0.5, 0.5), (0.5, -0.5, 0.5), (-0.5, 0.5, 0.5), (0.5, 0.5, 0.5), (-0.5, -0.5, -0.5), (0.5, -0.5, -0.5), (-0.5, 0.5, -0.5), (0.5, 0.5, -0.5)]
+    texCoord2f[] primvars:st = [(0, 0), (1, 0), (1, 1), (0, 1), (1, 0), (1, 1), (0, 1), (0, 0), (0, 1), (0, 0), (1, 0), (1, 1), (0, 0), (1, 0), (1, 1), (0, 1), (0, 0), (1, 0), (1, 1), (0, 1), (1, 0), (1, 1), (0, 1), (0, 0)] (
+        interpolation = "faceVarying"
+    )
+    uniform token subdivisionScheme = "none"
+    quatd xformOp:orient = (0.7071067811865476, 0, 0, -0.7071067811865475)
+    double3 xformOp:scale = (8, 0.2, 3)
+    double3 xformOp:translate = (-3.922797391203949, 1.4106771043218604, 0.49999999999999994)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+}
+
+def Mesh "Cube_01"
+{
+    float3[] extent = [(-0.5, -0.5, -0.5), (0.5, 0.5, 0.5)]
+    int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+    int[] faceVertexIndices = [0, 1, 3, 2, 4, 6, 7, 5, 6, 2, 3, 7, 4, 5, 1, 0, 4, 0, 2, 6, 5, 7, 3, 1]
+    normal3f[] normals = [(0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0)] (
+        interpolation = "faceVarying"
+    )
+    point3f[] points = [(-0.5, -0.5, 0.5), (0.5, -0.5, 0.5), (-0.5, 0.5, 0.5), (0.5, 0.5, 0.5), (-0.5, -0.5, -0.5), (0.5, -0.5, -0.5), (-0.5, 0.5, -0.5), (0.5, 0.5, -0.5)]
+    texCoord2f[] primvars:st = [(0, 0), (1, 0), (1, 1), (0, 1), (1, 0), (1, 1), (0, 1), (0, 0), (0, 1), (0, 0), (1, 0), (1, 1), (0, 0), (1, 0), (1, 1), (0, 1), (0, 0), (1, 0), (1, 1), (0, 1), (1, 0), (1, 1), (0, 1), (0, 0)] (
+        interpolation = "faceVarying"
+    )
+    uniform token subdivisionScheme = "none"
+    quatd xformOp:orient = (1, 0, 0, 0)
+    double3 xformOp:scale = (8, 0.2, 3)
+    double3 xformOp:translate = (0, 5.434405282833247, 0.49999999999999994)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+}
+
+def Mesh "Cube_03"
+{
+    float3[] extent = [(-0.5, -0.5, -0.5), (0.5, 0.5, 0.5)]
+    int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+    int[] faceVertexIndices = [0, 1, 3, 2, 4, 6, 7, 5, 6, 2, 3, 7, 4, 5, 1, 0, 4, 0, 2, 6, 5, 7, 3, 1]
+    normal3f[] normals = [(0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0)] (
+        interpolation = "faceVarying"
+    )
+    point3f[] points = [(-0.5, -0.5, 0.5), (0.5, -0.5, 0.5), (-0.5, 0.5, 0.5), (0.5, 0.5, 0.5), (-0.5, -0.5, -0.5), (0.5, -0.5, -0.5), (-0.5, 0.5, -0.5), (0.5, 0.5, -0.5)]
+    texCoord2f[] primvars:st = [(0, 0), (1, 0), (1, 1), (0, 1), (1, 0), (1, 1), (0, 1), (0, 0), (0, 1), (0, 0), (1, 0), (1, 1), (0, 0), (1, 0), (1, 1), (0, 1), (0, 0), (1, 0), (1, 1), (0, 1), (1, 0), (1, 1), (0, 1), (0, 0)] (
+        interpolation = "faceVarying"
+    )
+    uniform token subdivisionScheme = "none"
+    quatd xformOp:orient = (0.7071067811865476, 0, 0, -0.7071067811865475)
+    double3 xformOp:scale = (8, 0.2, 3)
+    double3 xformOp:translate = (3.917741628671396, 1.4106771043218649, 0.49999999999999994)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 }
 
