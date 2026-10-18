@@ -24,6 +24,7 @@ def generate_launch_description():
             'use_sim_time' : 'true',
         }.items(),
     )
+    
 
     # 2) Swerve controller
     controller = Node(
@@ -58,9 +59,21 @@ def generate_launch_description():
         #     'config', 'rover.rviz')],
     )
 
+    lidar_static_tf = Node(
+    package='tf2_ros',
+    executable='static_transform_publisher',
+    name='base_to_livox',
+    arguments=[
+        '--x', '0', '--y', '0', '--z', '0.09',
+        '--qx', '0', '--qy', '0', '--qz', '0', '--qw', '1',
+        '--frame-id', 'base_link', '--child-frame-id', 'livox_frame',
+    ],
+    )
+
     return LaunchDescription([
         zed_wrapper,
         controller,
         zed_mount_tf,
+        lidar_static_tf,
         rviz,
     ])
