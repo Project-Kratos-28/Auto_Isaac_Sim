@@ -1060,6 +1060,71 @@ def Xform "athena_rover" (
             uniform float2 ui:nodegraph:node:pos = (-270.53354, 120.43885)
         }
     }
+
+    def "Differential_Drive" (
+        prepend payload = @../athena rover for 6.0.1 ackermann and differential drive/Differential_Drive.usd@
+    )
+    {
+        over "Differential_Drive"
+        {
+            over "make_array_01"
+            {
+                custom token inputs:input0
+                delete token inputs:input0.connect = </athena_rover/Differential_Drive/Differential_Drive/constant_token_02.inputs:value>
+                prepend token inputs:input0.connect = </athena_rover/Differential_Drive/Differential_Drive/constant_token_02.inputs:value>
+                custom token inputs:input1
+                delete token inputs:input1.connect = </athena_rover/Differential_Drive/Differential_Drive/constant_token_03.inputs:value>
+                prepend token inputs:input1.connect = </athena_rover/Differential_Drive/Differential_Drive/constant_token_03.inputs:value>
+            }
+
+            over "make_array"
+            {
+                custom token inputs:input0
+                delete token inputs:input0.connect = </athena_rover/Differential_Drive/Differential_Drive/constant_token.inputs:value>
+                prepend token inputs:input0.connect = </athena_rover/Differential_Drive/Differential_Drive/constant_token.inputs:value>
+                custom token inputs:input1
+                delete token inputs:input1.connect = </athena_rover/Differential_Drive/Differential_Drive/constant_token_01.inputs:value>
+                prepend token inputs:input1.connect = </athena_rover/Differential_Drive/Differential_Drive/constant_token_01.inputs:value>
+            }
+        }
+    }
+
+    def "ACKERMAN_DRIVE_GRAPH" (
+        prepend payload = @../athena rover for 6.0.1 ackermann and differential drive/ACKERMAN_DRIVE_GRAPH.usd@
+    )
+    {
+        over "ACKERMAN_DRIVE_GRAPH"
+        {
+            over "ACKERMAN_DRIVE_GRAPH"
+            {
+                over "steer_joint_Array"
+                {
+                    custom token inputs:input0
+                    delete token inputs:input0.connect = </athena_rover/ACKERMAN_DRIVE_GRAPH/ACKERMAN_DRIVE_GRAPH/ACKERMAN_DRIVE_GRAPH/constant_token.inputs:value>
+                    prepend token inputs:input0.connect = </athena_rover/ACKERMAN_DRIVE_GRAPH/ACKERMAN_DRIVE_GRAPH/ACKERMAN_DRIVE_GRAPH/constant_token.inputs:value>
+                    custom token inputs:input1
+                    delete token inputs:input1.connect = </athena_rover/ACKERMAN_DRIVE_GRAPH/ACKERMAN_DRIVE_GRAPH/ACKERMAN_DRIVE_GRAPH/constant_token_01.inputs:value>
+                    prepend token inputs:input1.connect = </athena_rover/ACKERMAN_DRIVE_GRAPH/ACKERMAN_DRIVE_GRAPH/ACKERMAN_DRIVE_GRAPH/constant_token_01.inputs:value>
+                }
+
+                over "make_array_01"
+                {
+                    custom token inputs:input0
+                    delete token inputs:input0.connect = </athena_rover/ACKERMAN_DRIVE_GRAPH/ACKERMAN_DRIVE_GRAPH/ACKERMAN_DRIVE_GRAPH/constant_token_02.inputs:value>
+                    prepend token inputs:input0.connect = </athena_rover/ACKERMAN_DRIVE_GRAPH/ACKERMAN_DRIVE_GRAPH/ACKERMAN_DRIVE_GRAPH/constant_token_02.inputs:value>
+                    custom token inputs:input1
+                    delete token inputs:input1.connect = </athena_rover/ACKERMAN_DRIVE_GRAPH/ACKERMAN_DRIVE_GRAPH/ACKERMAN_DRIVE_GRAPH/constant_token_03.inputs:value>
+                    prepend token inputs:input1.connect = </athena_rover/ACKERMAN_DRIVE_GRAPH/ACKERMAN_DRIVE_GRAPH/ACKERMAN_DRIVE_GRAPH/constant_token_03.inputs:value>
+                    custom token inputs:input2
+                    delete token inputs:input2.connect = </athena_rover/ACKERMAN_DRIVE_GRAPH/ACKERMAN_DRIVE_GRAPH/ACKERMAN_DRIVE_GRAPH/constant_token_04.inputs:value>
+                    prepend token inputs:input2.connect = </athena_rover/ACKERMAN_DRIVE_GRAPH/ACKERMAN_DRIVE_GRAPH/ACKERMAN_DRIVE_GRAPH/constant_token_04.inputs:value>
+                    custom token inputs:input3
+                    delete token inputs:input3.connect = </athena_rover/ACKERMAN_DRIVE_GRAPH/ACKERMAN_DRIVE_GRAPH/ACKERMAN_DRIVE_GRAPH/constant_token_05.inputs:value>
+                    prepend token inputs:input3.connect = </athena_rover/ACKERMAN_DRIVE_GRAPH/ACKERMAN_DRIVE_GRAPH/ACKERMAN_DRIVE_GRAPH/constant_token_05.inputs:value>
+                }
+            }
+        }
+    }
     variantSet "Physics" = {
         "mujoco" (
             prepend payload = @./payloads/Physics/mujoco.usda@

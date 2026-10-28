@@ -29,6 +29,9 @@ setup(
     entry_points={
         'console_scripts': [
             'swerve_controller = athena_controller.swerve_controller:main',
+            'joy_mapper = athena_controller.joy_mapper_node:main',
+            'drive_controller = athena_controller.drive_controller:main',
+            'sim_adapter = athena_controller.sim_adapter:main',
         ],
     },
 )
