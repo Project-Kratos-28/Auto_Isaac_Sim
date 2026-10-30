@@ -18,7 +18,7 @@ class circle_drive(Node):
         msg = Twist()
         
         # Set linear and angular velocities
-        msg.linear.x = 0.2
+        msg.linear.x = 0.0
         msg.angular.z = 0.5
         
         self.publisher_.publish(msg)
