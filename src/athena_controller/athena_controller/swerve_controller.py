@@ -46,6 +46,19 @@ class SwerveController(Node):
             wheel_vy = vy + wz * x
             steer_angle = math.atan2(wheel_vy, wheel_vx)
             speed       = math.hypot(wheel_vx, wheel_vy)
+
+            # Keep steering inside its physical +/-90 degree range without
+            # losing the requested travel direction.  In particular, a pure
+            # reverse command produces atan2(0, negative) == pi: point the
+            # wheel straight and rotate it backwards instead of clamping the
+            # steering to +90 degrees and always using a positive speed.
+            if steer_angle > self.steer_limit:
+                steer_angle -= math.pi
+                speed = -speed
+            elif steer_angle < -self.steer_limit:
+                steer_angle += math.pi
+                speed = -speed
+
             wheel_spin  = speed / self.wheel_radius
             steer_angle = max(-self.steer_limit, min(self.steer_limit, steer_angle))
 

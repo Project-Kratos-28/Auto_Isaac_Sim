@@ -7,8 +7,8 @@
                 double radius = 2.7425392150878904
             }
             dictionary Perspective = {
-                double3 position = (-0.42976662258664117, -2.0258006013565493, 1.1116775865203472)
-                double3 target = (-0.018351889818932487, 3.9986844471797363, -1.4021225584718184)
+                double3 position = (2.2435185140474823, 4.158754852892237, 5.3444891437763)
+                double3 target = (-4.0321331936078, 3.7104830662817774, -1.6192481340884584)
             }
             dictionary Right = {
                 double3 position = (0, -5, 0)
@@ -32,7 +32,6 @@
             double "rtx:pathtracing:fireflyFilter:maxUnexposedIntensityPerSample" = 3199.99951171875
             double "rtx:pathtracing:fireflyFilter:maxUnexposedIntensityPerSampleDiffuse" = 3199.99951171875
             double "rtx:raytracing:inscattering:maxRTSampleUnexposedIntensity" = 204799.96875
-            token "rtx:rendermode" = "MinimalRendering"
             double "rtx:translucency:maxRayUnexposedIntensity" = 19199.998046875
         }
     }
@@ -207,7 +206,7 @@ def Xform "athena_rover" (
                                 float focalLength = 2.1192
                                 float fStop = 0
                                 float horizontalAperture = 4.416
-                                float omni:sensor:tickRate = 30
+                                float omni:sensor:tickRate = 15
                                 float verticalAperture = 2.484
                             }
 
@@ -221,7 +220,7 @@ def Xform "athena_rover" (
                                 float focalLength = 2.1192
                                 float fStop = 0
                                 float horizontalAperture = 4.416
-                                float omni:sensor:tickRate = 30
+                                float omni:sensor:tickRate = 15
                                 float verticalAperture = 2.484
                             }
                         }
@@ -347,8 +346,13 @@ def Xform "athena_rover" (
             float state:angular:physics:velocity = 0
         }
 
-        over "wheel_front_left_spin"
+        over "wheel_front_left_spin" (
+            prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+        )
         {
+            float drive:angular:physics:damping = 1000
+            float drive:angular:physics:maxForce = inf
+            float drive:angular:physics:stiffness = 0
             float drive:angular:physics:targetVelocity = 0
             bool[] isaac:actuator (
                 displayName = "Actuator"
@@ -363,8 +367,13 @@ def Xform "athena_rover" (
             float state:angular:physics:velocity = 0
         }
 
-        over "wheel_rear_left_spin"
+        over "wheel_rear_left_spin" (
+            prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+        )
         {
+            float drive:angular:physics:damping = 1000
+            float drive:angular:physics:maxForce = inf
+            float drive:angular:physics:stiffness = 0
             float drive:angular:physics:targetVelocity = 0
             bool[] isaac:actuator (
                 displayName = "Actuator"
@@ -379,8 +388,13 @@ def Xform "athena_rover" (
             float state:angular:physics:velocity = 0
         }
 
-        over "wheel_front_right_spin"
+        over "wheel_front_right_spin" (
+            prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+        )
         {
+            float drive:angular:physics:damping = 1000
+            float drive:angular:physics:maxForce = inf
+            float drive:angular:physics:stiffness = 0
             float drive:angular:physics:targetVelocity = 0
             bool[] isaac:actuator (
                 displayName = "Actuator"
@@ -395,8 +409,13 @@ def Xform "athena_rover" (
             float state:angular:physics:velocity = 0
         }
 
-        over "wheel_rear_right_spin"
+        over "wheel_rear_right_spin" (
+            prepend apiSchemas = ["PhysicsDriveAPI:angular"]
+        )
         {
+            float drive:angular:physics:damping = 1000
+            float drive:angular:physics:maxForce = inf
+            float drive:angular:physics:stiffness = 0
             float drive:angular:physics:targetVelocity = 0
             bool[] isaac:actuator (
                 displayName = "Actuator"
@@ -517,7 +536,7 @@ def Xform "athena_rover" (
                 }
             )
             prepend uint inputs:execIn.connect = </athena_rover/camera_streamer/on_playback_tick.outputs:tick>
-            custom uint inputs:fps
+            custom uint inputs:fps = 15
             custom token inputs:lensType (
                 allowedTokens = ["Wide", "Narrow"]
             )
@@ -612,7 +631,7 @@ def Xform "athena_rover" (
             custom double[] inputs:positionCommand
             prepend double[] inputs:positionCommand.connect = </athena_rover/rover_controller/ros2_subscribe_joint_state.outputs:positionCommand>
             custom string inputs:robotPath
-            custom rel inputs:targetPrim = </athena_rover> (
+            custom rel inputs:targetPrim = </athena_rover/Geometry/base_footprint/base_link> (
                 customData = {
                     dictionary omni = {
                         dictionary graph = {
@@ -1186,7 +1205,7 @@ def "Render" (
                 uint omni:rtx:pt:maxSamplesPerLaunch = 2073600
                 uint omni:rtx:pt:mgpu:maxPixelsPerRegionExponent = 12
                 bool omni:rtx:reflections:denoiser:enabled = 0
-                token omni:rtx:rendermode = "MinimalRendering"
+                token omni:rtx:rendermode = "RealTimePathTracing"
                 color3f omni:rtx:rt:ambientLight:color = (0.1, 0.1, 0.1)
                 bool omni:rtx:rt:demoire = 0
                 float omni:rtx:rt:directLighting:maxRayUnexposedIntensity = 6399.999
@@ -1202,7 +1221,7 @@ def "Render" (
                 bool omni:rtx:scene:hydra:mdlMaterialWarmup = 1
                 rel orderedVars = </Render/Vars/LdrColor>
                 custom bool overrideClipRange = 0
-                uniform int2 resolution = (1280, 720)
+                uniform int2 resolution = (853, 480)
             }
 
             def RenderProduct "Replicator" (
@@ -1227,7 +1246,7 @@ def "Render" (
             {
                 rel camera = </athena_rover/Geometry/base_footprint/base_link/OS0/sensor>
                 bool omni:rtx:material:db:syncLoads = 1
-                token omni:rtx:rendermode = "MinimalRendering"
+                token omni:rtx:rendermode = "RealTimePathTracing"
                 bool omni:rtx:rt:ecoMode:enabled
                 bool omni:rtx:scene:hydra:materialSyncLoads = 1
                 rel orderedVars = </Render/Vars/LdrColor>
@@ -1347,11 +1366,11 @@ over "OmniverseKit_Persp" (
     float exposure:time = 0.02
     float focalLength = 18.147562
     float focusDistance = 400
-    custom uniform vector3d omni:kit:centerOfInterest = (0, 0, -6.540861820229672)
+    custom uniform vector3d omni:kit:centerOfInterest = (0, 0, -9.385008728050861)
     token visibility = "invisible"
-    float3 xformOp:rotateXYZ = (67.398315, -2.556371e-13, -3.9066885)
+    float3 xformOp:rotateXYZ = (42.09738, -3.4349991e-13, 94.08572)
     float3 xformOp:scale = (1, 1, 1)
-    double3 xformOp:translate = (-0.42976662258664117, -2.0258006013565493, 1.1116775865203472)
+    double3 xformOp:translate = (2.2435185140474823, 4.158754852892237, 5.3444891437763)
     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
 }
 

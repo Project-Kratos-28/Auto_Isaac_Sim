@@ -1,0 +1,1580 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary cameraSettings = {
+            dictionary Front = {
+                double3 position = (4.834004433747801, 0.2107758780054392, -1.345759637490093e-17)
+                double radius = 2.7425392150878904
+            }
+            dictionary Perspective = {
+                double3 position = (2.1658418734949922, -2.5818979493615872, 2.2367693229598626)
+                double3 target = (-1.6956365167944343, 2.2535242546484504, -0.706491267417352)
+            }
+            dictionary Right = {
+                double3 position = (0, -5, 0)
+                double radius = 5
+            }
+            dictionary Top = {
+                double3 position = (2.8560957918961742, -0.12471492580931486, 3.0033660523994707)
+                double radius = 5
+            }
+            string boundCamera = "/OmniverseKit_Persp"
+        }
+        string creator = "URDF USD Converter v0.1.3"
+        dictionary omni_layer = {
+            string authoring_layer = "./athena_rover-6.usda"
+        }
+        int refinementOverrideImplVersion = 0
+        dictionary renderSettings = {
+            double "rtx:directLighting:sampledLighting:maxRayUnexposedIntensity" = 6399.9990234375
+            double "rtx:indirectDiffuse:maxRayUnexposedIntensity" = 6399.9990234375
+            double "rtx:pathtracing:fireflyFilter:maxPerEmissiveUnexposedIntensity" = 3199.99951171875
+            double "rtx:pathtracing:fireflyFilter:maxUnexposedIntensityPerSample" = 3199.99951171875
+            double "rtx:pathtracing:fireflyFilter:maxUnexposedIntensityPerSampleDiffuse" = 3199.99951171875
+            double "rtx:raytracing:inscattering:maxRTSampleUnexposedIntensity" = 204799.96875
+            token "rtx:rendermode" = "PathTracing"
+            double "rtx:translucency:maxRayUnexposedIntensity" = 19199.998046875
+        }
+    }
+    defaultPrim = "athena_rover"
+    doc = """Generated from Composed Stage of root layer /tmp/tmpiordw69s/athena_rover.usdc
+
+
+Generated from Composed Stage of root layer /tmp/urdf_import_athena_rover-6_0hoe_zuy/usdex_athena_rover-6/athena_rover.usdc
+
+
+Generated from Composed Stage of root layer /tmp/urdf_import_athena_rover-6_0hoe_zuy/temp_athena_rover-6/athena_rover-6.usd
+
+
+Generated from Composed Stage of root layer /home/aarsh/Downloads/athena_description/athena_description/urdf/athena_rover-6_3/payloads/base.usd
+"""
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "athena_rover" (
+    prepend references = @./payloads/base.usda@
+    variants = {
+        string Physics = "physx"
+    }
+    append variantSets = "Physics"
+)
+{
+    quatf xformOp:orient = (1, 0, 0, 0)
+    float3 xformOp:scale = (1, 1, 1)
+    double3 xformOp:translate = (0, 0, 0.07606289397733185)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+    over "Geometry"
+    {
+        over "base_footprint"
+        {
+            over "base_link"
+            {
+                string isaac:nameOverride (
+                    displayName = "Name Override"
+                )
+
+                over "bogey_left"
+                {
+                    over "steer_housing_front_left"
+                    {
+                        over "steer_coupler_front_left"
+                        {
+                            over "wheel_front_left"
+                            {
+                            }
+                        }
+                    }
+
+                    over "steer_housing_rear_left"
+                    {
+                        over "steer_coupler_rear_left"
+                        {
+                            over "wheel_rear_left"
+                            {
+                            }
+                        }
+                    }
+                }
+
+                over "bogey_right"
+                {
+                    over "steer_housing_front_right"
+                    {
+                        over "steer_coupler_front_right"
+                        {
+                            over "wheel_front_right"
+                            {
+                            }
+                        }
+                    }
+
+                    over "steer_housing_rear_right"
+                    {
+                        over "steer_coupler_rear_right"
+                        {
+                            over "wheel_rear_right"
+                            {
+                            }
+                        }
+                    }
+                }
+
+                def Xform "OS0" (
+                    prepend references = @https://omniverse-content-production.s3-us-west-2.amazonaws.com/Assets/Isaac/6.0/Isaac/Sensors/Ouster/OS0/OS0.usd@
+                    variants = {
+                        string sensor = "OS0_REV6_128ch10hz512res"
+                    }
+                )
+                {
+                    float3 xformOp:rotateZYX = (-0, 0, -0)
+                    float3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0.08934716308266263)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateZYX", "xformOp:scale"]
+
+                    over "sensor"
+                    {
+                        custom string[] _replicator:rendervar:GenericModelOutput:channels = ["NONE"]
+                        float[] omni:sensor:Core:emitterState:s001:azimuthDeg = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                        uint[] omni:sensor:Core:emitterState:s001:channelId = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40]
+                        float[] omni:sensor:Core:emitterState:s001:distanceCorrectionM = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                        float[] omni:sensor:Core:emitterState:s001:elevationDeg = [-7, -5.525, -4.05, -2.575, -1.1, 0.375, 1.85, 3.325, 4.8, 6.275, 7.75, 9.225, 10.7, 12.175, 13.65, 15.125, 16.6, 18.075, 19.55, 21.025, 22.499, 23.974, 25.449, 26.924, 28.399, 29.874, 31.349, 32.824, 34.299, 35.774, 37.249, 38.724, 40.199, 41.674, 43.149, 44.624, 46.099, 47.574, 49.049, 50.524]
+                        uint[] omni:sensor:Core:emitterState:s001:fireTimeNs = [0, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000, 11000, 12000, 13000, 14000, 15000, 16000, 17000, 18000, 19000, 20000, 21000, 22000, 23000, 24000, 25000, 26000, 27000, 28000, 29000, 30000, 31000, 32000, 33000, 34000, 35000, 36000, 37000, 38000, 39000]
+                        float[] omni:sensor:Core:emitterState:s001:focalDistM = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                        float[] omni:sensor:Core:emitterState:s001:focalSlope = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                        float[] omni:sensor:Core:emitterState:s001:horOffsetM = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                        float[] omni:sensor:Core:emitterState:s001:reportRateDiv = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                        float[] omni:sensor:Core:emitterState:s001:vertOffsetM = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                        float omni:sensor:Core:farRangeM = 40
+                        float omni:sensor:Core:nearRangeM = 0.1
+                        uint omni:sensor:Core:numberOfChannels = 40
+                        uint omni:sensor:Core:numberOfEmitters = 40
+                        uint omni:sensor:Core:patternFiringRateHz = 20000
+                        float omni:sensor:Core:rangeAccuracyM = 0.025
+                        float omni:sensor:Core:rangeResolutionM = 0.004
+                        uint omni:sensor:Core:reportRateBaseHz = 20000
+                        uint omni:sensor:Core:scanRateBaseHz = 10
+                        string omni:sensor:marketName = "Mid-360"
+                        string omni:sensor:modelName = "Livox_Mid360_approx"
+                        float omni:sensor:tickRate = 10
+                        quatd xformOp:orient = (1, 0, 0, 0)
+                        double3 xformOp:translate = (0, 0, 0.0362199991941452)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                    }
+                }
+
+                def PhysicsFixedJoint "FixedJoint"
+                {
+                    rel physics:body0 = </athena_rover/Geometry/base_footprint/base_link/ZED_2i>
+                    rel physics:body1 = </athena_rover/Geometry/base_footprint/base_link>
+                    float physics:breakForce = 3.4028235e38
+                    float physics:breakTorque = 3.4028235e38
+                    point3f physics:localPos0 = (-0.2849138, -0.022110555, -0.07330136)
+                    point3f physics:localPos1 = (0, 0, 0)
+                    quatf physics:localRot0 = (1, 0, 0, 0)
+                    quatf physics:localRot1 = (1, 0, 0, 0)
+                }
+
+                def "ZED_2i" (
+                    prepend payload = @../../../../../Desktop/zed-isaac-sim/exts/sl.sensor.camera/data/usd/ZED_2i.usdc@
+                )
+                {
+                    quatf xformOp:orient = (1, -0, -0, -0)
+                    float3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0.2849137967842749, 0.022110555307859908, 0.07330135704826515)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+                    over "base_link"
+                    {
+                        over "ZED_2i"
+                        {
+                            over "Meshes"
+                            {
+                                over "ZED_2i_Body"
+                                {
+                                }
+                            }
+
+                            over "CameraLeft" (
+                                prepend apiSchemas = ["OmniSensorAPI", "OmniRtxCameraAutoExposureAPI_1", "OmniRtxCameraExposureAPI_1"]
+                            )
+                            {
+                                float exposure:fStop = 5
+                                float exposure:responsivity = 1.1026709
+                                float exposure:time = 0.02
+                                float focalLength = 1.0596
+                                float fStop = 0
+                                float horizontalAperture = 2.56
+                                float omni:sensor:tickRate = 15
+                                float verticalAperture = 1.44
+                            }
+
+                            over "CameraRight" (
+                                prepend apiSchemas = ["OmniSensorAPI", "OmniRtxCameraAutoExposureAPI_1", "OmniRtxCameraExposureAPI_1"]
+                            )
+                            {
+                                float exposure:fStop = 5
+                                float exposure:responsivity = 1.1026709
+                                float exposure:time = 0.02
+                                float focalLength = 1.0596
+                                float fStop = 0
+                                float horizontalAperture = 2.56
+                                float omni:sensor:tickRate = 15
+                                float verticalAperture = 1.44
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    over "Physics"
+    {
+        over "bogey_left_pivot"
+        {
+            bool[] isaac:actuator (
+                displayName = "Actuator"
+            )
+            string isaac:NameOverride (
+                displayName = "Joint Name Override"
+            )
+            token[] isaac:physics:DofOffsetOpOrder (
+                displayName = "Dof Offset Op Order"
+            )
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        over "bogey_right_pivot"
+        {
+            bool[] isaac:actuator (
+                displayName = "Actuator"
+            )
+            string isaac:NameOverride (
+                displayName = "Joint Name Override"
+            )
+            token[] isaac:physics:DofOffsetOpOrder (
+                displayName = "Dof Offset Op Order"
+            )
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        over "steer_front_left"
+        {
+            float drive:angular:physics:maxForce = inf
+            float drive:angular:physics:stiffness = 5000
+            float drive:angular:physics:targetPosition = 0
+            float drive:angular:physics:targetVelocity = 0
+            bool[] isaac:actuator (
+                displayName = "Actuator"
+            )
+            string isaac:NameOverride (
+                displayName = "Joint Name Override"
+            )
+            token[] isaac:physics:DofOffsetOpOrder (
+                displayName = "Dof Offset Op Order"
+            )
+            float physics:lowerLimit = -90
+            float physics:upperLimit = 90
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        over "steer_rear_left"
+        {
+            float drive:angular:physics:maxForce = inf
+            float drive:angular:physics:stiffness = 5000
+            float drive:angular:physics:targetPosition = 0
+            float drive:angular:physics:targetVelocity = 0
+            bool[] isaac:actuator (
+                displayName = "Actuator"
+            )
+            string isaac:NameOverride (
+                displayName = "Joint Name Override"
+            )
+            token[] isaac:physics:DofOffsetOpOrder (
+                displayName = "Dof Offset Op Order"
+            )
+            float physics:lowerLimit = -90
+            float physics:upperLimit = 90
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        over "steer_front_right"
+        {
+            float drive:angular:physics:maxForce = inf
+            float drive:angular:physics:stiffness = 5000
+            float drive:angular:physics:targetPosition = 0
+            float drive:angular:physics:targetVelocity = 0
+            bool[] isaac:actuator (
+                displayName = "Actuator"
+            )
+            string isaac:NameOverride (
+                displayName = "Joint Name Override"
+            )
+            token[] isaac:physics:DofOffsetOpOrder (
+                displayName = "Dof Offset Op Order"
+            )
+            float physics:lowerLimit = -90
+            float physics:upperLimit = 90
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        over "steer_rear_right"
+        {
+            float drive:angular:physics:maxForce = inf
+            float drive:angular:physics:stiffness = 5000
+            float drive:angular:physics:targetPosition = 0
+            float drive:angular:physics:targetVelocity = 0
+            bool[] isaac:actuator (
+                displayName = "Actuator"
+            )
+            string isaac:NameOverride (
+                displayName = "Joint Name Override"
+            )
+            token[] isaac:physics:DofOffsetOpOrder (
+                displayName = "Dof Offset Op Order"
+            )
+            float physics:lowerLimit = -90
+            float physics:upperLimit = 90
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        over "wheel_front_left_spin"
+        {
+            float drive:angular:physics:targetVelocity = 0
+            bool[] isaac:actuator (
+                displayName = "Actuator"
+            )
+            string isaac:NameOverride (
+                displayName = "Joint Name Override"
+            )
+            token[] isaac:physics:DofOffsetOpOrder (
+                displayName = "Dof Offset Op Order"
+            )
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        over "wheel_rear_left_spin"
+        {
+            float drive:angular:physics:targetVelocity = 0
+            bool[] isaac:actuator (
+                displayName = "Actuator"
+            )
+            string isaac:NameOverride (
+                displayName = "Joint Name Override"
+            )
+            token[] isaac:physics:DofOffsetOpOrder (
+                displayName = "Dof Offset Op Order"
+            )
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        over "wheel_front_right_spin"
+        {
+            float drive:angular:physics:targetVelocity = 0
+            bool[] isaac:actuator (
+                displayName = "Actuator"
+            )
+            string isaac:NameOverride (
+                displayName = "Joint Name Override"
+            )
+            token[] isaac:physics:DofOffsetOpOrder (
+                displayName = "Dof Offset Op Order"
+            )
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        over "wheel_rear_right_spin"
+        {
+            float drive:angular:physics:targetVelocity = 0
+            bool[] isaac:actuator (
+                displayName = "Actuator"
+            )
+            string isaac:NameOverride (
+                displayName = "Joint Name Override"
+            )
+            token[] isaac:physics:DofOffsetOpOrder (
+                displayName = "Dof Offset Op Order"
+            )
+            float state:angular:physics:position = 0
+            float state:angular:physics:velocity = 0
+        }
+
+        over "steer_housing_mount_front_left"
+        {
+            bool[] isaac:actuator (
+                displayName = "Actuator"
+            )
+            string isaac:NameOverride (
+                displayName = "Joint Name Override"
+            )
+            token[] isaac:physics:DofOffsetOpOrder (
+                displayName = "Dof Offset Op Order"
+            )
+        }
+
+        over "steer_housing_mount_rear_left"
+        {
+            bool[] isaac:actuator (
+                displayName = "Actuator"
+            )
+            string isaac:NameOverride (
+                displayName = "Joint Name Override"
+            )
+            token[] isaac:physics:DofOffsetOpOrder (
+                displayName = "Dof Offset Op Order"
+            )
+        }
+
+        over "steer_housing_mount_front_right"
+        {
+            bool[] isaac:actuator (
+                displayName = "Actuator"
+            )
+            string isaac:NameOverride (
+                displayName = "Joint Name Override"
+            )
+            token[] isaac:physics:DofOffsetOpOrder (
+                displayName = "Dof Offset Op Order"
+            )
+        }
+
+        over "steer_housing_mount_rear_right"
+        {
+            bool[] isaac:actuator (
+                displayName = "Actuator"
+            )
+            string isaac:NameOverride (
+                displayName = "Joint Name Override"
+            )
+            token[] isaac:physics:DofOffsetOpOrder (
+                displayName = "Dof Offset Op Order"
+            )
+        }
+    }
+
+    def OmniGraph "camera_streamer" (
+        active = true
+    )
+    {
+        token evaluationMode = "Automatic"
+        token evaluator:type = "execution"
+        token fabricCacheBacking = "StageWithoutHistory"
+        int2 fileFormatVersion = (1, 9)
+        token pipelineStage = "pipelineStageSimulation"
+
+        def OmniGraphNode "on_playback_tick" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            token node:type = "omni.graph.action.OnPlaybackTick"
+            int node:typeVersion = 2
+            custom double outputs:deltaSeconds
+            custom double outputs:frame
+            custom uint outputs:tick (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            custom double outputs:time
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (4.8000345, 95.4667)
+        }
+
+        def OmniGraphNode "zed_camera_helper" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom bool inputs:applyZedSim2Real
+            custom uint inputs:bitrate
+            custom token inputs:cameraModel = "ZED_2i" (
+                allowedTokens = ["ZED_X", "ZED_XM", "ZED_X_Nano", "ZED_M", "ZED_2i"]
+            )
+            custom rel inputs:cameraPrim = </athena_rover/Geometry/base_footprint/base_link/ZED_2i> (
+                customData = {
+                    dictionary omni = {
+                        dictionary graph = {
+                            string relType = "target"
+                        }
+                    }
+                }
+            )
+            custom uint inputs:chunkSize
+            custom uint inputs:execIn (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            prepend uint inputs:execIn.connect = </athena_rover/camera_streamer/on_playback_tick.outputs:tick>
+            custom uint inputs:fps = 15
+            custom token inputs:lensType (
+                allowedTokens = ["Wide", "Narrow"]
+            )
+            custom token inputs:resolution (
+                allowedTokens = ["HD2K", "HD1200", "HD1080", "HD720", "SVGA", "VGA"]
+            )
+            custom bool inputs:streamDepth
+            custom uint inputs:streamingPort = 30000
+            custom token inputs:transportLayerMode = "IPC" (
+                allowedTokens = ["BOTH", "NETWORK", "IPC"]
+            )
+            custom float inputs:zedSim2RealAeTarget
+            custom float inputs:zedSim2RealSceneLux
+            token node:type = "sl.sensor.camera.ZED_Camera"
+            int node:typeVersion = 4
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (544.0283, -175.38786)
+        }
+    }
+
+    def OmniGraph "rover_controller"
+    {
+        token evaluationMode = "Automatic"
+        token evaluator:type = "execution"
+        token fabricCacheBacking = "Shared"
+        int2 fileFormatVersion = (1, 9)
+        token pipelineStage = "pipelineStageSimulation"
+
+        def OmniGraphNode "on_playback_tick" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            token node:type = "omni.graph.action.OnPlaybackTick"
+            int node:typeVersion = 2
+            custom double outputs:deltaSeconds
+            custom double outputs:frame
+            custom uint outputs:tick (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            custom double outputs:time
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (132.8, 100)
+        }
+
+        def OmniGraphNode "ros2_subscribe_joint_state" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom uint64 inputs:context
+            custom uint inputs:execIn (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            prepend uint inputs:execIn.connect = </athena_rover/rover_controller/on_playback_tick.outputs:tick>
+            custom string inputs:nodeNamespace
+            custom string inputs:qosProfile
+            custom uint64 inputs:queueSize
+            custom string inputs:topicName
+            token node:type = "isaacsim.ros2.bridge.ROS2SubscribeJointState"
+            int node:typeVersion = 2
+            custom double[] outputs:effortCommand
+            custom uint outputs:execOut (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            custom token[] outputs:jointNames
+            custom double[] outputs:positionCommand
+            custom double outputs:timeStamp
+            custom double[] outputs:velocityCommand
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (423.19998, 54.399933)
+        }
+
+        def OmniGraphNode "articulation_controller" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom double[] inputs:effortCommand
+            custom uint inputs:execIn (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            prepend uint inputs:execIn.connect = </athena_rover/rover_controller/ros2_subscribe_joint_state.outputs:execOut>
+            custom int[] inputs:jointIndices
+            custom token[] inputs:jointNames
+            prepend token[] inputs:jointNames.connect = </athena_rover/rover_controller/ros2_subscribe_joint_state.outputs:jointNames>
+            custom double[] inputs:positionCommand
+            prepend double[] inputs:positionCommand.connect = </athena_rover/rover_controller/ros2_subscribe_joint_state.outputs:positionCommand>
+            custom string inputs:robotPath
+            custom rel inputs:targetPrim = </athena_rover> (
+                customData = {
+                    dictionary omni = {
+                        dictionary graph = {
+                            string relType = "target"
+                        }
+                    }
+                }
+            )
+            custom double[] inputs:velocityCommand
+            prepend double[] inputs:velocityCommand.connect = </athena_rover/rover_controller/ros2_subscribe_joint_state.outputs:velocityCommand>
+            token node:type = "isaacsim.core.nodes.IsaacArticulationController"
+            int node:typeVersion = 1
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (736.4045, 100.020775)
+        }
+    }
+
+    def OmniGraph "Odom"
+    {
+        token evaluationMode = "Automatic"
+        token evaluator:type = "execution"
+        token fabricCacheBacking = "StageWithoutHistory"
+        int2 fileFormatVersion = (1, 9)
+        token pipelineStage = "pipelineStageSimulation"
+
+        def OmniGraphNode "on_playback_tick" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            token node:type = "omni.graph.action.OnPlaybackTick"
+            int node:typeVersion = 2
+            custom double outputs:deltaSeconds
+            custom double outputs:frame
+            custom uint outputs:tick (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            custom double outputs:time
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (-6.3632774, 203.8379)
+        }
+
+        def OmniGraphNode "isaac_compute_odometry_node" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom rel inputs:chassisPrim = </athena_rover/Geometry/base_footprint/base_link> (
+                customData = {
+                    dictionary omni = {
+                        dictionary graph = {
+                            string relType = "target"
+                        }
+                    }
+                }
+            )
+            custom uint inputs:execIn (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            prepend uint inputs:execIn.connect = </athena_rover/Odom/on_playback_tick.outputs:tick>
+            token node:type = "isaacsim.core.nodes.IsaacComputeOdometry"
+            int node:typeVersion = 1
+            custom vector3d outputs:angularAcceleration
+            custom vector3d outputs:angularVelocity
+            custom uint outputs:execOut (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            custom vector3d outputs:globalLinearAcceleration
+            custom vector3d outputs:globalLinearVelocity
+            custom vector3d outputs:linearAcceleration
+            custom vector3d outputs:linearVelocity
+            custom quatd outputs:orientation
+            custom vector3d outputs:position
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (367.5412, 111.44237)
+        }
+
+        def OmniGraphNode "ros2_publish_odometry" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom vector3d inputs:angularVelocity
+            prepend vector3d inputs:angularVelocity.connect = </athena_rover/Odom/isaac_compute_odometry_node.outputs:angularVelocity>
+            custom string inputs:chassisFrameId
+            custom uint64 inputs:context
+            custom uint inputs:execIn (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            prepend uint inputs:execIn.connect = </athena_rover/Odom/isaac_compute_odometry_node.outputs:execOut>
+            custom vector3d inputs:linearVelocity
+            prepend vector3d inputs:linearVelocity.connect = </athena_rover/Odom/isaac_compute_odometry_node.outputs:linearVelocity>
+            custom string inputs:nodeNamespace
+            custom string inputs:odomFrameId
+            custom quatd inputs:orientation
+            prepend quatd inputs:orientation.connect = </athena_rover/Odom/isaac_compute_odometry_node.outputs:orientation>
+            custom vector3d inputs:position
+            prepend vector3d inputs:position.connect = </athena_rover/Odom/isaac_compute_odometry_node.outputs:position>
+            custom bool inputs:publishRawVelocities
+            custom string inputs:qosProfile
+            custom uint64 inputs:queueSize
+            custom vector3d inputs:robotFront
+            custom double inputs:timeStamp
+            prepend double inputs:timeStamp.connect = </athena_rover/Odom/isaac_read_simulation_time.outputs:simulationTime>
+            custom string inputs:topicName
+            token node:type = "isaacsim.ros2.bridge.ROS2PublishOdometry"
+            int node:typeVersion = 1
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (712.05695, 100.12854)
+        }
+
+        def OmniGraphNode "ros2_publish_raw_transform_tree" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom string inputs:childFrameId
+            custom uint64 inputs:context
+            custom uint inputs:execIn (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            prepend uint inputs:execIn.connect = </athena_rover/Odom/on_playback_tick.outputs:tick>
+            custom string inputs:nodeNamespace
+            custom string inputs:parentFrameId
+            custom string inputs:qosProfile
+            custom uint64 inputs:queueSize
+            custom quatd inputs:rotation
+            prepend quatd inputs:rotation.connect = </athena_rover/Odom/isaac_compute_odometry_node.outputs:orientation>
+            custom bool inputs:staticPublisher
+            custom double inputs:timeStamp
+            prepend double inputs:timeStamp.connect = </athena_rover/Odom/isaac_read_simulation_time.outputs:simulationTime>
+            custom string inputs:topicName
+            custom vector3d inputs:translation
+            prepend vector3d inputs:translation.connect = </athena_rover/Odom/isaac_compute_odometry_node.outputs:position>
+            token node:type = "isaacsim.ros2.bridge.ROS2PublishRawTransformTree"
+            int node:typeVersion = 1
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (676.6939, 467.4172)
+        }
+
+        def OmniGraphNode "isaac_read_simulation_time" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom uint64 inputs:referenceTimeDenominator
+            custom int64 inputs:referenceTimeNumerator
+            custom bool inputs:resetOnStop
+            token node:type = "isaacsim.core.nodes.IsaacReadSimulationTime"
+            int node:typeVersion = 1
+            custom double outputs:simulationTime
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (285.03528, 476.62787)
+        }
+    }
+
+    def OmniGraph "Lidar"
+    {
+        token evaluationMode = "Automatic"
+        token evaluator:type = "execution"
+        token fabricCacheBacking = "StageWithoutHistory"
+        int2 fileFormatVersion = (1, 9)
+        token pipelineStage = "pipelineStageSimulation"
+
+        def OmniGraphNode "on_playback_tick" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            token node:type = "omni.graph.action.OnPlaybackTick"
+            int node:typeVersion = 2
+            custom double outputs:deltaSeconds
+            custom double outputs:frame
+            custom uint outputs:tick (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            custom double outputs:time
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (-70.51938, 33.09808)
+        }
+
+        def OmniGraphNode "isaac_create_render_product" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom rel inputs:cameraPrim = </athena_rover/Geometry/base_footprint/base_link/OS0/sensor> (
+                customData = {
+                    dictionary omni = {
+                        dictionary graph = {
+                            string relType = "target"
+                        }
+                    }
+                }
+            )
+            custom bool inputs:enabled
+            custom uint inputs:execIn (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            prepend uint inputs:execIn.connect = </athena_rover/Lidar/on_playback_tick.outputs:tick>
+            custom uint inputs:height
+            custom rel inputs:renderProductPrim (
+                customData = {
+                    dictionary omni = {
+                        dictionary graph = {
+                            string relType = "target"
+                        }
+                    }
+                }
+            )
+            custom uint inputs:width
+            token node:type = "isaacsim.core.nodes.IsaacCreateRenderProduct"
+            int node:typeVersion = 3
+            custom uint outputs:execOut (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            custom token outputs:renderProductPath
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (228.11794, -9.666599)
+        }
+
+        def OmniGraphNode "ros2_rtx_lidar_helper" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom uint64 inputs:context
+            custom bool inputs:enabled
+            custom bool inputs:enableObjectIdMap
+            custom uint inputs:execIn (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            prepend uint inputs:execIn.connect = </athena_rover/Lidar/isaac_create_render_product.outputs:execOut>
+            custom string inputs:frameId = "livox_frame"
+            custom uint inputs:frameSkipCount
+            custom bool inputs:fullScan
+            custom string inputs:nodeNamespace
+            custom string inputs:objectIdMapTopicName
+            custom string inputs:qosProfile
+            custom uint64 inputs:queueSize
+            custom token inputs:renderProductPath
+            prepend token inputs:renderProductPath.connect = </athena_rover/Lidar/isaac_create_render_product.outputs:renderProductPath>
+            custom bool inputs:resetSimulationTimeOnStop
+            custom token[] inputs:selectedMetadata
+            custom bool inputs:showDebugView
+            custom string inputs:topicName = "livox/points"
+            custom token inputs:type = "point_cloud" (
+                allowedTokens = ["laser_scan", "point_cloud"]
+            )
+            custom bool inputs:useSystemTime
+            token node:type = "isaacsim.ros2.bridge.ROS2RtxLidarHelper"
+            int node:typeVersion = 3
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (576.00006, 29.600014)
+        }
+    }
+
+    def OmniGraph "Time"
+    {
+        token evaluationMode = "Automatic"
+        token evaluator:type = "execution"
+        token fabricCacheBacking = "StageWithoutHistory"
+        int2 fileFormatVersion = (1, 9)
+        token pipelineStage = "pipelineStageSimulation"
+
+        def OmniGraphNode "on_playback_tick" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            token node:type = "omni.graph.action.OnPlaybackTick"
+            int node:typeVersion = 2
+            custom double outputs:deltaSeconds
+            custom double outputs:frame
+            custom uint outputs:tick (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            custom double outputs:time
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (-148.63414, 329.055)
+        }
+
+        def OmniGraphNode "ros2_publish_clock" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom uint64 inputs:context
+            custom uint inputs:execIn (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            prepend uint inputs:execIn.connect = </athena_rover/Time/on_playback_tick.outputs:tick>
+            custom string inputs:nodeNamespace
+            custom string inputs:qosProfile
+            custom uint64 inputs:queueSize
+            custom double inputs:timeStamp
+            delete double inputs:timeStamp.connect = [
+                </athena_rover/Time/isaac_read_simulation_time.outputs:simulationTime>,
+                </athena_rover/Time/isaac_read_simulation_time_01.outputs:simulationTime>,
+            ]
+            prepend double inputs:timeStamp.connect = </athena_rover/Time/isaac_read_simulation_time.outputs:simulationTime>
+            custom string inputs:topicName
+            token node:type = "isaacsim.ros2.bridge.ROS2PublishClock"
+            int node:typeVersion = 1
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (354.98322, 195.31984)
+        }
+
+        def OmniGraphNode "isaac_read_simulation_time" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom uint64 inputs:referenceTimeDenominator
+            custom int64 inputs:referenceTimeNumerator
+            custom bool inputs:resetOnStop
+            token node:type = "isaacsim.core.nodes.IsaacReadSimulationTime"
+            int node:typeVersion = 1
+            custom double outputs:simulationTime
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (48.442017, 445.50876)
+        }
+    }
+
+    def OmniGraph "IMU_Publisher"
+    {
+        token evaluationMode = "Automatic"
+        token evaluator:type = "execution"
+        token fabricCacheBacking = "Shared"
+        int2 fileFormatVersion = (1, 9)
+        token pipelineStage = "pipelineStageSimulation"
+
+        def OmniGraphNode "isaac_read_imu_node" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom uint inputs:execIn (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            prepend uint inputs:execIn.connect = [
+                </athena_rover/IMU_Publisher/on_physics_step.outputs:step>,
+                </athena_rover/IMU_Publisher/on_playback_tick.outputs:tick>,
+            ]
+            custom rel inputs:imuPrim = </athena_rover/Geometry/base_footprint/base_link/ZED_2i/base_link/ZED_2i/Imu_Sensor> (
+                customData = {
+                    dictionary omni = {
+                        dictionary graph = {
+                            string relType = "target"
+                        }
+                    }
+                }
+            )
+            custom bool inputs:readGravity
+            custom bool inputs:useLatestData
+            token node:type = "isaacsim.sensors.physics.IsaacReadIMU"
+            int node:typeVersion = 1
+            custom vector3d outputs:angVel
+            custom uint outputs:execOut (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            custom vector3d outputs:linAcc
+            custom quatd outputs:orientation
+            custom float outputs:sensorTime
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (102.41888, 36.882698)
+        }
+
+        def OmniGraphNode "isaac_read_simulation_time" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom uint64 inputs:referenceTimeDenominator
+            custom int64 inputs:referenceTimeNumerator
+            custom bool inputs:resetOnStop
+            token node:type = "isaacsim.core.nodes.IsaacReadSimulationTime"
+            int node:typeVersion = 1
+            custom double outputs:simulationTime
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (-150.25996, 320.02646)
+        }
+
+        def OmniGraphNode "ros2_publish_imu" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom vector3d inputs:angularVelocity
+            prepend vector3d inputs:angularVelocity.connect = </athena_rover/IMU_Publisher/isaac_read_imu_node.outputs:angVel>
+            custom uint64 inputs:context
+            custom uint inputs:execIn (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            prepend uint inputs:execIn.connect = </athena_rover/IMU_Publisher/isaac_read_imu_node.outputs:execOut>
+            custom string inputs:frameId = "imu_link"
+            custom vector3d inputs:linearAcceleration
+            prepend vector3d inputs:linearAcceleration.connect = </athena_rover/IMU_Publisher/isaac_read_imu_node.outputs:linAcc>
+            custom string inputs:nodeNamespace
+            custom quatd inputs:orientation
+            prepend quatd inputs:orientation.connect = </athena_rover/IMU_Publisher/isaac_read_imu_node.outputs:orientation>
+            custom bool inputs:publishAngularVelocity
+            custom bool inputs:publishLinearAcceleration
+            custom bool inputs:publishOrientation
+            custom string inputs:qosProfile
+            custom uint64 inputs:queueSize
+            custom double inputs:timeStamp
+            prepend double inputs:timeStamp.connect = </athena_rover/IMU_Publisher/isaac_read_simulation_time.outputs:simulationTime>
+            custom string inputs:topicName = "/livox/imu"
+            token node:type = "isaacsim.ros2.bridge.ROS2PublishImu"
+            int node:typeVersion = 1
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (407.96332, -14.190688)
+        }
+
+        def OmniGraphNode "on_playback_tick" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            token node:type = "omni.graph.action.OnPlaybackTick"
+            int node:typeVersion = 2
+            custom double outputs:deltaSeconds
+            custom double outputs:frame
+            custom uint outputs:tick (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            custom double outputs:time
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (-270.53354, 120.43885)
+        }
+    }
+
+    def "Differential_Drive" (
+        prepend payload = @../athena rover for 6.0.1 ackermann and differential drive/Differential_Drive.usd@
+    )
+    {
+        over "Differential_Drive"
+        {
+            over "make_array_01"
+            {
+                custom token inputs:input0
+                delete token inputs:input0.connect = </athena_rover/Differential_Drive/Differential_Drive/constant_token_02.inputs:value>
+                prepend token inputs:input0.connect = </athena_rover/Differential_Drive/Differential_Drive/constant_token_02.inputs:value>
+                custom token inputs:input1
+                delete token inputs:input1.connect = </athena_rover/Differential_Drive/Differential_Drive/constant_token_03.inputs:value>
+                prepend token inputs:input1.connect = </athena_rover/Differential_Drive/Differential_Drive/constant_token_03.inputs:value>
+            }
+
+            over "make_array"
+            {
+                custom token inputs:input0
+                delete token inputs:input0.connect = </athena_rover/Differential_Drive/Differential_Drive/constant_token.inputs:value>
+                prepend token inputs:input0.connect = </athena_rover/Differential_Drive/Differential_Drive/constant_token.inputs:value>
+                custom token inputs:input1
+                delete token inputs:input1.connect = </athena_rover/Differential_Drive/Differential_Drive/constant_token_01.inputs:value>
+                prepend token inputs:input1.connect = </athena_rover/Differential_Drive/Differential_Drive/constant_token_01.inputs:value>
+            }
+        }
+    }
+
+    def "ACKERMAN_DRIVE_GRAPH" (
+        prepend payload = @../athena rover for 6.0.1 ackermann and differential drive/ACKERMAN_DRIVE_GRAPH.usd@
+    )
+    {
+        over "ACKERMAN_DRIVE_GRAPH"
+        {
+            over "ACKERMAN_DRIVE_GRAPH"
+            {
+                over "steer_joint_Array"
+                {
+                    custom token inputs:input0
+                    delete token inputs:input0.connect = </athena_rover/ACKERMAN_DRIVE_GRAPH/ACKERMAN_DRIVE_GRAPH/ACKERMAN_DRIVE_GRAPH/constant_token.inputs:value>
+                    prepend token inputs:input0.connect = </athena_rover/ACKERMAN_DRIVE_GRAPH/ACKERMAN_DRIVE_GRAPH/ACKERMAN_DRIVE_GRAPH/constant_token.inputs:value>
+                    custom token inputs:input1
+                    delete token inputs:input1.connect = </athena_rover/ACKERMAN_DRIVE_GRAPH/ACKERMAN_DRIVE_GRAPH/ACKERMAN_DRIVE_GRAPH/constant_token_01.inputs:value>
+                    prepend token inputs:input1.connect = </athena_rover/ACKERMAN_DRIVE_GRAPH/ACKERMAN_DRIVE_GRAPH/ACKERMAN_DRIVE_GRAPH/constant_token_01.inputs:value>
+                }
+
+                over "make_array_01"
+                {
+                    custom token inputs:input0
+                    delete token inputs:input0.connect = </athena_rover/ACKERMAN_DRIVE_GRAPH/ACKERMAN_DRIVE_GRAPH/ACKERMAN_DRIVE_GRAPH/constant_token_02.inputs:value>
+                    prepend token inputs:input0.connect = </athena_rover/ACKERMAN_DRIVE_GRAPH/ACKERMAN_DRIVE_GRAPH/ACKERMAN_DRIVE_GRAPH/constant_token_02.inputs:value>
+                    custom token inputs:input1
+                    delete token inputs:input1.connect = </athena_rover/ACKERMAN_DRIVE_GRAPH/ACKERMAN_DRIVE_GRAPH/ACKERMAN_DRIVE_GRAPH/constant_token_03.inputs:value>
+                    prepend token inputs:input1.connect = </athena_rover/ACKERMAN_DRIVE_GRAPH/ACKERMAN_DRIVE_GRAPH/ACKERMAN_DRIVE_GRAPH/constant_token_03.inputs:value>
+                    custom token inputs:input2
+                    delete token inputs:input2.connect = </athena_rover/ACKERMAN_DRIVE_GRAPH/ACKERMAN_DRIVE_GRAPH/ACKERMAN_DRIVE_GRAPH/constant_token_04.inputs:value>
+                    prepend token inputs:input2.connect = </athena_rover/ACKERMAN_DRIVE_GRAPH/ACKERMAN_DRIVE_GRAPH/ACKERMAN_DRIVE_GRAPH/constant_token_04.inputs:value>
+                    custom token inputs:input3
+                    delete token inputs:input3.connect = </athena_rover/ACKERMAN_DRIVE_GRAPH/ACKERMAN_DRIVE_GRAPH/ACKERMAN_DRIVE_GRAPH/constant_token_05.inputs:value>
+                    prepend token inputs:input3.connect = </athena_rover/ACKERMAN_DRIVE_GRAPH/ACKERMAN_DRIVE_GRAPH/ACKERMAN_DRIVE_GRAPH/constant_token_05.inputs:value>
+                }
+            }
+        }
+    }
+    variantSet "Physics" = {
+        "mujoco" (
+            prepend payload = @./payloads/Physics/mujoco.usda@
+        ) {
+
+        }
+        "none" {
+
+        }
+        "physics" (
+            prepend payload = @./payloads/Physics/physics.usda@
+        ) {
+
+        }
+        "physx" (
+            prepend payload = @./payloads/Physics/physx.usda@
+        ) {
+
+        }
+    }
+}
+
+def "Render" (
+    hide_in_stage_window = true
+    no_delete = true
+)
+{
+    def "OmniverseKit"
+    {
+        def "HydraTextures" (
+            hide_in_stage_window = true
+            no_delete = true
+        )
+        {
+            def RenderProduct "omni_kit_widget_viewport_ViewportTexture_0" (
+                prepend apiSchemas = ["OmniRtxSettingsCommonAdvancedAPI_1", "OmniRtxSettingsRtAdvancedAPI_1", "OmniRtxSettingsPtAdvancedAPI_1", "OmniRtxPostColorGradingAPI_1", "OmniRtxPostChromaticAberrationAPI_1", "OmniRtxPostBloomPhysicalAPI_1", "OmniRtxPostMatteObjectAPI_1", "OmniRtxPostCompositingAPI_1", "OmniRtxPostDofAPI_1", "OmniRtxPostMotionBlurAPI_1", "OmniRtxPostTvNoiseAPI_1", "OmniRtxPostTonemapIrayReinhardAPI_1", "OmniRtxPostDebugSettingsAPI_1", "OmniRtxDebugSettingsAPI_1"]
+                hide_in_stage_window = true
+                no_delete = true
+            )
+            {
+                rel camera = </OmniverseKit_Persp>
+                token omni:rtx:ambientOcclusion:denoiserMode = "none"
+                token omni:rtx:background:source:texture:textureMode = "repeatMirrored"
+                token omni:rtx:background:source:type = "domeLight"
+                bool omni:rtx:debug:view:pixelDebug:enableFixedTextPos = 1
+                token omni:rtx:directLighting:sampledLighting:denoisingTechnique = "None"
+                bool omni:rtx:dlss:frameGeneration = 0
+                float3 omni:rtx:domeLight:rotationAxis = (0, 0, 1)
+                bool omni:rtx:indirectDiffuse:denoiser:enabled = 0
+                bool omni:rtx:material:db:syncLoads = 1
+                token omni:rtx:post:dlss:execMode = "performance"
+                bool omni:rtx:post:registeredCompositing:invertColorCorrection = 1
+                bool omni:rtx:post:registeredCompositing:invertToneMap = 1
+                bool omni:rtx:pt:adaptiveSampling:filterError = 0
+                uint omni:rtx:pt:adaptiveSampling:fixedSppIterations = 2
+                float omni:rtx:pt:fireflyFilter:maxPerEmissiveUnexposedIntensity = 3199.9995
+                float omni:rtx:pt:fireflyFilter:maxUnexposedIntensityPerSample = 3199.9995
+                float omni:rtx:pt:fireflyFilter:maxUnexposedIntensityPerSampleDiffuse = 3199.9995
+                uint omni:rtx:pt:maxSamplesPerLaunch = 2073600
+                uint omni:rtx:pt:mgpu:maxPixelsPerRegionExponent = 12
+                bool omni:rtx:reflections:denoiser:enabled = 0
+                token omni:rtx:rendermode = "PathTracing"
+                color3f omni:rtx:rt:ambientLight:color = (0.1, 0.1, 0.1)
+                bool omni:rtx:rt:demoire = 0
+                float omni:rtx:rt:directLighting:maxRayUnexposedIntensity = 6399.999
+                bool omni:rtx:rt:ecoMode:enabled
+                float omni:rtx:rt:indirectdiffuse:maxRayUnexposedIntensity = 6399.999
+                float omni:rtx:rt:inscattering:maxRTSampleUnexposedIntensity = 204799.97
+                bool omni:rtx:rt:lightcache:spatialCache:dontResolveConflicts = 1
+                float omni:rtx:rt:refractions:maxRayUnexposedIntensity = 19199.998
+                int omni:rtx:rt:sss:samples = 1
+                uint omni:rtx:rtpt:maxVolumeBounces = 15
+                float omni:rtx:rtpt:modulatingRoughnessThreshold = 0.08
+                bool omni:rtx:scene:hydra:materialSyncLoads = 1
+                bool omni:rtx:scene:hydra:mdlMaterialWarmup = 1
+                rel orderedVars = </Render/Vars/LdrColor>
+                custom bool overrideClipRange = 0
+                uniform int2 resolution = (853, 480)
+            }
+
+            def RenderProduct "Replicator" (
+                prepend apiSchemas = ["OmniRtxSettingsCommonAdvancedAPI_1", "OmniRtxSettingsRtAdvancedAPI_1", "OmniRtxSettingsPtAdvancedAPI_1", "OmniRtxPostColorGradingAPI_1", "OmniRtxPostChromaticAberrationAPI_1", "OmniRtxPostBloomPhysicalAPI_1", "OmniRtxPostMatteObjectAPI_1", "OmniRtxPostCompositingAPI_1", "OmniRtxPostDofAPI_1", "OmniRtxPostMotionBlurAPI_1", "OmniRtxPostTvNoiseAPI_1", "OmniRtxPostTonemapIrayReinhardAPI_1", "OmniRtxPostDebugSettingsAPI_1", "OmniRtxDebugSettingsAPI_1"]
+                hide_in_stage_window = true
+                no_delete = true
+            )
+            {
+                rel camera = </OmniverseKit_Persp>
+                bool omni:rtx:material:db:syncLoads = 1
+                bool omni:rtx:scene:hydra:materialSyncLoads = 1
+                rel orderedVars = </Render/Vars/LdrColor>
+                custom bool overrideClipRange = 0
+                uniform int2 resolution = (1280, 720)
+            }
+
+            def RenderProduct "Replicator_01" (
+                prepend apiSchemas = ["OmniRtxSettingsCommonAdvancedAPI_1", "OmniRtxSettingsRtAdvancedAPI_1", "OmniRtxSettingsPtAdvancedAPI_1", "OmniRtxPostColorGradingAPI_1", "OmniRtxPostChromaticAberrationAPI_1", "OmniRtxPostBloomPhysicalAPI_1", "OmniRtxPostMatteObjectAPI_1", "OmniRtxPostCompositingAPI_1", "OmniRtxPostDofAPI_1", "OmniRtxPostMotionBlurAPI_1", "OmniRtxPostTvNoiseAPI_1", "OmniRtxPostTonemapIrayReinhardAPI_1", "OmniRtxPostDebugSettingsAPI_1", "OmniRtxDebugSettingsAPI_1"]
+                hide_in_stage_window = true
+                no_delete = true
+            )
+            {
+                rel camera = </athena_rover/Geometry/base_footprint/base_link/OS0/sensor>
+                bool omni:rtx:material:db:syncLoads = 1
+                token omni:rtx:rendermode = "PathTracing"
+                bool omni:rtx:rt:ecoMode:enabled
+                bool omni:rtx:scene:hydra:materialSyncLoads = 1
+                rel orderedVars = </Render/Vars/LdrColor>
+                custom bool overrideClipRange = 0
+                uniform int2 resolution = (1280, 720)
+            }
+        }
+    }
+
+    def RenderSettings "OmniverseGlobalRenderSettings" (
+        prepend apiSchemas = ["OmniRtxSettingsGlobalRtAdvancedAPI_1", "OmniRtxSettingsGlobalPtAdvancedAPI_1"]
+        no_delete = true
+    )
+    {
+        rel products = [
+            </Render/OmniverseKit/HydraTextures/omni_kit_widget_viewport_ViewportTexture_0>,
+            </Render/OmniverseKit/HydraTextures/ZED_2i_left_rp>,
+            </Render/OmniverseKit/HydraTextures/ZED_2i_right_rp>,
+            </Render/OmniverseKit/HydraTextures/Replicator>,
+            </Render/OmniverseKit/HydraTextures/Replicator_01>,
+        ]
+    }
+
+    def "Vars"
+    {
+        def RenderVar "LdrColor" (
+            hide_in_stage_window = true
+            no_delete = true
+        )
+        {
+            uniform string sourceName = "LdrColor"
+            uniform token sourceType = "raw"
+        }
+
+        def RenderVar "GenericModelOutput"
+        {
+            custom string[] channels = ["NONE"]
+            uniform string sourceName = "GenericModelOutput"
+        }
+    }
+
+    over "PostProcess"
+    {
+        over "SDGPipeline"
+        {
+            over "DispatchSync"
+            {
+                custom uint inputs:exec
+                prepend uint inputs:exec.connect = </Render/PostProcess/SDGPipeline/PostProcessDispatcher.outputs:exec>
+                custom uint64 inputs:referenceTimeDenominator
+                prepend uint64 inputs:referenceTimeDenominator.connect = </Render/PostProcess/SDGPipeline/PostProcessDispatcher.outputs:referenceTimeDenominator>
+                custom int64 inputs:referenceTimeNumerator
+                prepend int64 inputs:referenceTimeNumerator.connect = </Render/PostProcess/SDGPipeline/PostProcessDispatcher.outputs:referenceTimeNumerator>
+            }
+
+            over "ZED_2i_left_rp_PostProcessDispatch"
+            {
+                custom uint inputs:exec
+                prepend uint inputs:exec.connect = </Render/PostProcess/SDGPipeline/DispatchSync.outputs:exec>
+                custom uint64[] inputs:renderProductDataPtrs
+                prepend uint64[] inputs:renderProductDataPtrs.connect = </Render/PostProcess/SDGPipeline/PostProcessDispatcher.outputs:renderProductDataPtrs>
+                custom token[] inputs:renderProductPaths
+                prepend token[] inputs:renderProductPaths.connect = </Render/PostProcess/SDGPipeline/PostProcessDispatcher.outputs:renderProductPaths>
+            }
+
+            over "ZED_2i_left_rp_LdrColorSDbuffPtr"
+            {
+                custom uint inputs:exec
+                prepend uint inputs:exec.connect = </Render/PostProcess/SDGPipeline/ZED_2i_left_rp_PostProcessDispatch.outputs:exec>
+                custom uint64 inputs:renderResults
+                prepend uint64 inputs:renderResults.connect = </Render/PostProcess/SDGPipeline/ZED_2i_left_rp_PostProcessDispatch.outputs:renderResults>
+                custom token outputs:__device
+                custom bool outputs:__do_array_copy
+            }
+
+            over "ZED_2i_right_rp_PostProcessDispatch"
+            {
+                custom uint inputs:exec
+                prepend uint inputs:exec.connect = </Render/PostProcess/SDGPipeline/DispatchSync.outputs:exec>
+                custom uint64[] inputs:renderProductDataPtrs
+                prepend uint64[] inputs:renderProductDataPtrs.connect = </Render/PostProcess/SDGPipeline/PostProcessDispatcher.outputs:renderProductDataPtrs>
+                custom token[] inputs:renderProductPaths
+                prepend token[] inputs:renderProductPaths.connect = </Render/PostProcess/SDGPipeline/PostProcessDispatcher.outputs:renderProductPaths>
+            }
+
+            over "ZED_2i_right_rp_LdrColorSDbuffPtr"
+            {
+                custom uint inputs:exec
+                prepend uint inputs:exec.connect = </Render/PostProcess/SDGPipeline/ZED_2i_right_rp_PostProcessDispatch.outputs:exec>
+                custom uint64 inputs:renderResults
+                prepend uint64 inputs:renderResults.connect = </Render/PostProcess/SDGPipeline/ZED_2i_right_rp_PostProcessDispatch.outputs:renderResults>
+                custom token outputs:__device
+                custom bool outputs:__do_array_copy
+            }
+        }
+    }
+}
+
+over "OmniverseKit_Persp" (
+    prepend apiSchemas = ["OmniRtxCameraAutoExposureAPI_1", "OmniRtxCameraExposureAPI_1"]
+    customData = {
+        dictionary omni = {
+            dictionary kit = {
+                bool hide_in_stage_window = 1
+                bool no_delete = 1
+            }
+        }
+    }
+    hide_in_stage_window = true
+    kind = "component"
+    no_delete = true
+)
+{
+    float2 clippingRange = (0.01, 10000000)
+    float exposure:fStop = 5
+    float exposure:responsivity = 1.1026709
+    float exposure:time = 0.02
+    float focalLength = 18.147562
+    float focusDistance = 400
+    custom uniform vector3d omni:kit:centerOfInterest = (0, 0, -6.852379597816597)
+    token visibility = "invisible"
+    float3 xformOp:rotateXYZ = (64.56265, -2.8306936e-13, 38.610214)
+    float3 xformOp:scale = (1, 1, 1)
+    double3 xformOp:translate = (2.1658418734949922, -2.5818979493615872, 2.2367693229598626)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+}
+
+def PhysicsScene "PhysicsScene" (
+    prepend apiSchemas = ["NewtonSceneAPI", "PhysxSceneAPI"]
+)
+{
+}
+
+over "OmniverseKit_Front" (
+    prepend apiSchemas = ["OmniRtxCameraAutoExposureAPI_1", "OmniRtxCameraExposureAPI_1"]
+    customData = {
+        dictionary omni = {
+            dictionary kit = {
+                bool hide_in_stage_window = 1
+                bool no_delete = 1
+            }
+        }
+    }
+    hide_in_stage_window = true
+    kind = "component"
+    no_delete = true
+)
+{
+    float2 clippingRange = (1, 10000000)
+    float exposure:fStop = 5
+    float exposure:responsivity = 1.1026709
+    float exposure:time = 0.02
+    float horizontalAperture = 27.425392
+    custom uniform vector3d omni:kit:centerOfInterest = (0, 0, -5)
+    token projection = "orthographic"
+    float verticalAperture = 27.425392
+    token visibility = "invisible"
+    float3 xformOp:rotateXYZ = (90, -2.5444438e-14, 90)
+    float3 xformOp:scale = (1, 1, 1)
+    double3 xformOp:translate = (4.834004433747801, 0.2107758780054392, -1.345759637490093e-17)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+}
+
+over "OmniverseKit_Right" (
+    customData = {
+        dictionary omni = {
+            dictionary kit = {
+                bool hide_in_stage_window = 1
+                bool no_delete = 1
+            }
+        }
+    }
+    hide_in_stage_window = true
+    kind = "component"
+    no_delete = true
+)
+{
+    float2 clippingRange = (1, 10000000)
+    float horizontalAperture = 50
+    custom uniform vector3d omni:kit:centerOfInterest = (0, 0, -5)
+    token projection = "orthographic"
+    float verticalAperture = 50
+    token visibility = "invisible"
+    float3 xformOp:rotateXYZ = (90, -1.41245e-30, 1.2722219e-14)
+    float3 xformOp:scale = (1, 1, 1)
+    double3 xformOp:translate = (0, -5, 0)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+}
+
+over "OmniverseKit_Top" (
+    prepend apiSchemas = ["OmniRtxCameraAutoExposureAPI_1", "OmniRtxCameraExposureAPI_1"]
+    customData = {
+        dictionary omni = {
+            dictionary kit = {
+                bool hide_in_stage_window = 1
+                bool no_delete = 1
+            }
+        }
+    }
+    hide_in_stage_window = true
+    kind = "component"
+    no_delete = true
+)
+{
+    float2 clippingRange = (1, 10000000)
+    float exposure:fStop = 5
+    float exposure:responsivity = 1.1026709
+    float exposure:time = 0.02
+    float horizontalAperture = 50
+    custom uniform vector3d omni:kit:centerOfInterest = (0, 0, -5)
+    token projection = "orthographic"
+    float verticalAperture = 50
+    token visibility = "invisible"
+    float3 xformOp:rotateXYZ = (-1.2722219e-14, -7.016709e-15, -90)
+    float3 xformOp:scale = (1, 1, 1)
+    double3 xformOp:translate = (2.8560957918961742, -0.12471492580931486, 3.0033660523994707)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+}
+
+def Xform "GroundPlane"
+{
+    quatf xformOp:orient = (1, 0, 0, 0)
+    float3 xformOp:scale = (1, 1, 1)
+    double3 xformOp:translate = (0, 0, -0.14482199243544303)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+    def Mesh "CollisionMesh" (
+        active = true
+    )
+    {
+        uniform bool doubleSided = 0
+        int[] faceVertexCounts = [4]
+        int[] faceVertexIndices = [0, 1, 2, 3]
+        normal3f[] normals = [(0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1)]
+        point3f[] points = [(-25, -25, 0), (25, -25, 0), (25, 25, 0), (-25, 25, 0)]
+        color3f[] primvars:displayColor = [(0.5, 0.5, 0.5)]
+        texCoord2f[] primvars:st = [(0, 0), (1, 0), (1, 1), (0, 1)] (
+            interpolation = "varying"
+        )
+    }
+
+    def Plane "CollisionPlane" (
+        prepend apiSchemas = ["PhysicsCollisionAPI"]
+    )
+    {
+        uniform token axis = "Z"
+        uniform token purpose = "guide"
+    }
+
+    def Cone "Cone"
+    {
+        uniform token axis = "Z"
+        float3[] extent = [(-0.5, -0.5, -0.5), (0.5, 0.5, 0.5)]
+        double height = 1
+        double radius = 0.5
+        custom bool refinementEnableOverride = 1
+        custom int refinementLevel = 2
+        quatd xformOp:orient = (1, 0, 0, 0)
+        double3 xformOp:scale = (2, 2, 5)
+        double3 xformOp:translate = (2.05987156284635, 0, 0.22088488641277487)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def Cube "Cube"
+    {
+        float3[] extent = [(-0.5, -0.5, -0.5), (0.5, 0.5, 0.5)]
+        double size = 1
+        quatd xformOp:orient = (1, 0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 2.899819078122611, 0.22088488641277487)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def Mesh "Cube_01"
+    {
+        float3[] extent = [(-0.5, -0.5, -0.5), (0.5, 0.5, 0.5)]
+        int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+        int[] faceVertexIndices = [0, 1, 3, 2, 4, 6, 7, 5, 6, 2, 3, 7, 4, 5, 1, 0, 4, 0, 2, 6, 5, 7, 3, 1]
+        normal3f[] normals = [(0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0)] (
+            interpolation = "faceVarying"
+        )
+        point3f[] points = [(-0.5, -0.5, 0.5), (0.5, -0.5, 0.5), (-0.5, 0.5, 0.5), (0.5, 0.5, 0.5), (-0.5, -0.5, -0.5), (0.5, -0.5, -0.5), (-0.5, 0.5, -0.5), (0.5, 0.5, -0.5)]
+        texCoord2f[] primvars:st = [(0, 0), (1, 0), (1, 1), (0, 1), (1, 0), (1, 1), (0, 1), (0, 0), (0, 1), (0, 0), (1, 0), (1, 1), (0, 0), (1, 0), (1, 1), (0, 1), (0, 0), (1, 0), (1, 1), (0, 1), (1, 0), (1, 1), (0, 1), (0, 0)] (
+            interpolation = "faceVarying"
+        )
+        uniform token subdivisionScheme = "none"
+        quatd xformOp:orient = (1, 0, 0, 0)
+        double3 xformOp:scale = (8, 0.20000000298023224, 3)
+        double3 xformOp:translate = (0, -2.701009075294889, 0.7208848864127748)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+}
+
+def Mesh "Cube"
+{
+    float3[] extent = [(-0.5, -0.5, -0.5), (0.5, 0.5, 0.5)]
+    int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+    int[] faceVertexIndices = [0, 1, 3, 2, 4, 6, 7, 5, 6, 2, 3, 7, 4, 5, 1, 0, 4, 0, 2, 6, 5, 7, 3, 1]
+    normal3f[] normals = [(0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0)] (
+        interpolation = "faceVarying"
+    )
+    point3f[] points = [(-0.5, -0.5, 0.5), (0.5, -0.5, 0.5), (-0.5, 0.5, 0.5), (0.5, 0.5, 0.5), (-0.5, -0.5, -0.5), (0.5, -0.5, -0.5), (-0.5, 0.5, -0.5), (0.5, 0.5, -0.5)]
+    texCoord2f[] primvars:st = [(0, 0), (1, 0), (1, 1), (0, 1), (1, 0), (1, 1), (0, 1), (0, 0), (0, 1), (0, 0), (1, 0), (1, 1), (0, 0), (1, 0), (1, 1), (0, 1), (0, 0), (1, 0), (1, 1), (0, 1), (1, 0), (1, 1), (0, 1), (0, 0)] (
+        interpolation = "faceVarying"
+    )
+    uniform token subdivisionScheme = "none"
+    quatd xformOp:orient = (0.7071067811865476, 0, 0, -0.7071067811865475)
+    double3 xformOp:scale = (8, 0.2, 3)
+    double3 xformOp:translate = (-3.922797391203949, 1.4106771043218604, 0.49999999999999994)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+}
+
+def Mesh "Cube_01"
+{
+    float3[] extent = [(-0.5, -0.5, -0.5), (0.5, 0.5, 0.5)]
+    int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+    int[] faceVertexIndices = [0, 1, 3, 2, 4, 6, 7, 5, 6, 2, 3, 7, 4, 5, 1, 0, 4, 0, 2, 6, 5, 7, 3, 1]
+    normal3f[] normals = [(0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0)] (
+        interpolation = "faceVarying"
+    )
+    point3f[] points = [(-0.5, -0.5, 0.5), (0.5, -0.5, 0.5), (-0.5, 0.5, 0.5), (0.5, 0.5, 0.5), (-0.5, -0.5, -0.5), (0.5, -0.5, -0.5), (-0.5, 0.5, -0.5), (0.5, 0.5, -0.5)]
+    texCoord2f[] primvars:st = [(0, 0), (1, 0), (1, 1), (0, 1), (1, 0), (1, 1), (0, 1), (0, 0), (0, 1), (0, 0), (1, 0), (1, 1), (0, 0), (1, 0), (1, 1), (0, 1), (0, 0), (1, 0), (1, 1), (0, 1), (1, 0), (1, 1), (0, 1), (0, 0)] (
+        interpolation = "faceVarying"
+    )
+    uniform token subdivisionScheme = "none"
+    quatd xformOp:orient = (1, 0, 0, 0)
+    double3 xformOp:scale = (8, 0.2, 3)
+    double3 xformOp:translate = (0, 5.434405282833247, 0.49999999999999994)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+}
+
+def Mesh "Cube_03"
+{
+    float3[] extent = [(-0.5, -0.5, -0.5), (0.5, 0.5, 0.5)]
+    int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+    int[] faceVertexIndices = [0, 1, 3, 2, 4, 6, 7, 5, 6, 2, 3, 7, 4, 5, 1, 0, 4, 0, 2, 6, 5, 7, 3, 1]
+    normal3f[] normals = [(0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0)] (
+        interpolation = "faceVarying"
+    )
+    point3f[] points = [(-0.5, -0.5, 0.5), (0.5, -0.5, 0.5), (-0.5, 0.5, 0.5), (0.5, 0.5, 0.5), (-0.5, -0.5, -0.5), (0.5, -0.5, -0.5), (-0.5, 0.5, -0.5), (0.5, 0.5, -0.5)]
+    texCoord2f[] primvars:st = [(0, 0), (1, 0), (1, 1), (0, 1), (1, 0), (1, 1), (0, 1), (0, 0), (0, 1), (0, 0), (1, 0), (1, 1), (0, 0), (1, 0), (1, 1), (0, 1), (0, 0), (1, 0), (1, 1), (0, 1), (1, 0), (1, 1), (0, 1), (0, 0)] (
+        interpolation = "faceVarying"
+    )
+    uniform token subdivisionScheme = "none"
+    quatd xformOp:orient = (0.7071067811865476, 0, 0, -0.7071067811865475)
+    double3 xformOp:scale = (8, 0.2, 3)
+    double3 xformOp:translate = (3.917741628671396, 1.4106771043218649, 0.49999999999999994)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+}
+
